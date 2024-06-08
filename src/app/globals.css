@@ -1,0 +1,68 @@
+:root {
+  --color-text-1: #E0E1E3;
+  --color-text-2: #cccaca;
+  --color-background-1: #030A12;
+  --color-background-2: #171e2d;
+
+  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+  "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+  "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:focus {
+  outline: transparent;
+  box-shadow: 0 0 0 2px var(--green-500);
+}
+
+body {
+  font-family: var(--font-mono);
+  background: var(--color-background-1);
+  color: var(--color-text-2);
+  -webkit-font-smoothing: antialiased;
+}
+
+body, input, textarea, button {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+h1, h2, h3 {
+  color: var(--color-text-1);
+}
+
+.wrapper {
+  max-width: 70rem;
+  margin: 2rem auto;
+  padding: 0 1rem 3rem;
+
+  display: grid;
+  grid-template-columns: 256px 1fr;
+  gap: 2rem;
+  align-items: flex-start;
+
+  position: relative;
+}
+
+.wrapper main {
+  border-radius: 4px;
+  border: 1px solid var(--color-background-2);
+}
+
+.wrapper main h1 {
+  font-size: 1.2rem;
+  padding: 1rem 2.5rem;
+  background-color: var(--color-background-2);
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+  }
+}
