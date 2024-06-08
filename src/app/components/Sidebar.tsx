@@ -34,7 +34,7 @@ export function Sidebar() {
                     <FaRegAddressCard />
                     Sobre Min
                 </a>
-                <a href="#">
+                <a href="https://cienciadacomputacao.vercel.app">
                     <PiStudentFill />
                     Resumo C.Computação
                 </a>
