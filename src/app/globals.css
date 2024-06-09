@@ -25,6 +25,9 @@ body {
   background: var(--color-background-1);
   color: var(--color-text-2);
   -webkit-font-smoothing: antialiased;
+
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
 body, input, textarea, button {
@@ -64,5 +67,6 @@ h1, h2, h3 {
 @media (max-width: 768px) {
   .wrapper {
     grid-template-columns: 1fr;
+    margin: 1rem auto;
   }
 }

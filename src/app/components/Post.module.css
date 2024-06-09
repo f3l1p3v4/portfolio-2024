@@ -3,6 +3,7 @@
     text-decoration: none;
     margin: 0 2.5rem;
     padding: 2.5rem 0;
+    text-decoration-color: var(--color-text-2);
 
     transition: all 0.3s;
 }
@@ -10,6 +11,7 @@
 .post:hover {
     text-decoration: underline;
     text-decoration-color: var(--color-text-2);
+    opacity: 0.8;
 }
 
 .post + .post {
@@ -57,63 +59,60 @@
     color: var(--green-300);
 }
 
-.commentForm {
-    width: 100%;
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--gray-600);
-  }
-  
-.commentForm > strong {
-    line-height: 1.6;
-    color: var(--gray-100);
+.content button {
+    display: none;
 }
 
-.commentForm textarea {
-    width: 100%;
-    background: var(--gray-900);
-    border: 0;
-    resize: none;
-    height: 6rem;
-    padding: 1rem;
-    border-radius: 0.25rem;
-    color: var(--gray-100);
-    line-height: 1.4;
-    margin-top: 1rem;
-}
+@media (max-width: 768px) {
+    .post {
+        margin: 25px;
+        padding: 0;
+    }
 
-.commentForm footer {
-    visibility: hidden;
-    max-height: 0;
-}
+    .post + .post {
+        margin-top: 2rem;
+        padding-top: 25px;
+        border-top: 3px dashed var(--color-background-2);
+    }
 
-.commentForm:focus-within footer {
-    visibility: visible;
-    max-height: none;
-}
+    .content button {
+        width: 100%;
+        font-size: 0.8rem;
+        margin-top: 1rem;
+        padding: 10px;
+        border-radius: 4px;
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        text-decoration: underline;
+        color: var(--color-text-1);
+        background-color: var(--color-background-1);
+        border: none;
+        gap: 10px;
+    
+        transition: color 0.3s, background-color 0.3s;
+    }
 
-.commentForm button[type="submit"] {
-    padding: 1rem 1.5rem;
-    margin-top: 1rem;
-    border-radius: 8px;
-    border: 0;
-    background: var(--green-500);
-    color: var(--white);
-    font-weight: bold;
-    cursor: pointer;
-
-    transition: background-color 0.1s;
-}
-
-.commentForm button[type="submit"]:not(:disabled):hover {
-    background: var(--green-300);
-}
-
-.commentForm button:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-}
-
-.commentList {
-    margin-top: 2rem;
+    .content button svg {
+        animation-duration: 1s;
+        animation-name: slidein;
+        animation-iteration-count: infinite;
+    }
+    
+    @keyframes slidein {
+        0% {
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
+        }
+    
+        50% {
+            -webkit-transform: translateX(0.5rem);
+            transform: translateX(0.5rem);
+        }
+    
+        100% {
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
+        }
+    }
 }

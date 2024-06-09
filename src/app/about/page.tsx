@@ -27,7 +27,7 @@ export default function About() {
 
         <p>
           Em 2024, decidi voltar a cursar Ciência da Computação 👨‍🎓. Com o mercado de tecnologia em constante evolução, percebi a 
-          importância de uma formação acadêmica sólida. (acesse um breve resumo do que estudei no curso de <a href="">Ciência da Computação</a>)
+          importância de uma formação acadêmica sólida.
         </p>
       </section>
     </>

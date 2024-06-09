@@ -4,6 +4,7 @@ import { format, formatDistanceToNow } from 'date-fns';
 
 import styles from './Post.module.css';
 import Link from 'next/link';
+import { FaArrowRight } from 'react-icons/fa';
 
 interface Author{
     name: string;
@@ -53,6 +54,7 @@ interface PostProps {
                         return <span key={line.content}>{line.content}</span>
                     }
                 })}
+                <button>Visualizar <FaArrowRight /></button>
             </div>
         </Link>
     )

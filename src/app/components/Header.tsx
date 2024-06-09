@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 
 import { IoMdHome } from "react-icons/io";
@@ -19,8 +21,19 @@ export function Header() {
                     <p>Menu</p>
                 </Link>
                 <Link href="#">
-                    <IoIosArrowUp />
-                    <p>Topo</p>
+                    <span
+                        title="Ir para o Topo"
+                        role="button"
+                        onKeyDown={() => {
+                            window.scroll({ top: 0, behavior: "smooth" });
+                        }}
+                        onClick={() => {
+                            window.scroll({ top: 0, behavior: "smooth" });
+                        }}
+                    >
+                        <IoIosArrowUp />
+                        <p>Topo</p>
+                    </span>
                 </Link>
             </div>
         </header>

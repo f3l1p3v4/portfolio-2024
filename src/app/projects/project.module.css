@@ -7,3 +7,11 @@
 
     transition: color 0.3s, background-color 0.3s;
 }
+
+@media (max-width: 768px) {
+    .cards {
+        margin: 25px;
+        padding: 0;
+        grid-template-columns: 1fr;
+    }
+}

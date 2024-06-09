@@ -36,13 +36,13 @@ export function Sidebar() {
             </div>
  
             <footer>
-                <a href="#">
+                <a href="https://github.com/f3l1p3v4">
                     <FaGithub />
                 </a>
                 <a href="#">
                     <IoLogoYoutube />
                 </a>
-                <a href="#">
+                <a href="https://www.linkedin.com/in/lipe-dev/">
                     <FaLinkedin />
                 </a>
                 <a href="https://creathor.com.br">
