@@ -1,4 +1,3 @@
-import { PiStudentFill } from "react-icons/pi";
 import { GoOrganization } from "react-icons/go";
 import { CgReadme } from "react-icons/cg";
 import { CgWebsite } from "react-icons/cg";
@@ -33,10 +32,6 @@ export function Sidebar() {
                 <a href="/about">
                     <FaRegAddressCard />
                     Sobre Min
-                </a>
-                <a href="https://cienciadacomputacao.vercel.app">
-                    <PiStudentFill />
-                    Resumo C.Computação
                 </a>
             </div>
  
