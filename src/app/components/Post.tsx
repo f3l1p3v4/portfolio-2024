@@ -1,62 +1,27 @@
-"use client"
-
-import { format, formatDistanceToNow } from 'date-fns';
-
 import styles from './Post.module.css';
 import Link from 'next/link';
 import { FaArrowRight } from 'react-icons/fa';
+import { Post as PostType } from '../../utils/types';
 
-interface Author{
-    name: string;
-    role: string;
-    avatarUrl: string;
+interface PostProps {
+  post: PostType;
 }
 
-interface Content {
-    type: 'title' | 'description' | 'link';
-    content: string;
-}
+export function Post({ post }: PostProps) {
+  const { metadata } = post;
 
-export interface PostType {
-    id: number;
-    author: Author,
-    publishedAt: Date,
-    content: Content[]
-}
+  return (
+    <Link href={post.slug} className={styles.post}>
+      <header>
+        <time>{metadata.date}</time>
+      </header>
 
-interface PostProps {   
-    post: PostType;
+      <div className={styles.content}>
+        <h2>{metadata.title}</h2>
+        <p>{metadata.description}</p>
+        <span>{metadata.tags}</span>
+        <button>Visualizar <FaArrowRight /></button>
+      </div>
+    </Link>
+  );
 }
-  
-  export function Post({ post }: PostProps) {
-   
-    const publishedDateFormatted = format(post.publishedAt, "d 'de' LLLL 'às' HH:mm'h'");
-  
-    const publishedDateRelativeToNow = formatDistanceToNow(post.publishedAt, {
-      addSuffix: true
-    });
-
-    return (
-        <Link href="#" className={styles.post}>
-            <header>
-                <time title={publishedDateFormatted} dateTime={post.publishedAt.toISOString()}>
-                    {publishedDateRelativeToNow}
-                </time>
-            </header>
-
-            <div className={styles.content}>
-                {post.content.map(line => {
-                    if (line.type === 'title') {
-                        return <h2 key={line.content}>{line.content}</h2>;
-                    } else if (line.type === 'description') {
-                        return <p key={line.content}>{line.content}</p>
-                    } else if (line.type === 'link') {
-                        return <span key={line.content}>{line.content}</span>
-                    }
-                })}
-                <button>Visualizar <FaArrowRight /></button>
-            </div>
-        </Link>
-    )
-}
-  

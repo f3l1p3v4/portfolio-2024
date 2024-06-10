@@ -18,10 +18,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={roboto_mono.className}>
         <Header />
-        <div className="wrapper">
-      
+        <div className="wrapper-layout">
           <Sidebar />
-
           <main>
             {children}
           </main>

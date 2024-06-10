@@ -29,7 +29,11 @@
     border-radius: 4px;
     padding: 5px 10px;
     transition: color 0.3s, background-color 0.3s; 
-}   
+}
+
+.nav a:nth-child(2) {
+    display: none;
+}
 
 .nav a svg {
     font-size: 1rem;
@@ -40,9 +44,26 @@
     background-color: var(--color-background-2);
 }
 
-
 .nav a span {
     display: flex;
     flex-direction: column;
     align-items: center;
-}   
+} 
+
+@media (max-width: 768px) {
+    .nav a {
+        font-size: 0.5rem;
+        text-decoration: none;
+        color: var(--color-text-1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 4px;
+        padding: 5px 10px;
+        transition: color 0.3s, background-color 0.3s; 
+    }  
+
+    .nav a:nth-child(2) {
+        display: flex;
+    }
+  }

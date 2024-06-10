@@ -1,3 +1,8 @@
+'use client'
+
+import Link from "next/link";
+import { usePathname } from 'next/navigation'
+
 import { GoOrganization } from "react-icons/go";
 import { CgReadme } from "react-icons/cg";
 import { CgWebsite } from "react-icons/cg";
@@ -12,27 +17,29 @@ import { Profile } from "./Profile";
 import styles from './Sidebar.module.css';
 
 export function Sidebar() {
+    const pathname = usePathname()
+
     return (
         <aside className={styles.sidebar}>        
             <Profile />
 
-            <p className={styles.description}>
+            <p className={styles.info}>
                 Desenvolvedor Front-end Freelancer, estudante de desenvolvimento web Fullstack e apaixonado por tudo que envolve tecnologia.
             </p>
 
             <div className={styles.menu}>
-                <a href="/">
+                <Link href="/" className={`${pathname === '/' ? 'active' : 'not-active'}`}>
                     <CgReadme />
                     Blog
-                </a>
-                <a href="/projects">
+                </Link>
+                <Link href="/projects" className={`${pathname === '/projects' ? 'active' : 'not-active'}`}>
                     <CgWebsite />
                     Projetos
-                </a>
-                <a href="/about">
+                </Link>
+                <Link href="/about" className={`${pathname === '/about' ? 'active' : 'not-active'}`}>
                     <FaRegAddressCard />
-                    Sobre Min
-                </a>
+                    Sobre Mim
+                </Link>
             </div>
  
             <footer>

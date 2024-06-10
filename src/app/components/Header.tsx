@@ -17,8 +17,19 @@ export function Header() {
                     <p>Home</p>
                 </Link>
                 <Link href="#">
-                    <IoMenu />
-                    <p>Menu</p>
+                    <span
+                        title="Ir para o Topo"
+                        role="button"
+                        onKeyDown={() => {
+                            window.scroll({ top: 0, behavior: "smooth" });
+                        }}
+                        onClick={() => {
+                            window.scroll({ top: 0, behavior: "smooth" });
+                        }}
+                    >
+                        <IoMenu />
+                        <p>Menu</p>
+                    </span>
                 </Link>
                 <Link href="#">
                     <span
