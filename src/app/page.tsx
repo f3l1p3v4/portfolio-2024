@@ -1,20 +1,13 @@
-import { getBlogPosts } from '../utils/blog';
-import { Post as PostType } from '../utils/types';
-import { Post } from './components/Post';
+import { PostItem } from '@/app/_components/PostItem';
+import { getAllPosts } from "@/utils/api";
 
 export default function Home() {
-  const allBlogs: PostType[] = getBlogPosts();
+  const allPosts = getAllPosts();
 
   return (
     <>
       <h1>Posts</h1>
-
-      {allBlogs.map((post) => (
-        <Post
-          key={post.slug}
-          post={post}
-        />
-      ))}
+      <PostItem posts={allPosts}/>
     </>
   );
 }

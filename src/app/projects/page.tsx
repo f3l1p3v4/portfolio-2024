@@ -1,4 +1,4 @@
-import { Card, ProjectType } from "../components/Card";
+import { Card, ProjectType } from "../_components/Card";
 
 import styles from "./project.module.css";
 

@@ -1,9 +1,9 @@
 ---
-id: 04
-title: Server and Client Components
-description: React Server Components allow developers to build applications that span the server and client.
+id: 02
+title: Dynamic Routing and Static Regeneration
+description: How to use incremental static regeneration using dynamic routes.
 tags: Reactjs, Typescript
-date: "2023-01-08"
+date: "2023-03-04"
 ---
 
 Until now, trying to style an article, document, or blog post with Tailwind has been a tedious task that required a keen eye for typography and a lot of complex custom CSS.
@@ -14,3 +14,7 @@ We get lots of complaints about it actually, with people regularly asking us thi
 
 > Why is Tailwind removing the default styles on my `h1` elements? How do I disable this? What do you mean I lose all the other base styles too?
 > We hear you, but we're not convinced that simply disabling our base styles is what you really want. You don't want to have to remove annoying margins every time you use a `p` element in a piece of your dashboard UI. And I doubt you really want your blog posts to use the user-agent styles either — you want them to look _awesome_, not awful.
+
+```shell
+npx create-react-app meu-projeto create-react-app meu-projeto create-react-app meu-projeto
+```

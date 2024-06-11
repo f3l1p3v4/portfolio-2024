@@ -1,74 +1,63 @@
-import { notFound } from 'next/navigation'
-import { CustomMDX } from '../components/mdx'
-import { getBlogPosts } from '../../utils/blog'
-import { baseUrl } from '../sitemap'
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { getAllPosts, getPostBySlug } from "@/utils/api";
+import { CMS_NAME } from "@/utils/constants";
+import markdownToHtml from "@/utils/markdownToHtml";
+import Container from "@/app/_components/Container";
+import { PostBody } from "@/app/_components/PostBody";
 
-interface Params {
-  slug: string;
-}
+type Params = {
+  params: {
+    slug: string;
+  };
+};
 
-export async function generateStaticParams() {
-  let posts = getBlogPosts()
-
-  return posts.map((post) => ({
-    slug: post.slug,
-  }))
-}
-
-export function generateMetadata({ params }: { params: Params }) {
-  let post = getBlogPosts().find((post) => post.slug === params.slug)
-  if (!post) {
-    return
-  }
-
-  let {
-    title,
-    description, // Adicionei a extração da descrição aqui
-    date: publishedTime, // Renomeando para publishedTime para consistência
-    image,
-  } = post.metadata
-
-  let ogImage = image ? image : `${baseUrl}/og?title=${encodeURIComponent(title)}`
-
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      type: 'article',
-      publishedTime,
-      url: `${baseUrl}/${post.slug}`,
-      images: [
-        {
-          url: ogImage,
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: [ogImage],
-    },
-  }
-}
-
-export default function Blog({ params }: { params: Params }) {
-  let post = getBlogPosts().find((post) => post.slug === params.slug)
+export default async function Post({ params }: Params) {
+  const post = getPostBySlug(params.slug);
 
   if (!post) {
-    notFound()
+    return notFound();
   }
+
+  const content = await markdownToHtml(post.content || "");
 
   return (
     <section>
-      <h1 className="title">
-        {post.metadata.title}
-      </h1>
-      <article className="prose">
-        <CustomMDX source={post.content} />
-      </article>
+      <Container>
+        <h1 className="title">
+          {post.title}
+        </h1>
+        <article>
+          <PostBody content={content}/>
+        </article>
+      </Container>
     </section>
   )
 }
+
+export function generateMetadata({ params }: Params): Metadata {
+  const post = getPostBySlug(params.slug);
+
+  if (!post) {
+    return notFound();
+  }
+
+  const title = `${post.title} | Next.js Blog Example with ${CMS_NAME}`;
+
+  return {
+    title,
+    openGraph: {
+      title,
+      // images: [post.ogImage.url],
+    },
+  };
+}
+
+export async function generateStaticParams() {
+  const posts = getAllPosts();
+
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
