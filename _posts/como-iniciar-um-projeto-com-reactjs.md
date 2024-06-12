@@ -3,7 +3,7 @@ id: 01
 title: Como iniciar um projeto com Reactjs
 description: O React é uma biblioteca front-end JavaScript de código aberto com foco em criar interfaces de usuário em páginas web.
 tags: Reactjs
-date: "2023-01-02"
+date: "2022-12-12"
 ---
 
 Podemos montar uma estrutura de um projeto React e configurar o build manualmente, porém é um passo muito penoso e confuso de início. Por conta disso, iremos utilizar o comando `create-react-app`, que cria automáticamente uma estrutura básica de um projeto reactjs, pronta para começarmos a desenvolver nossa aplicação.
@@ -55,7 +55,7 @@ npm start
 O comando acima cria um servidor e que fica escutando todas alterações nos arquivos, depois de criar o servidor é possível acessar o projeto pela a URL
 `https://localhost:3000/` no navegador e se tudo correu bem vc verá uma tela de boas vindas:
 
-![Home do Reactjs](../../static/img/iniciando-react-home.jpg "Tela Home do Reactjs")
+![Home do Reactjs](/assets/blog/como-iniciar-um-projeto-com-reactjs/iniciando-react-home.jpg "Tela Home do Reactjs")
 
 ## Estrutura do projeto React
 

@@ -19,8 +19,8 @@ export function PostItem({ posts }: Props) {
 
           <div className={styles.content}>
             <h2>{post.title}</h2>
-            {/* <p>{post.description}</p> */}
-            {/* <span>{post.tags}</span> */}
+            <p>{post.description}</p>
+            <span>{post.tags}</span>
             <button>Visualizar <FaArrowRight /></button>
           </div>
         </Link>

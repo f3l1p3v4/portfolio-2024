@@ -92,11 +92,8 @@ pre {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   margin-bottom: 1rem;
-  display: block;
-  font-family: monospace;
-  unicode-bidi: isolate;
   white-space: pre-wrap; /* Permite quebra de linha dentro do <pre> */
-  word-wrap: break-word; /* Quebra palavras longas */
+  word-wrap: break-word; /* Quebra palavras longas*/
   overflow-wrap: break-word; /* Quebra palavras longas */
   word-break: break-all; /* Quebra palavras longas */
   overflow-x: auto; /* Adiciona rolagem horizontal */

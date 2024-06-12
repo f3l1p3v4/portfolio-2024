@@ -18,14 +18,22 @@ export interface ProjectType {
 interface ProjectProps {   
     projects: ProjectType;
 }
+
 export function Card({ projects }: ProjectProps) {
+    const skillList = projects.skills.split(',').map((skill, index) => (
+        <span key={index} className={styles.skill}>
+            {skill.trim()}
+        </span>
+    ));
+
+    console.log(skillList)
+
     return (
         <Link href={projects.link} className={styles.card} key={projects.id}>
             <Image
                 width={500}
                 height={500}
-                className={styles.cover} 
-                // src="https://images.unsplash.com/photo-1711619034404-665a4bc6dcd3?q=50&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                className={styles.cover}
                 src={projects.image} 
                 alt=""
             />
@@ -33,8 +41,10 @@ export function Card({ projects }: ProjectProps) {
                 <h2>{projects.title}</h2>
                 <p>{projects.description}</p>
                 <h3>Tecnologias:</h3>
-                <span>{projects.skills}</span>
-                <span>Referencia: {projects.reference}</span>
+                <div className={styles.skills}>
+                    {skillList}
+                </div>
+                {/* <span>Referencia: {projects.reference}</span> */}
                 <button>Ver projeto <FaArrowRight /></button>
             </div>
         </Link>
