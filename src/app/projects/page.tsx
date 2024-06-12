@@ -9,7 +9,7 @@ const projects: ProjectType[] = [
       title: 'Pizza Shop',
       description: 'Uma aplicação para gerenciamento de pizzaria (dashboard de administrador).',
       link: 'https://google.com',
-      skills: 'react, typescript, tailwind, shadcn-ui, zod, vitest e bun',
+      skills: 'react, typescript, tailwind, shadcn-ui, zod, vitest, bun',
       reference: 'Rocketseat'
     },
     {
