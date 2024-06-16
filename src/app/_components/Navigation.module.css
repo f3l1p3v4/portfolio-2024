@@ -8,7 +8,6 @@
 }
 
 .navigation a {
-    /* display: block; */
     padding: 10px;
     text-decoration: none;
     border-radius: 4px;
@@ -33,7 +32,7 @@
 
 @media (max-width: 768px) {
     .navigation a {
-        display: block;
+        font-size: 0.780rem;
         padding: 10px;
         text-decoration: none;
         border-radius: 4px;
@@ -49,6 +48,6 @@
     }
 
     .navigation a svg {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
 }

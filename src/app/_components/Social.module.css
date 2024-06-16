@@ -9,7 +9,6 @@
 }
 
 .social a {
-    font-size: 1.4rem;
     color: var(--color-text-1);
     border-radius: 4px;
     display: block;
@@ -20,4 +19,14 @@
 
 .social a:hover {
     color: var(--color-text-2);
+}
+
+.social a svg {
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .social a svg {
+        font-size: 1.5rem;
+    }
 }
