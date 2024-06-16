@@ -14,21 +14,21 @@ const projects: ProjectType[] = [
     },
     {
       id: 2,
-      image: '/projects/img-01.png',
-      title: 'Como iniciar',
-      description: 'O React é uma biblioteca front-end JavaScript de código aberto com foco em criar interfaces de usuário em páginas web.z',
-      link: 'https://google.com',
-      skills: 'Reactjs, Typescript, Tailwind',
+      image: '/projects/img-02.png',
+      title: 'Todo List',
+      description: 'Trata-se de um to to list, onde pode criar tarefas, marcar como concluídas e deletar.',
+      link: 'https://01-desafio-todo-list.vercel.app',
+      skills: 'reactjs, typescript, vite',
       reference: 'Felipe Fialho'
     },
     {
       id: 3,
-      image: '/projects/img-01.png',
-      title: '(ChatGPT)',
-      description: 'ChatGPT é uma ferramenta de processamento de linguagem natural (NLP) desenvolvida pela OpenAI.',
-      link: 'https://google.com',
-      skills: 'Reactjs, Typescript, Tailwind',
-      reference: 'Felipe Fial'
+      image: '/projects/img-03.png',
+      title: 'Timer',
+      description: 'Trata-se de um timer onde é possível adicionar as suas tarefas do dia a dia e cronometrá-las com tempo mínimo de 5 minutos e tempo máximo de 60 minutos, podendo interrompê-las e ver o histórico de suas tarefas.',
+      link: 'https://ignite-react-02-timer.vercel.app/',
+      skills: 'reactjs, typescript, date-fns, styled-components, zod, immer',
+      reference: 'Felipe Fialho'
 
     },
     {
