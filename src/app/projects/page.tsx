@@ -33,8 +33,8 @@ const projects: ProjectType[] = [
     },
     {
       id: 4,
-      image: '/projects/img-01.png',
-      title: 'Como iniciar',
+      image: '/projects/img-04.png',
+      title: 'DT Money',
       description: 'O React é uma biblioteca front-end JavaScript de código aberto com foco em criar interfaces de usuário em páginas web.z',
       link: 'https://google.com',
       skills: 'Reactjs, Typescript, Tailwind',
