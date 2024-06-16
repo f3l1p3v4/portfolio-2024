@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Roboto_Mono } from 'next/font/google'
 
 import { Header } from "./_components/Header";
+import { Footer } from "./_components/Footer";
 import { Sidebar } from "./_components/Sidebar";
 
 import "./globals.css";
@@ -21,9 +22,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
   return (
     <html lang="en">
-      <body className={roboto_mono.className}>
+      <body className={roboto_mono.className} suppressHydrationWarning={true}>
         <Header />
         <div className="wrapper-layout">
           <Sidebar />
@@ -31,6 +33,7 @@ export default function RootLayout({
             {children}
           </main>
         </div>
+        <Footer />
         </body>
     </html>
   );

@@ -26,8 +26,6 @@ export function Card({ projects }: ProjectProps) {
         </span>
     ));
 
-    console.log(skillList)
-
     return (
         <Link href={projects.link} className={styles.card} key={projects.id}>
             <Image
@@ -44,7 +42,6 @@ export function Card({ projects }: ProjectProps) {
                 <div className={styles.skills}>
                     {skillList}
                 </div>
-                {/* <span>Referencia: {projects.reference}</span> */}
                 <button>Ver projeto <FaArrowRight /></button>
             </div>
         </Link>

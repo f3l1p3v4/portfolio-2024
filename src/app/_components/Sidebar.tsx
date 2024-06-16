@@ -1,20 +1,20 @@
 'use client'
 
 import Link from "next/link";
-import { usePathname } from 'next/navigation'
-
-import { GoOrganization } from "react-icons/go";
-import { CgReadme } from "react-icons/cg";
-import { CgWebsite } from "react-icons/cg";
-import { FaRegAddressCard } from "react-icons/fa";
-
-import { FaGithub } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
-import { IoLogoYoutube } from "react-icons/io";
+import { usePathname } from "next/navigation";
 
 import { Profile } from "./Profile";
+import { Social } from "./Social";
+
+
+import { CgReadme, CgWebsite } from "react-icons/cg";
+import { FaRegAddressCard } from "react-icons/fa";
 
 import styles from './Sidebar.module.css';
+
+interface SidebarProps {
+    setIsMenuOpen: (isOpen: boolean) => void;
+}
 
 export function Sidebar() {
     const pathname = usePathname()
@@ -27,7 +27,7 @@ export function Sidebar() {
                 Desenvolvedor Front-end Freelancer, estudante de desenvolvimento web Fullstack e apaixonado por tudo que envolve tecnologia.
             </p>
 
-            <div className={styles.menu}>
+            <div className={styles.navigation}>
                 <Link href="/" className={`${pathname === '/' ? 'active' : 'not-active'}`}>
                     <CgReadme />
                     Blog
@@ -41,21 +41,8 @@ export function Sidebar() {
                     Sobre Mim
                 </Link>
             </div>
- 
-            <footer>
-                <a href="https://github.com/f3l1p3v4">
-                    <FaGithub />
-                </a>
-                <a href="#">
-                    <IoLogoYoutube />
-                </a>
-                <a href="https://www.linkedin.com/in/lipe-dev/">
-                    <FaLinkedin />
-                </a>
-                <a href="https://creathor.com.br">
-                    <GoOrganization />
-                </a>
-            </footer>
+
+            <Social />
         </aside>
     );
 }
