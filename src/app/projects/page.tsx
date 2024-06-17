@@ -3,15 +3,15 @@ import { Card, ProjectType } from "../_components/Card";
 import styles from "./project.module.css";
 
 const projects: ProjectType[] = [
-    {
-      id: 1,
-      image: '/projects/img-01.png',
-      title: 'Pizza Shop',
-      description: 'Uma aplicação para gerenciamento de pizzaria (dashboard de administrador).',
-      link: 'https://google.com',
-      skills: 'react, typescript, tailwind, shadcn-ui, zod, vitest, bun',
-      reference: 'Rocketseat'
-    },
+    // {
+    //   id: 1,
+    //   image: '/projects/img-01.png',
+    //   title: 'Pizza Shop',
+    //   description: 'Uma aplicação para gerenciamento de pizzaria (dashboard de administrador).',
+    //   link: 'https://google.com',
+    //   skills: 'react, typescript, tailwind, shadcn-ui, zod, vitest, bun',
+    //   reference: 'Rocketseat'
+    // },
     {
       id: 2,
       image: '/projects/img-02.png',
@@ -35,9 +35,9 @@ const projects: ProjectType[] = [
       id: 4,
       image: '/projects/img-04.png',
       title: 'DT Money',
-      description: 'O React é uma biblioteca front-end JavaScript de código aberto com foco em criar interfaces de usuário em páginas web.z',
-      link: 'https://google.com',
-      skills: 'Reactjs, Typescript, Tailwind',
+      description: 'A ideia deste projeto é criar um controle financeiro para o usuário. Nele o usuário pode adicionar as entradas e saídas financeiras do seu dia-a-dia.',
+      link: 'https://ignite-react-03-dt-money.vercel.app',
+      skills: 'reactjs, typescript, vite, styled-components, date-fns, zod',
       reference: 'Felipe Fial'
     },
 ];
