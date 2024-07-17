@@ -13,9 +13,6 @@ export function Social() {
             <Link href="https://github.com/f3l1p3v4">
                 <FaGithub />
             </Link>
-            <Link href="#">
-                <IoLogoYoutube />
-            </Link>
             <Link href="https://www.linkedin.com/in/lipe-dev/">
                 <FaLinkedin />
             </Link>
