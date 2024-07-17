@@ -56,7 +56,7 @@
 .skill {
     font-size: 0.6rem;
     color: var(--color-text-2);
-    background-color: var(--color-background-2);
+    background-color: var(--color-blue);
     padding: 5px;
     border-radius: 10px;
 }
