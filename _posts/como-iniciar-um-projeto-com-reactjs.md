@@ -2,7 +2,7 @@
 id: 01
 title: Como iniciar um projeto com Reactjs
 description: O React é uma biblioteca front-end JavaScript de código aberto com foco em criar interfaces de usuário em páginas web.
-tags: Reactjs
+tags: ["Reactjs"]
 date: "2022-12-12"
 ---
 

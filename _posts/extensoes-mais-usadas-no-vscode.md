@@ -2,7 +2,7 @@
 id: 03
 title: Extensões mais usadas no VSCode
 description: O Visual Studio Code é um editor de código-fonte desenvolvido pela Microsoft para Windows, Linux e macOS.
-tags: VSCode
+tags: ["VSCode"]
 date: "2021-12-30"
 ---
 

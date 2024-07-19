@@ -2,7 +2,7 @@
 id: 02
 title: Como iniciar no web design
 description: HTML (Hypertext Markup Language) é o principal bloco de construção da criação de um site.
-tags: HTML
+tags: ["HTML"]
 date: "2021-03-17"
 ---
 

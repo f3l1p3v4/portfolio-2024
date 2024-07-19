@@ -24,7 +24,7 @@ export function Sidebar() {
             <Profile />
 
             <p className={styles.info}>
-                Estudante de desenvolvimento web Fullstack, Cibersegurança e apaixonado por tudo que envolve tecnologia.
+                Estudante de desenvolvimento web, cibersegurança e apaixonado por tudo que envolve tecnologia.
             </p>
 
             <div className={styles.navigation}>

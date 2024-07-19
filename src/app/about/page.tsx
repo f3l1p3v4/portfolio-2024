@@ -22,7 +22,7 @@ export default function About() {
           onde tive meu primeiro contato com programação 👩‍💻. Fiquei tão 
           fascinado pela área que decidi trancar o curso para me dedicar 
           integralmente à programação, por meio de diversos cursos profissionalizantes. 
-          Durante esse período, adquiri conhecimentos em HTML, CSS, JavaScript, Node.js e Banco de Dados.
+          Durante esse período, adquiri conhecimentos em HTML, CSS, JavaScript, Reactjs, Nextjs, Node.js, Nestjs PosgreSQL, MySQL, MongoDB e outros.
         </p>
 
         <p>

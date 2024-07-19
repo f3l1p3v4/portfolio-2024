@@ -2,7 +2,7 @@
 id: 05
 title: Instando Node.js e npm no Windows e Linux
 description: Instalando o node.js com muita facilidade no windows e linux.
-tags: NodeJS
+tags: ["NodeJS"]
 date: "2022-01-12"
 ---
 

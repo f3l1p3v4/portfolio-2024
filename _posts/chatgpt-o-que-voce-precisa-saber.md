@@ -1,8 +1,8 @@
 ---
-id: 05
+id: 06
 title: (ChatGPT) O que você precisa saber
 description: ChatGPT é uma ferramenta de processamento de linguagem natural (NLP) desenvolvida pela OpenAI.
-tags: IA
+tags: ["IA", "ChatGPT"]
 date: "2023-01-28"
 ---
 

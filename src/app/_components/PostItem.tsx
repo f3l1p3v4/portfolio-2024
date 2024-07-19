@@ -20,7 +20,11 @@ export function PostItem({ posts }: Props) {
           <div className={styles.content}>
             <h2>{post.title}</h2>
             <p>{post.description}</p>
-            <span>{post.tags}</span>
+            <div className={styles.tags}>
+              {post.tags.map((tag, index) => (
+                <span key={index} className={styles.tag}>{tag}</span>
+              ))}
+            </div>
             <button>Visualizar <FaArrowRight /></button>
           </div>
         </Link>

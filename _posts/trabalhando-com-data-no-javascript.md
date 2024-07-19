@@ -2,7 +2,7 @@
 id: 04
 title: Trabalhando com data no JavaScript
 description: Vamos aprender manipular datas no JavaScript, utilizando a classe Date, como pegar a data atual e utilizar os métodos da classe.
-tags: Javascript
+tags: ["Javascript"]
 date: "2022-08-22"
 ---
 O JavaScript possui a classe chamada Date que nos permite trabalhar com data e hora. Podemos manipular datas acessando diretamente pelos atributos da classe ou pelos métodos disponibilizados pela própria classe.
