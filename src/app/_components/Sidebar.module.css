@@ -43,10 +43,20 @@
 
 .navigation a:hover {
     background: transparent;
+    text-decoration: underline;
 }
 
 .navigation a svg {
     font-size: 1rem;
+}
+
+.active {
+    background-color: transparent;
+    text-decoration: underline;
+  }
+  
+.notActive {
+    background-color: var(--color-background-2);
 }
 
 @media (max-width: 768px) {

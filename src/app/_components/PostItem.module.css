@@ -51,7 +51,7 @@
     padding: 5px 15px;
     border-radius: 4px;
     color: var(--color-text-2);
-    background-color: var(--color-blue);
+    border: 1px solid var(--color-blue);
 }
 
 .content a:hover {
@@ -64,7 +64,7 @@
 
 @media (max-width: 768px) {
     .post {
-        margin: 25px;
+        margin: 1rem;
         padding: 0;
     }
 

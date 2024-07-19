@@ -3,7 +3,7 @@
   --color-text-2: #cccaca;
   --color-blue: #0147c9;
   --color-background-1: #030A12;
-  --color-background-2: #171e2d;
+  --color-background-2: #0b1b3a;
 
   --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
   "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
@@ -67,6 +67,7 @@ h1, h2, h3 {
 
 .active {
   background-color: transparent;
+  text-decoration: underline!important;
 }
 
 .not-active {
