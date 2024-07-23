@@ -30,7 +30,7 @@ export function Sidebar() {
             <div className={styles.navigation}>
                 <Link href="/" className={`${pathname === '/' ? 'active' : 'not-active'}`}>
                     <CgReadme />
-                    Blog
+                    Posts
                 </Link>
                 <Link href="/projects" className={`${pathname === '/projects' ? 'active' : 'not-active'}`}>
                     <CgWebsite />

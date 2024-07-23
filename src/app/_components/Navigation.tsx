@@ -23,7 +23,7 @@ export function Navigation({ setIsMenuOpen }: NavigationProps) {
         <div className={styles.navigation}>
              <Link href="/" className={`${pathname === '/' ? 'active' : 'not-active'}`} onClick={handleLinkClick}>
                 <CgReadme />
-                Blog
+                Posts
             </Link>
             <Link href="/projects" className={`${pathname === '/projects' ? 'active' : 'not-active'}`} onClick={handleLinkClick}>
                 <CgWebsite />
