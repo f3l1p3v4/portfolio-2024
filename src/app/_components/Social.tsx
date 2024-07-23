@@ -9,16 +9,20 @@ import styles from './Social.module.css';
 
 export function Social() {
     return (
-        <footer className={styles.social}>
-            <Link href="https://github.com/f3l1p3v4">
-                <FaGithub />
-            </Link>
-            <Link href="https://www.linkedin.com/in/lipe-dev/">
-                <FaLinkedin />
-            </Link>
-            <Link href="https://creathor.com.br">
-                <GoOrganization />
-            </Link>
-        </footer>
+        <div className={styles.menuWrapper}>
+            <footer className={styles.social}>
+                <Link href="https://github.com/f3l1p3v4">
+                    <FaGithub />
+                </Link>
+                <Link href="https://www.linkedin.com/in/lipe-dev/">
+                    <FaLinkedin />
+                </Link>
+                <Link href="https://creathor.com.br">
+                    <GoOrganization />
+                </Link>
+            </footer>
+
+            <p>© 2019. Todos os direitos reservados.</p>
+        </div>
     );
 }

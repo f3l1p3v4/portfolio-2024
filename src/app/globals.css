@@ -4,10 +4,6 @@
   --color-blue: #0147c9;
   --color-background-1: #040f1b;
   --color-background-2: #0a1c41;
-
-  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
-  "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
-  "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 }
 
 * {
@@ -22,7 +18,9 @@
 }
 
 body {
-  font-family: var(--font-mono);
+  font-family: var();
+  letter-spacing: .07rem;
+  line-height: 1.2rem;
   background: var(--color-background-1);
   color: var(--color-text-2);
   -webkit-font-smoothing: antialiased;
@@ -32,7 +30,7 @@ body {
 }
 
 body, input, textarea, button {
-  font-family: var(--font-mono);
+  font-family: var();
   font-weight: 400;
   font-size: 1rem;
 }
@@ -60,7 +58,7 @@ h1, h2, h3 {
 }
 
 .wrapper-layout main h1 {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   padding: 1rem 2.5rem;
   background-color: var(--color-background-2);
 }

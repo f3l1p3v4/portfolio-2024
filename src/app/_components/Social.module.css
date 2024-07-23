@@ -1,7 +1,16 @@
+.menuWrapper {
+    text-align: center;
+}
+
+.menuWrapper p {
+    font-size: 0.6rem;
+}
+
 .social {
     border-top: 1px solid var(--color-background-2);
+    /* border-bottom: 1px solid var(--color-background-2); */
     margin-top: 30px;
-    padding-top: 20px;
+    padding: 20px 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,6 +32,7 @@
 
 .social a svg {
     font-size: 1.2rem;
+    display: block;
 }
 
 @media (max-width: 768px) {

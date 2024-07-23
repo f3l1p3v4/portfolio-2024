@@ -13,6 +13,7 @@ interface MenuProps {
 export function Menu({ isOpen, setIsMenuOpen }: MenuProps) {
     return (
         <div className={`${styles.menu} ${isOpen ? styles.open : ''}`}>
+            <h3>Menu</h3>
             <Navigation setIsMenuOpen={setIsMenuOpen} />
             <Social />
         </div>

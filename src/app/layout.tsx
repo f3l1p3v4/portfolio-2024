@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Roboto_Mono } from 'next/font/google'
+import { Chakra_Petch } from 'next/font/google'
 
 import { Header } from "./_components/Header";
 import { Footer } from "./_components/Footer";
@@ -12,7 +12,8 @@ export const metadata: Metadata = {
   description: "Site de Portfolio e Blog",
 };
 
-const roboto_mono = Roboto_Mono({
+const chakra_petch = Chakra_Petch({
+  weight: ['400', '700'],
   subsets: ['latin'],
   display: 'swap',
 })
@@ -25,7 +26,7 @@ export default function RootLayout({
   
   return (
     <html lang="en">
-      <body className={roboto_mono.className} suppressHydrationWarning={true}>
+      <body className={chakra_petch.className} suppressHydrationWarning={true}>
         <Header />
         <div className="wrapper-layout">
           <Sidebar />
