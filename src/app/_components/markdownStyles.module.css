@@ -11,9 +11,9 @@
 .markdown pre {
   border-radius: 4px;
   overflow-x: auto;
-  border: 1px solid var(--color-background-2);
-  background-color: #000000;
-  padding: 0.75rem;
+  /* border: 1px solid var(--color-background-2); */
+  background-color: #051427;
+  padding: 1.2rem;
   font-size: 0.8rem;
 }
 
@@ -29,7 +29,7 @@
   padding: 0;
   border: initial;
   line-height: 1.5;
-  color: var(--color-text-1);
+  color: var(--color-blue);
 }
 
 .markdown blockquote {
