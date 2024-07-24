@@ -3,7 +3,7 @@
 }
 
 .menuWrapper p {
-    font-size: 0.6rem;
+    font-size: 0.5rem;
 }
 
 .social {
@@ -36,6 +36,10 @@
 }
 
 @media (max-width: 768px) {
+    .menuWrapper p {
+        font-size: 0.6rem;
+    }
+
     .social a svg {
         font-size: 1.5rem;
     }
