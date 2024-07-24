@@ -60,6 +60,7 @@ h1, h2, h3 {
 .wrapper-layout main h1 {
   font-size: 1.4rem;
   padding: 1rem 2.5rem;
+  line-height: 1.8rem;
   background-color: var(--color-background-2);
 }
 
