@@ -3,7 +3,7 @@ id: 08
 title: Como consertar um arquivo de histórico zsh corrompido
 description: Ocasionalmente, você pode descobrir que tem um arquivo de histórico zsh corrompido que o impede...
 tags: ["Terminal", "Zsh", "Linux"]
-date: "2024-08-23"
+date: "2024-07-23"
 ---
 
 Olá pessoal!!!

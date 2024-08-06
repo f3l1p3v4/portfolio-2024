@@ -3,7 +3,7 @@ id: 09
 title: "Google Hacking: Explorando o Poder das Buscas Avançadas"
 description: Google Hacking, também conhecido como Google Dorking, é a prática de usar operadores avançados de busca do Google para...
 tags: ["Google Hacking", "Dorks", "Hacking"]
-date: "2024-08-29"
+date: "2024-07-29"
 ---
 
 Olá pessoal!!!

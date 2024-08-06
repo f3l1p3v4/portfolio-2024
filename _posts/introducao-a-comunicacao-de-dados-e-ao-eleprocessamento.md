@@ -2,8 +2,8 @@
 id: 10
 title: "Introdução à comunicação de dados e ao eleprocessamento"
 description: Os primeiros estudos e desenvolvimentos ocorridos foram posteriores ao período pós-Segunda Guerra Mundial...
-tags: ["Redes", "Ciencia da Computacao"]
-date: "2024-08-31"
+tags: ["Redes de Computadores", "Ciencia da Computacao"]
+date: "2024-07-31"
 ---
 
 Olá pessoal!!!

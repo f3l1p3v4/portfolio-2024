@@ -3,7 +3,7 @@ id: 07
 title: Gerenciar Processos pela Porta no Linux
 description: Aprenda a listar e matar processos específicos que estão utilizando determinadas portas no seu sistema operacional.
 tags: ["Terminal", "Netstat", "Linux"]
-date: "2024-08-19"
+date: "2024-07-19"
 ---
 
 Esses comandos permitem que você gerencie processos específicos que estão utilizando determinadas portas, evitando a necessidade de reiniciar o computador.
