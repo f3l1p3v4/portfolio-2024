@@ -44,7 +44,21 @@ traceroute
 ### Dispositivos de Rede:
 
 - **Placas de Rede**: Responsáveis pelo tratamento de endereçamentos no envio e recebimento das mensagens.
-- **Modem**: Segundo Forouzan (2006), o modem realiza a modulação e demodulação das mensagens, também conhecido como transceptor. Existem modems residenciais com conexão cabeada, 4G, fibra óptica e wi-fi integrado.
+
+- **Modem**: Segundo Forouzan (2006), o modem realiza a modulação e demodulação das mensagens, também conhecido como transceptor. 
+
+```bash
+| TIPO                     | FUNÇÃO                                     |
+| ------------------------ | ------------------------------------------ |
+| Analógico                | Transmissão por canal de voz               |
+| Cable Modem              | Transmissão de dados via rede de TV a cabo |
+| ADSL                     | Par de fios da linha de assinante          |
+| Canal E1, E3 e E4        | Canais digitais de telecomunicações        |
+| Ópticos                  | Transmissões por fibras ópticas            |
+```
+
+Existem modems residenciais com conexão cabeada, 4G, fibra óptica e wi-fi integrado.
+
 - **Hub**: Tanenbaum (1997) define que o hub contém várias linhas de entrada para distribuir conexões. O cascateamento deve ser evitado não apenas com hubs, mas também com roteadores, switches ou bridges.
 
 ## Até a próxima ✌️
