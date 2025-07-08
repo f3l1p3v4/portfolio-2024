@@ -61,7 +61,8 @@ h1, h2, h3 {
   font-size: 1.4rem;
   padding: 1rem 2.5rem;
   line-height: 1.8rem;
-  background-color: var(--color-background-2);
+  background-color: var(--color-blue);
+  color: var(--color-background-1)
 }
 
 .active {
