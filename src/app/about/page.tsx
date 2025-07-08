@@ -21,7 +21,7 @@ export default function About() {
         </p>
 
         <p>
-          Após anos de prática no desenvolvimento web, em 2024 senti que era hora de voltar à sala de aula 👨‍🎓. Retomei o curso de Ciência da Computação com o objetivo de aprofundar minha base teórica e evoluir ainda mais como profissional em um setor em constante mudança.
+          Após anos de prática no desenvolvimento web, em 2024 senti que era hora de voltar à sala de aula 👨‍🎓. Retomei o curso de Ciência da Computação com o objetivo de aprofundar minha base teórica e evoluir ainda mais como profissional em um setor em constante mudança.npm
         </p>
       </section>
     </>
