@@ -2,7 +2,7 @@
 id: 11
 title: "Introdução a redes de computadores"
 description: Segundo Tanenbaum (1997), empresas possuem diversos computadores, dispositivos e sistemas.
-tags: ["Redes de Computadores", "Ciencia da Computacao"]
+tags: ["Redes", "Ciencia da Computacao"]
 date: "2024-08-06"
 ---
 

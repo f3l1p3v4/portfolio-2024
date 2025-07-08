@@ -1,9 +1,9 @@
 :root {
   --color-text-1: #E0E1E3;
   --color-text-2: #c4c1c1;
-  --color-blue: #0147c9;
-  --color-background-1: #040f1b;
-  --color-background-2: #0a1c41;
+  --color-blue: #a3ea2a;
+  --color-background-1: #151C2B;
+  --color-background-2: #212C42;
 }
 
 * {
@@ -67,10 +67,11 @@ h1, h2, h3 {
 .active {
   background-color: transparent;
   text-decoration: underline!important;
+  color: var(--color-text-1)!important;
 }
 
 .not-active {
-  background-color: var(--color-background-2);
+  background-color: var(--color-blue);
 }
 
 @media (max-width: 768px) {

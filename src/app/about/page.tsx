@@ -11,22 +11,17 @@ export default function About() {
         <h2>Olá! 👋</h2>
 
         <p>
-          Meu nome é Felipe, nasci e moro em Campo Grande - MS. Atualmente, sou desenvolvedor web na  
-          {" "}<a href="https://creathor.com.br/">Creathor</a>, uma agência de prestação de serviços web 
-          que eu mesmo fundei.
+          Meu nome é Felipe, nasci e moro em Campo Grande - MS. Atualmente, trabalho como programador pleno no Consórcio Guaicurus, onde atuo no desenvolvimento e manutenção de sistemas internos. Paralelamente, estou estruturando a 
+          {" "}<a href="https://creathor.com.br/">Creathor</a>, uma agência de serviços web que fundei com o objetivo de atender projetos como freelancer e expandir minha atuação no mercado digital.
         </p>
 
         <p>
-          Em 2016, comecei a cursar Ciência da Computação na Universidade {" "}
-          <a href="https://www.anhanguera.com/">Uniderp Anhanguera</a>, 
-          onde tive meu primeiro contato com programação 👩‍💻. Fiquei tão 
-          fascinado pela área que decidi trancar o curso para me dedicar 
-          integralmente à programação, por meio de diversos cursos profissionalizantes. 
-          Durante esse período, adquiri conhecimentos em HTML, CSS, JavaScript, Reactjs, Nextjs, Node.js, Nestjs, PosgreSQL, MySQL, MongoDB e outros.
+        Minha jornada na tecnologia começou em 2016, quando iniciei o curso de Ciência da Computação na Universidade {" "}
+          <a href="https://www.anhanguera.com/">Uniderp Anhanguera</a>. Foi lá que tive meu primeiro contato com programação 👨‍💻 e me apaixonei pela área. Pouco tempo depois, decidi pausar a graduação para focar em cursos profissionalizantes e projetos práticos, o que me permitiu adquirir experiência com tecnologias como HTML, CSS, JavaScript, React, Next.js, Node.js, NestJS, PostgreSQL, MySQL, MongoDB, entre outras.
         </p>
 
         <p>
-          Em 2024, percebi a importância de uma formação acadêmica, especialmente em um mercado de tecnologia em constante evolução, e decidi retomar meu curso de Ciência da Computação 👨‍🎓.
+          Após anos de prática no desenvolvimento web, em 2024 senti que era hora de voltar à sala de aula 👨‍🎓. Retomei o curso de Ciência da Computação com o objetivo de aprofundar minha base teórica e evoluir ainda mais como profissional em um setor em constante mudança.
         </p>
       </section>
     </>

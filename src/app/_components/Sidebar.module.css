@@ -30,8 +30,9 @@
     padding: 10px;
     text-decoration: none;
     border-radius: 4px;
-    color: var(--color-text-1);
-    border: 1px solid var(--color-background-2);
+    font-weight: 800;
+    color: var(--color-background-2);
+    border: 1px solid var(--color-blue);
     display: flex;
     align-items: center;
     justify-content: left;
@@ -44,6 +45,7 @@
 .navigation a:hover {
     background: transparent;
     text-decoration: underline;
+    color: var(--color-text-1);
 }
 
 .navigation a svg {
@@ -53,10 +55,12 @@
 .active {
     background-color: transparent;
     text-decoration: underline;
+    color: var(--color-text-1);
   }
   
 .notActive {
-    background-color: var(--color-background-2);
+    background-color: var(--color-blue);
+    color: var(--color-text-1);
 }
 
 @media (max-width: 768px) {
