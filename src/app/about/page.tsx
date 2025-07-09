@@ -4,14 +4,14 @@ import styles from "./about.module.css";
 export default function About() {
   return (
     <>
-      <h1>Sobre Min</h1>
+      <h1>Sobre Mim</h1>
 
       <section className={styles.wrapper}>
         
         <h2>Olá! 👋</h2>
 
         <p>
-          Meu nome é Felipe, nasci e moro em Campo Grande - MS. Atualmente, trabalho como programador pleno no Consórcio Guaicurus, onde atuo no desenvolvimento e manutenção de sistemas internos. Paralelamente, estou estruturando a 
+          Meu nome é Felipe, sou casado, cristão e moro em Campo Grande - MS. Atualmente, trabalho como programador pleno no Consórcio Guaicurus, onde atuo no desenvolvimento e manutenção de sistemas internos. Paralelamente, estou estruturando a 
           {" "}<a href="https://creathor.com.br/">Creathor</a>, uma agência de serviços web que fundei com o objetivo de atender projetos como freelancer e expandir minha atuação no mercado digital.
         </p>
 
