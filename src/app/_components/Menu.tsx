@@ -1,7 +1,7 @@
 'use client';
 
 import { Navigation } from "./Navigation";
-import { Social } from "./Social";
+import { Social } from "./Footer";
 
 import styles from './Menu.module.css';
 

@@ -29,7 +29,6 @@ export default function RootLayout({
       <body className={chakra_petch.className} suppressHydrationWarning={true}>
         <Header />
         <div className="wrapper-layout">
-          <Sidebar />
           <main>
             {children}
           </main>

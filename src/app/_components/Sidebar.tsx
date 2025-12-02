@@ -1,48 +1,36 @@
-'use client'
+'use client';
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-
-import { Profile } from "./Profile";
-import { Social } from "./Social";
-
-
-import { CgReadme, CgWebsite } from "react-icons/cg";
-import { FaRegAddressCard } from "react-icons/fa";
+import Typewriter from 'typewriter-effect';
 
 import styles from './Sidebar.module.css';
-
-interface SidebarProps {
-    setIsMenuOpen: (isOpen: boolean) => void;
-}
-
 export function Sidebar() {
-    const pathname = usePathname()
-
-    return (
-        <aside className={styles.sidebar}>        
-            <Profile />
-
-            <p className={styles.info}>
-                Desenvolvedor web, estudante de cibersegurança e apaixonado por tudo que envolve tecnologia.
-            </p>
-
-            <div className={styles.navigation}>
-                <Link href="/" className={`${pathname === '/' ? 'active' : 'not-active'}`}>
-                    <CgReadme />
-                    Posts
-                </Link>
-                <Link href="/projects" className={`${pathname === '/projects' ? 'active' : 'not-active'}`}>
-                    <CgWebsite />
-                    Projetos
-                </Link>
-                <Link href="/about" className={`${pathname === '/about' ? 'active' : 'not-active'}`}>
-                    <FaRegAddressCard />
-                    Sobre Mim
-                </Link>
-            </div>
-
-            <Social />
-        </aside>
-    );
+  return (
+    <aside className={styles.sidebar}>
+      <div className={styles.info}>
+        <p className={styles.infoText}>Olá, eu sou o</p>
+        <h2 className={styles.infoTitle}>
+          <Typewriter
+            options={{
+              cursor: '|',
+              delay: 75,
+            }}
+            onInit={(typewriter) => {
+              typewriter
+                .typeString('Felipe Valdez')
+                .start();
+            }}
+          />
+        </h2>
+        <span className={styles.infoDescription}>
+          <span className={styles.infoDescriptionColor}>
+            Desenvolvedor web
+          </span>
+          , estudante de{' '}
+          <span className={styles.infoDescriptionColor}>cibersegurança</span> e
+          apaixonado por tudo que envolve{' '}
+          <span className={styles.infoDescriptionColor}>tecnologia</span>.
+        </span>
+      </div>
+    </aside>
+  );
 }

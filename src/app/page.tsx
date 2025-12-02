@@ -1,4 +1,5 @@
-import { PostItem } from '@/app/_components/PostItem';
+import { Sidebar } from '@/app/_components/Sidebar';
+import MatrixRain from '@/app/_components/MatrixRain';
 import { getAllPosts } from "@/utils/api";
 
 export default function Home() {
@@ -6,8 +7,8 @@ export default function Home() {
 
   return (
     <>
-      <h1>Posts</h1>
-      <PostItem posts={allPosts}/>
+      <MatrixRain color="rgba(255, 255, 255, 0.466)" />
+      <Sidebar />
     </>
   );
 }

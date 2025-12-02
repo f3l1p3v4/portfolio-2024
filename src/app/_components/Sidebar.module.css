@@ -1,66 +1,36 @@
 .sidebar {
-    border: 1px solid var(--color-background-2);
-    border-radius: 4px;
+    width: 100%;
+    max-width: 600px;
+    height: 100vh;
     overflow: hidden;
-    padding: 25px;
-
-    position: sticky;
-    top: 2rem;
-    bottom: 1rem;
-    z-index: 999;
+    padding: 0 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+    text-align: center;
 }
 
 .info {
-    margin-top: 15px;
-    font-size: 0.7rem !important;
     line-height: 1.4;
 }
 
-.navigation {
-    display: flex;
-    flex-direction: column;
-    margin-top: 15px;
-    font-size: 0.7rem;
-    line-height: 1.4;
-    gap: 10px;
+.infoTitle {
+    font-size: 3rem;
+    margin: 10px 0;
+    min-height: 4.2rem;
 }
 
-.navigation a {
-    /* display: block; */
-    padding: 10px;
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: 800;
-    color: var(--color-background-2);
-    border: 1px solid var(--color-blue);
-    display: flex;
-    align-items: center;
-    justify-content: left;
-
-    gap: 0.5rem;
-
-    transition: color 0.3s, background-color 0.3s;
+.infoText {
+    font-size: 1.2rem;
 }
 
-.navigation a:hover {
-    background: transparent;
-    text-decoration: underline;
-    color: var(--color-text-1);
-}
-
-.navigation a svg {
+.infoDescription {
     font-size: 1rem;
 }
 
-.active {
-    background-color: transparent;
-    text-decoration: underline;
-    color: var(--color-text-1);
-  }
-  
-.notActive {
-    background-color: var(--color-blue);
-    color: var(--color-text-1);
+.infoDescriptionColor {
+    color: var(--color-blue);
 }
 
 @media (max-width: 768px) {
