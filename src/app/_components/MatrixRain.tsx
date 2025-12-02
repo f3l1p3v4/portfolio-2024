@@ -9,7 +9,7 @@ interface MatrixRainProps {
 }
 
 const MatrixRain: React.FC<MatrixRainProps> = ({ 
-  color = '#c4c1c11f', 
+  color = '#8a8a8a1f', 
   backgroundColor = '#151C2B'
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);

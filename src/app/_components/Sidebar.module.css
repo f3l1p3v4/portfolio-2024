@@ -35,6 +35,36 @@
 
 @media (max-width: 768px) {
     .sidebar {
-        display: none;
+        width: 100%;
+        max-width: 600px;
+        height: 100vh;
+        overflow: hidden;
+        padding: 0 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;    
+        text-align: center;
+    }
+
+    .info {
+        line-height: 1.4;
+    }
+
+    .infoTitle {
+        font-size: 2rem;
+        min-height: 2.8rem;
+    }
+
+    .infoText {
+        font-size: 1.1rem;
+    }
+
+    .infoDescription {
+        font-size: 0.8rem;
+    }
+
+    .infoDescriptionColor {
+        color: var(--color-blue);
     }
 }

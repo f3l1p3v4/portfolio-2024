@@ -23,12 +23,12 @@ export function Sidebar() {
         </h2>
         <span className={styles.infoDescription}>
           <span className={styles.infoDescriptionColor}>
-            Desenvolvedor web
+            Desenvolvedor web.{' '}
           </span>
-          , estudante de{' '}
-          <span className={styles.infoDescriptionColor}>cibersegurança</span> e
-          apaixonado por tudo que envolve{' '}
-          <span className={styles.infoDescriptionColor}>tecnologia</span>.
+          Focado em criar{' '}
+          <span className={styles.infoDescriptionColor}>soluções </span> 
+          digitais modernas e{' '}
+          <span className={styles.infoDescriptionColor}>eficientes</span>.
         </span>
       </div>
     </aside>

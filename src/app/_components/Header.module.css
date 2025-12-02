@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     position: fixed;
-    background-color: var(--color-background-1);
+    background-color: transparent;
     top: 0;
     left: 0;
     right: 0;
@@ -19,6 +19,7 @@
     gap: 10px;
     border-radius: 30px;
     border: 1px solid var(--color-blue);
+    background-color: var(--color-background-1);
 }
 
 .navigation a {
@@ -56,24 +57,4 @@
 }
 
 @media (max-width: 768px) {
-    .header {
-        display: flex;
-        justify-content: left;
-        align-items: center;
-        border-bottom: 1px solid var(--color-background-2);
-        background-color: var(--color-background-1);
-        padding: 5px 0;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-    }
-    
-    .content {
-        width: 100%;
-        max-width: 75rem;
-        margin: auto;
-        padding: 5px 20px;
-    }
 }

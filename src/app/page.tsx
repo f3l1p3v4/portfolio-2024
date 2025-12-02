@@ -7,7 +7,7 @@ export default function Home() {
 
   return (
     <>
-      <MatrixRain color="rgba(255, 255, 255, 0.466)" />
+      <MatrixRain color="rgba(255, 255, 255, 0.171)" />
       <Sidebar />
     </>
   );

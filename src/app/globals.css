@@ -61,12 +61,12 @@ h1, h2, h3 {
 }
 
 @media (max-width: 768px) {
-  .wrapper-layout {
+  /* .wrapper-layout {
     grid-template-columns: 1fr;
     margin: 2rem auto;
     padding-top: 3rem;
     position: relative;
-  }
+  } */
 
   .wrapper-layout main h1 {
     padding: 1rem 25px;

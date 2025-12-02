@@ -19,6 +19,10 @@ export function Header() {
         <header className={styles.header}>
             <div className={styles.content}>
                 <div className={styles.navigation}>
+                    <Link href="/about" className={`${pathname === '/about' ? 'active' : 'not-active'}`}>
+                        <FaRegAddressCard />
+                        Sobre
+                    </Link>
                     <Link href="/" className={`${pathname === '/posts' ? 'active' : 'not-active'}`}>
                         <CgReadme />
                         Posts
@@ -26,10 +30,6 @@ export function Header() {
                     <Link href="/projects" className={`${pathname === '/projects' ? 'active' : 'not-active'}`}>
                         <CgWebsite />
                         Projetos
-                    </Link>
-                    <Link href="/about" className={`${pathname === '/about' ? 'active' : 'not-active'}`}>
-                        <FaRegAddressCard />
-                        Sobre
                     </Link>
                 </div>
             </div>
