@@ -8,7 +8,7 @@ import styles from './Sidebar.module.css';
 export function Sidebar() {
   return (
     <div className={styles.sidebarWrapper}>
-      <MatrixRain color="rgba(255, 255, 255, 0.171)" />
+      <MatrixRain color="rgba(255, 255, 255, 0.171)" /> 
       <aside className={styles.sidebar}>
         <div className={styles.info}>
           <p className={styles.infoText}>Olá, eu sou o</p>

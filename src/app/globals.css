@@ -41,32 +41,15 @@ h1, h2, h3 {
 }
 
 .wrapper-layout {
-  max-width: 1400px;
+  width: 100%;
   margin: auto;
   padding: 0;
 }
 
-/*.wrapper-layout main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.wrapper-layout main h1 {
-  font-size: 1.4rem;
-  padding: 1rem 2.5rem;
-  line-height: 1.4rem;
-  background-color: var(--color-blue);
-  color: var(--color-background-1)
-}*/
-
 @media (max-width: 768px) {
-  /* .wrapper-layout {
+  .wrapper-layout {
     grid-template-columns: 1fr;
-    margin: 2rem auto;
-    padding-top: 3rem;
-    position: relative;
-  } */
+  }
 
   .wrapper-layout main h1 {
     padding: 1rem 25px;
