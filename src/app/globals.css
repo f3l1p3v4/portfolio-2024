@@ -19,8 +19,7 @@
 }
 
 body {
-  font-family: var();
-  /* letter-spacing: .7rem; */
+  font-weight: 500;
   line-height: 1.4rem;
   background: var(--color-background-1);
   color: var(--color-text-2);
@@ -31,8 +30,7 @@ body {
 }
 
 body, input, textarea, button {
-  font-family: var();
-  font-weight: 400;
+  font-weight: 500;
   font-size: 1rem;
 }
 
