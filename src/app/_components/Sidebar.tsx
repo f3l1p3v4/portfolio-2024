@@ -1,6 +1,8 @@
 'use client';
 
 import Typewriter from 'typewriter-effect';
+import { FaChevronDown } from "react-icons/fa";
+
 import MatrixRain from '@/app/_components/MatrixRain';
 
 
@@ -36,6 +38,7 @@ export function Sidebar() {
           </span>
         </div>
       </aside>
+      <FaChevronDown />
     </div>
   );
 }
