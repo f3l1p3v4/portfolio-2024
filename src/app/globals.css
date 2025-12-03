@@ -3,7 +3,7 @@
   --color-text-2: #c4c1c1;
   --color-blue: #a3ea2a;
   --color-blue-2: #518000;
-  --color-background-1: #151C2B;
+  --color-background-1: #141b27;
   --color-background-2: #212C42;
 }
 
@@ -20,8 +20,8 @@
 
 body {
   font-family: var();
-  letter-spacing: .07rem;
-  line-height: 1.2rem;
+  /* letter-spacing: .7rem; */
+  line-height: 1.4rem;
   background: var(--color-background-1);
   color: var(--color-text-2);
   -webkit-font-smoothing: antialiased;
@@ -46,7 +46,7 @@ h1, h2, h3 {
   padding: 0;
 }
 
-.wrapper-layout main {
+/*.wrapper-layout main {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,10 +55,10 @@ h1, h2, h3 {
 .wrapper-layout main h1 {
   font-size: 1.4rem;
   padding: 1rem 2.5rem;
-  line-height: 1.8rem;
+  line-height: 1.4rem;
   background-color: var(--color-blue);
   color: var(--color-background-1)
-}
+}*/
 
 @media (max-width: 768px) {
   /* .wrapper-layout {

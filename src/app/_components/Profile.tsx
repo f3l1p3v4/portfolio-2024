@@ -12,10 +12,10 @@ export function Profile() {
                 height={500}
                 src="https://github.com/f3l1p3v4.png" 
             />
-            <div>
+            {/* <div>
                 <strong>Felipe Valdez</strong>
                 <span>Web Developer</span>
-            </div>
+            </div> */}
         </div>
     );
 }

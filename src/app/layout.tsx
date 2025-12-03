@@ -3,7 +3,6 @@ import { Chakra_Petch } from 'next/font/google'
 
 import { Header } from "./_components/Header";
 import { Footer } from "./_components/Footer";
-import { Sidebar } from "./_components/Sidebar";
 
 import "./globals.css";
 
@@ -29,9 +28,7 @@ export default function RootLayout({
       <body className={chakra_petch.className} suppressHydrationWarning={true}>
         <Header />
         <div className="wrapper-layout">
-          <main>
-            {children}
-          </main>
+          {children}
         </div>
         <Footer />
         </body>

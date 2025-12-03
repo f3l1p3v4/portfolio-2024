@@ -1,9 +1,6 @@
-.sidebar {
+.sidebarWrapper {
     width: 100%;
-    max-width: 600px;
     height: 100vh;
-    overflow: hidden;
-    padding: 0 25px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -11,22 +8,29 @@
     text-align: center;
 }
 
+.sidebar {
+    width: 100%;
+    max-width: 500px;
+    overflow: hidden;
+    padding: 0 25px;
+}
+
 .info {
     line-height: 1.4;
 }
 
 .infoTitle {
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin: 10px 0;
     min-height: 4.2rem;
 }
 
 .infoText {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
 .infoDescription {
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 .infoDescriptionColor {
@@ -35,16 +39,7 @@
 
 @media (max-width: 768px) {
     .sidebar {
-        width: 100%;
-        max-width: 600px;
-        height: 100vh;
-        overflow: hidden;
-        padding: 0 25px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;    
-        text-align: center;
+        max-width: 400px;
     }
 
     .info {

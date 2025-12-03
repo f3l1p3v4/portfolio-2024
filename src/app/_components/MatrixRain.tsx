@@ -9,8 +9,8 @@ interface MatrixRainProps {
 }
 
 const MatrixRain: React.FC<MatrixRainProps> = ({ 
-  color = '#8a8a8a1f', 
-  backgroundColor = '#151C2B'
+  color = '#141b27', 
+  backgroundColor = '#0d1018'
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -38,7 +38,7 @@ const MatrixRain: React.FC<MatrixRainProps> = ({
     }
 
     const draw = () => {
-      context.fillStyle = '#151c2b32'; // Use a semi-transparent version of the background for the trail
+      context.fillStyle = '#141b276c';
       context.fillRect(0, 0, canvas.width, canvas.height);
 
       context.fillStyle = color;

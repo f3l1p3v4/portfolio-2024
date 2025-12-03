@@ -1,14 +1,11 @@
 import { Sidebar } from '@/app/_components/Sidebar';
-import MatrixRain from '@/app/_components/MatrixRain';
-import { getAllPosts } from "@/utils/api";
+import { About } from '@/app/_components/About';
 
 export default function Home() {
-  const allPosts = getAllPosts();
-
   return (
     <>
-      <MatrixRain color="rgba(255, 255, 255, 0.171)" />
       <Sidebar />
+      <About />
     </>
   );
 }

@@ -1,12 +1,6 @@
 .menuWrapper {
-    border-top: 1px solid var(--color-blue);
     padding: 10px 20px;
-    position: fixed;
     background-color: var(--color-background-1);
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
 }
 
 .menuContent {

@@ -1,18 +1,15 @@
 import React from "react";
-import Image from "next/image"; // Supondo que use Next.js, se não, use <img>
-import { Profile } from "../_components/Profile"; // Se quiser manter seu componente, ou usar o layout abaixo
-import styles from "./about.module.css";
+import { Profile } from "../_components/Profile";
+import styles from "./About.module.css";
 
-// --- DADOS (Isso facilita a manutenção, igual ao exemplo) ---
 const person = {
   name: "Felipe",
   role: "Programador Pleno",
   location: "Campo Grande - MS",
-  avatar: "/caminho-da-sua-foto.jpg", // Coloque o caminho da sua foto aqui
+  avatar: "/caminho-da-sua-foto.jpg",
   social: [
     { name: "GitHub", url: "https://github.com/seusrouario" },
     { name: "LinkedIn", url: "https://linkedin.com/in/seuusuario" },
-    // Adicione outros
   ]
 };
 
@@ -62,39 +59,18 @@ const aboutData = {
   ]
 };
 
-export default function About() {
+export function About() {
   return (
     <div className={styles.container}>
-      
-      {/* --- COLUNA LATERAL (Avatar, Infos) --- */}
-      <aside className={styles.sidebar}>
-        <div className={styles.stickyContent}>
-          <Profile />
-          
-          <h1 className={styles.name}>{person.name}</h1>
-          <p className={styles.role}>{person.role}</p>
-          
-          <div className={styles.location}>
-            <span>📍 {person.location}</span>
-          </div>
-
-          <div className={styles.socials}>
-            {person.social.map((item) => (
-              <a key={item.name} href={item.url} target="_blank" rel="noreferrer" className={styles.socialLink}>
-                {item.name}
-              </a>
-            ))}
-          </div>
-        </div>
-      </aside>
-
-      {/* --- CONTEÚDO PRINCIPAL --- */}
       <main className={styles.mainContent}>
         
         {/* Intro */}
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Sobre</h2>
-          <p className={styles.text}>{aboutData.intro}</p>
+        <section className={styles.sectionAbout}>
+          <Profile />
+          <div>
+            <h2 className={styles.sectionTitle}>Sobre</h2>
+            <p className={styles.text}>{aboutData.intro}</p>
+          </div>
         </section>
 
         {/* Experiência */}
