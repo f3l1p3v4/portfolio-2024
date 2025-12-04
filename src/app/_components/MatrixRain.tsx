@@ -23,10 +23,19 @@ const MatrixRain: React.FC<MatrixRainProps> = ({
 
     let intervalId: NodeJS.Timeout;
 
-    const setup = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
+const setup = () => {
+      // CORREÇÃO: Pega o tamanho do container pai em vez da janela inteira
+      if (canvas.parentElement) {
+        canvas.width = canvas.parentElement.clientWidth;
+        canvas.height = canvas.parentElement.clientHeight;
+      } else {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+    };
+
+    // Configuração inicial
+    setup();
 
     const binary = '01';
     const fontSize = 16;
