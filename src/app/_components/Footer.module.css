@@ -1,15 +1,21 @@
 .menuWrapper {
     padding: 10px 20px;
-    background-color: var(--color-background-1);
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    background-color: transparent;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
 }
 
 .menuContent {
     width: 100%;
-    max-width: 1400px;
     margin: auto;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .menuWrapper p {

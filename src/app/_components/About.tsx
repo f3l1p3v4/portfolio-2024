@@ -67,7 +67,7 @@ export function About() {
         {/* Intro */}
         <section className={styles.sectionAbout}>
           <Profile />
-          <div>
+          <div>     
             <h2 className={styles.sectionTitleAbout}>Sobre Mim</h2>
             <p className={styles.textAbout}>{aboutData.intro}</p>
           </div>

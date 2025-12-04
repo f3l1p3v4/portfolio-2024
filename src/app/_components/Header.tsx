@@ -3,8 +3,8 @@
 import Link from 'next/link';
 import { usePathname } from "next/navigation";
 
-import { CgReadme, CgWebsite } from "react-icons/cg";
-import { FaRegAddressCard } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
 
 import styles from './Header.module.css';
 
@@ -19,17 +19,13 @@ export function Header() {
         <header className={styles.header}>
             <div className={styles.content}>
                 <div className={styles.navigation}>
-                    <Link href="/about" className={`${pathname === '/about' ? 'active' : 'not-active'}`}>
-                        <FaRegAddressCard />
-                        Sobre
+                    <Link href="https://github.com/f3l1p3v4">
+                        <FaGithub />
+                        Github
                     </Link>
-                    <Link href="/" className={`${pathname === '/posts' ? 'active' : 'not-active'}`}>
-                        <CgReadme />
-                        Posts
-                    </Link>
-                    <Link href="/projects" className={`${pathname === '/projects' ? 'active' : 'not-active'}`}>
-                        <CgWebsite />
-                        Projetos
+                    <Link href="https://www.linkedin.com/in/lipe-dev/">
+                        <FaLinkedin />
+                        Linkedin
                     </Link>
                 </div>
             </div>
