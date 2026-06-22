@@ -1,0 +1,29 @@
+---
+import { FaWhatsapp } from "react-icons/fa";
+import MatrixRain from './MatrixRain';
+import Profile from './Profile.astro';
+import TypewriterText from './TypewriterText';
+---
+
+<div class="w-full h-[100vh] h-[100dvh] flex flex-col justify-center items-center text-center bg-gradient-to-t from-bg-1 to-transparent relative">
+    <MatrixRain client:idle color="rgba(255, 255, 255, 0.171)" />
+    
+    <aside class="w-full max-w-[350px] md:max-w-[500px] overflow-hidden px-[25px]">
+        <div class="leading-[1.4]">
+            <Profile />
+            <p class="text-[1.1rem] md:text-[1.4rem]">Olá, eu sou o</p>
+            <h2 class="text-[2rem] md:text-[3.5rem] my-[10px] min-h-[2.8rem] md:min-h-[3.8rem]">
+                <TypewriterText client:load />
+            </h2>
+            <span class="text-[0.8rem] md:text-[1.2rem] pb-[2rem]">
+                <span class="text-blue-accent">Desenvolvedor web. </span>
+                Focado em criar <span class="text-blue-accent">soluções </span>
+                digitais modernas e <span class="text-blue-accent">eficientes</span>.
+            </span>
+            <a href="https://wa.me/5567992656801?text=Ol%C3%A1!%20Encontrei%20seu%20contato%20atrav%C3%A9s%20do%20seu%20site." class="w-fit mx-auto my-[20px] px-[20px] py-[10px] rounded-[8px] text-[1rem] font-bold text-bg-1 no-underline flex justify-center items-center gap-[10px] bg-blue-accent transition-all duration-300 hover:opacity-80">
+                <FaWhatsapp />  
+                Entrar em contato
+            </a>
+        </div>
+    </aside>
+</div>

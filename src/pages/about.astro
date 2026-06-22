@@ -1,0 +1,144 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Profile from '../components/Profile.astro';
+
+const person = {
+  name: "Felipe",
+  role: "Programador Pleno",
+  location: "Campo Grande - MS",
+  social: [
+    { name: "GitHub", url: "https://github.com/f3l1p3v4" },
+    { name: "LinkedIn", url: "https://linkedin.com/in/lipe-dev" },
+  ]
+};
+
+const aboutData = {
+  intro: `Meu nome é Felipe, sou casado, cristão e moro em Campo Grande - MS. Minha jornada na tecnologia começou em 2016, quando iniciei o curso de Ciência da Computação. Tive meu primeiro contato com programação 👨‍💻 e me apaixonei pela área.`,
+  experiences: [
+    {
+      company: "Consórcio Guaicurus",
+      role: "Programador Pleno",
+      timeframe: "Atualmente",
+      description: "Atuo no desenvolvimento e manutenção de sistemas internos."
+    },
+    {
+      company: "Creathor",
+      role: "Fundador / Freelancer",
+      timeframe: "Em andamento",
+      description: "Agência de serviços web que fundei com o objetivo de atender projetos como freelancer e expandir minha atuação no mercado digital.",
+      link: "https://creathor.com.br/"
+    }
+  ],
+  studies: [
+    {
+      institution: "Uniderp Anhanguera",
+      degree: "Ciência da Computação",
+      status: "Retomado em 2024",
+      description: "Retomei o curso com o objetivo de aprofundar minha base teórica."
+    },
+    {
+      institution: "Uniderp Anhanguera",
+      degree: "Ciência da Computação",
+      status: "Iniciado em 2016",
+      description: "Pausado para focar em cursos profissionalizantes e projetos práticos."
+    }
+  ],
+  skills: [
+    {
+      category: "Frontend",
+      techs: ["HTML", "CSS", "JavaScript", "React", "Next.js", "Astro", "Tailwind"]
+    },
+    {
+      category: "Backend & Database",
+      techs: ["Node.js", "NestJS", "PostgreSQL", "MySQL", "MongoDB"]
+    }
+  ]
+};
+---
+<Layout title="Sobre | Felipe Valdez">
+  <Header />
+  <main class="w-full max-w-[1200px] mx-auto px-6 py-24 mb-20 grid grid-cols-1 md:grid-cols-[280px_1fr] gap-12 lg:gap-16 items-start font-sans">
+    
+    <aside class="relative">
+      <div class="md:sticky md:top-24 flex flex-col items-center md:items-start text-center md:text-left gap-4">
+        <Profile />
+        <h1 class="text-3xl font-bold text-text-1 m-0">{person.name}</h1>
+        <p class="text-lg text-text-2 m-0">{person.role}</p>
+        <div class="text-sm text-text-2 mt-2">
+          <span>📍 {person.location}</span>
+        </div>
+        <div class="flex gap-4 mt-4">
+          {person.social.map((item) => (
+            <a href={item.url} target="_blank" rel="noreferrer" class="no-underline text-blue-accent text-sm font-medium hover:underline">
+              {item.name}
+            </a>
+          ))}
+        </div>
+      </div>
+    </aside>
+
+    <section class="flex flex-col gap-16">
+      
+      <article>
+        <h2 class="text-2xl font-bold text-text-1 border-b border-bg-2 pb-2 mb-6">Sobre</h2>
+        <p class="leading-relaxed text-text-2 mb-4">{aboutData.intro}</p>
+      </article>
+
+      <article>
+        <h2 class="text-2xl font-bold text-text-1 border-b border-bg-2 pb-2 mb-6">Experiência</h2>
+        <div class="flex flex-col gap-8">
+          {aboutData.experiences.map((exp) => (
+            <div class="flex flex-col gap-2">
+              <div class="flex justify-between items-center flex-wrap gap-2">
+                <h3 class="text-xl font-semibold text-text-1 m-0">
+                  {exp.link ? <a href={exp.link} target="_blank" class="no-underline text-text-1 hover:text-blue-accent transition-colors">{exp.company}</a> : exp.company}
+                </h3>
+                <span class="text-xs bg-bg-2 px-3 py-1 rounded-full text-text-2">{exp.timeframe}</span>
+              </div>
+              <p class="text-base text-text-2 font-medium m-0">{exp.role}</p>
+              <p class="leading-relaxed text-text-2 m-0">{exp.description}</p>
+            </div>
+          ))}
+        </div>
+      </article>
+
+      <article>
+        <h2 class="text-2xl font-bold text-text-1 border-b border-bg-2 pb-2 mb-6">Estudos</h2>
+        <div class="flex flex-col gap-8">
+          {aboutData.studies.map((study) => (
+            <div class="flex flex-col gap-2">
+              <div class="flex justify-between items-center flex-wrap gap-2">
+                <h3 class="text-xl font-semibold text-text-1 m-0">{study.institution}</h3>
+                <span class="text-xs bg-bg-2 px-3 py-1 rounded-full text-text-2">{study.status}</span>
+              </div>
+              <p class="text-base text-text-2 font-medium m-0">{study.degree}</p>
+              <p class="leading-relaxed text-text-2 m-0">{study.description}</p>
+            </div>
+          ))}
+        </div>
+      </article>
+
+      <article>
+        <h2 class="text-2xl font-bold text-text-1 border-b border-bg-2 pb-2 mb-6">Tecnologias</h2>
+        <div class="grid grid-cols-1 gap-8">
+          {aboutData.skills.map((skillGroup) => (
+            <div>
+              <h4 class="text-base text-text-1 mb-3">{skillGroup.category}</h4>
+              <div class="flex flex-wrap gap-2">
+                {skillGroup.techs.map((tech) => (
+                  <span class="bg-bg-2 border border-blue-accent px-3 py-1.5 rounded-md text-sm text-text-1">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </article>
+
+    </section>
+  </main>
+  <Footer />
+</Layout>

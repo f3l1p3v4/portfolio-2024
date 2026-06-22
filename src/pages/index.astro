@@ -1,0 +1,435 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import HeroImage from '../components/HeroImage.astro';
+import Testimonials from '../components/Testimonials';
+import Typewriter from '../components/Typewriter.astro';
+import { FaLayerGroup, FaCode, FaDatabase, FaBolt, FaTerminal, FaGithub, FaLinkedin } from "react-icons/fa6";
+
+const projects = [
+    {
+      id: 1,
+      image: '/projects/img-01.png',
+      title: 'Focus',
+      description: 'Trata-se de um to to list integrado com o pomodoro, onde pode criar tarefas com timer de pomodoro ou editavel, marcar como concluídas e deletar.',
+      link: 'https://focus.felipevaldez.com.br',
+      skills: 'react, typescript, docker, node, postgres',
+      reference: 'Felipe Valdez'
+    },
+    {
+      id: 4,
+      image: '/projects/img-04.png',
+      title: 'DT Money',
+      description: 'A ideia deste projeto é criar um controle financeiro para o usuário. Nele o usuário pode adicionar as entradas e saídas financeiras do seu dia-a-dia.',
+      link: 'https://ignite-react-03-dt-money.vercel.app',
+      skills: 'reactjs, typescript, vite, styled-components, date-fns, zod',
+      reference: 'Rocketseat'
+    },
+];
+
+const skills = ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Astro", "Tailwind CSS", "Node.js", "NestJS", "PostgreSQL", "MySQL", "MongoDB", "Docker"];
+
+const processSteps = [
+  { title: "Descoberta & Planejamento", desc: "Entendemos a fundo a necessidade do projeto para alinhar expectativas e arquitetura." },
+  { title: "Desenvolvimento Ágil", desc: "Código limpo e escalável utilizando as tecnologias mais modernas do mercado." },
+  { title: "Lançamento & Manutenção", desc: "Deploy otimizado e acompanhamento contínuo para garantir estabilidade." }
+];
+
+const portfolioProjects = [
+  { id: 1, type: "Sistema", title: "Devload", desc: "Plataforma educacional para desenvolvedores com foco em usabilidade e gamificação.", skills: "React, Node.js, PostgreSQL", url: "app.devload.com.br", image: "/images/projects/1.jpg" },
+  { id: 2, type: "Agência Digital", title: "Reitec Engenharia", desc: "Site corporativo otimizado para SEO com apresentação de serviços e portfólio de obras.", skills: "Astro, Tailwind CSS", url: "reitecengenharia.com.br", image: "/images/projects/2.jpg" },
+  { id: 3, type: "Landing Page", title: "Marsura Digital", desc: "Página de altíssima conversão para agência de marketing, utilizando animações dinâmicas.", skills: "Next.js, Framer Motion", url: "marsuradigital.com", image: "/images/projects/3.jpg" },
+  { id: 4, type: "E-commerce", title: "True North", desc: "Loja virtual de alta performance com revelação de produtos baseada no scroll da página.", skills: "Webflow, GSAP", url: "truenorth.com", image: "/images/projects/4.jpg" },
+  { id: 5, type: "Blog", title: "Tech News", desc: "Portal de notícias de tecnologia focado em velocidade de carregamento e experiência do leitor.", skills: "Next.js, Tailwind, CMS", url: "technews.com.br", image: "/images/projects/5.jpg" },
+  { id: 6, type: "Sales Page", title: "K2B Tools", desc: "Página de vendas focada em conversão com integrações de pagamento e área de membros.", skills: "React, Stripe", url: "web.k2btools.com", image: "/images/projects/6.jpg" },
+  { id: 7, type: "Sistema", title: "Focus Timer", desc: "Gerenciador de tempo estilo pomodoro integrado com lista de tarefas.", skills: "React, TypeScript", url: "focus.felipevaldez.com.br", image: "/images/projects/7.jpg" }
+];
+---
+
+<Layout title="Felipe Valdez | Web Developer">
+  <Header />
+
+  <!-- Hero Section -->
+  <section id="home" class="min-h-[100dvh] pt-32 pb-12 flex flex-col-reverse md:flex-row items-center justify-between max-w-[1200px] mx-auto px-6 gap-12">
+    <div class="flex-1 text-left animate-on-scroll">
+      <h1 class="text-[3rem] md:text-[4.5rem] font-bold text-text-1 leading-[1.1] mb-6 tracking-tight">
+        Construo aplicações que <br/><span class="text-blue-accent">movem</span> o futuro.
+      </h1>
+      <p class="text-text-2 text-lg md:text-xl mb-10 max-w-lg leading-relaxed">
+        Especialista em desenvolvimento de software focado em criar soluções digitais modernas, velozes e escaláveis que geram resultados reais para o seu negócio.
+      </p>
+      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+        <a href="#projects" class="bg-blue-accent text-bg-1 font-bold px-8 py-4 rounded-full hover:opacity-80 transition-opacity no-underline w-full sm:w-auto text-center">
+          Ver meus projetos
+        </a>
+        <a href="https://wa.me/5567992656801" target="_blank" rel="noreferrer" class="text-text-1 font-bold px-8 py-4 rounded-full border-2 border-text-1 hover:bg-text-1 hover:text-bg-1 transition-colors no-underline w-full sm:w-auto text-center">
+          Enviar mensagem
+        </a>
+      </div>
+    </div>
+    <div class="flex-1 w-full flex items-center justify-center animate-on-scroll delay-200">
+      <HeroImage />
+    </div>
+  </section>
+
+  <!-- About & Stats Section -->
+  <section id="about" class="py-32 bg-bg-2/20 border-b border-bg-2/50 relative">
+    <div class="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
+      <div class="w-full md:w-1/3 animate-on-scroll relative">
+        <div class="absolute inset-0 bg-blue-accent/20 blur-3xl rounded-full"></div>
+        <img src="https://github.com/f3l1p3v4.png" alt="Felipe Valdez" class="relative w-full aspect-square object-cover rounded-3xl transition-all duration-700 shadow-2xl border border-bg-2" />
+      </div>
+      <div class="w-full md:w-2/3 animate-on-scroll delay-200">
+        <Typewriter text="sobre mim" className="text-blue-accent font-mono text-sm mb-4" />
+        <h2 class="text-[2.5rem] md:text-[3.5rem] font-bold text-text-1 mb-8 leading-tight">
+          Olá, eu sou <span class="text-blue-accent">Felipe Valdez</span>
+        </h2>
+        <p class="text-text-2 text-xl mb-6 leading-relaxed max-w-2xl">
+          Minha jornada na tecnologia começou em 2016. Sou apaixonado por arquitetura de software, otimização de performance e construção de interfaces intuitivas. Atuo tanto no Frontend quanto no Backend para garantir a excelência da aplicação de ponta a ponta.
+        </p>
+        
+        <div class="flex gap-4 mb-10">
+          <a href="https://github.com/f3l1p3v4" target="_blank" rel="noreferrer" class="text-blue-accent hover:opacity-50 transition-colors text-3xl" aria-label="GitHub">
+            <FaGithub />
+          </a>
+          <a href="https://linkedin.com/in/lipe-dev" target="_blank" rel="noreferrer" class="text-blue-accent hover:opacity-50 transition-colors text-3xl" aria-label="LinkedIn">
+            <FaLinkedin />
+          </a>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-8 py-8 border-y border-bg-2/50">
+          <div>
+            <h4 class="text-5xl md:text-6xl font-bold text-text-1 mb-2">5<span class="text-blue-accent">+</span></h4>
+            <p class="text-text-2 text-sm uppercase tracking-widest font-bold">Anos de XP</p>
+          </div>
+          <div class="col-span-2 md:col-span-1">
+            <h4 class="text-5xl md:text-6xl font-bold text-text-1 mb-2">100<span class="text-blue-accent">%</span></h4>
+            <p class="text-text-2 text-sm uppercase tracking-widest font-bold">Comprometimento</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-32 max-w-[1200px] mx-auto px-6 relative overflow-hidden">
+    <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+      
+      <!-- Left Content -->
+      <div class="w-full md:w-2/5 animate-on-scroll shrink-0 pr-0 md:pr-4">
+        <Typewriter text="projetos" className="text-blue-accent font-mono text-sm mb-4" />
+        <h2 class="text-[3rem] md:text-[4rem] font-bold text-text-1 leading-[1.1] mb-6 tracking-tight">
+          Projetos <span class="text-blue-accent">em Destaque</span>
+        </h2>
+        <p class="text-text-2 text-lg leading-relaxed opacity-90">
+          Separei aqui alguns dos meus melhores projetos para demonstrar a qualidade, a robustez e a dedicação que aplico em cada solução que desenvolvo de ponta a ponta.
+        </p>
+      </div>
+
+      <!-- Right Carousel -->
+      <div class="w-full md:w-3/5 relative animate-on-scroll delay-200">
+        <!-- Fade edges (mask-image) -->
+        <div 
+          class="flex overflow-hidden w-full relative" 
+          style="mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);"
+        >
+          <div class="flex flex-nowrap gap-4 md:gap-6 animate-marquee w-max shrink-0 items-start pr-4 md:pr-6">
+            {portfolioProjects.map((project, index) => (
+              <div class="w-[240px] md:w-[260px] shrink-0 group cursor-pointer">
+                <!-- Image Container (Browser Mockup) -->
+                <div class="rounded-t-2xl border border-bg-2/50 bg-bg-1 overflow-hidden shadow-2xl relative aspect-[4/3] flex flex-col mb-6">
+                  <!-- Browser Top Bar -->
+                  <div class="h-6 md:h-8 bg-bg-2/40 border-b border-bg-2/50 flex items-center px-4 shrink-0 relative">
+                    <div class="mx-auto flex items-center gap-2">
+                      <div class="w-1.5 h-1.5 rounded-full bg-blue-accent/50 group-hover:bg-blue-accent transition-colors duration-500"></div>
+                      <span class="text-[9px] md:text-[10px] text-text-2/40 font-mono tracking-wider group-hover:text-text-2/80 transition-colors duration-500">{project.url}</span>
+                    </div>
+                  </div>
+                  <!-- Image -->
+                  <div class="relative flex-1 overflow-hidden">
+                    <img src={project.image} alt={project.title} class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                    <div class="absolute inset-0 bg-bg-1/10 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+                  </div>
+                </div>
+                
+                <!-- Content Below -->
+                <div class="flex flex-col">
+                  <p class="text-blue-accent font-mono text-xs mb-3 tracking-wider font-semibold">
+                    0{index + 1} / {project.type} · 2026
+                  </p>
+                  <h3 class="text-xl md:text-2xl font-bold text-text-1 mb-3 group-hover:text-blue-accent transition-colors duration-300 tracking-tight">{project.title}</h3>
+                  <p class="text-text-2 text-sm leading-relaxed mb-6 opacity-90">{project.desc}</p>
+                  
+                  <div class="flex flex-wrap gap-2 mt-auto">
+                    {project.skills.split(',').map(skill => (
+                      <span class="text-[10px] md:text-xs font-mono text-text-2/80 bg-transparent border border-text-2/30 px-3 py-0.5 rounded-full uppercase tracking-wider">{skill.trim()}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <!-- Duplicate for seamless loop -->
+          <div class="flex flex-nowrap gap-4 md:gap-6 animate-marquee w-max shrink-0 items-start pr-4 md:pr-6" aria-hidden="true">
+            {portfolioProjects.map((project, index) => (
+              <div class="w-[240px] md:w-[260px] shrink-0 group cursor-pointer">
+                <!-- Image Container (Browser Mockup) -->
+                <div class="rounded-t-2xl border border-bg-2/50 bg-bg-1 overflow-hidden shadow-2xl relative aspect-[4/3] flex flex-col mb-6">
+                  <!-- Browser Top Bar -->
+                  <div class="h-6 md:h-8 bg-bg-2/40 border-b border-bg-2/50 flex items-center px-4 shrink-0 relative">
+                    <div class="mx-auto flex items-center gap-2">
+                      <div class="w-1.5 h-1.5 rounded-full bg-blue-accent/50 group-hover:bg-blue-accent transition-colors duration-500"></div>
+                      <span class="text-[9px] md:text-[10px] text-text-2/40 font-mono tracking-wider group-hover:text-text-2/80 transition-colors duration-500">{project.url}</span>
+                    </div>
+                  </div>
+                  <!-- Image -->
+                  <div class="relative flex-1 overflow-hidden">
+                    <img src={project.image} alt={project.title} class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                    <div class="absolute inset-0 bg-bg-1/10 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+                  </div>
+                </div>
+                
+                <!-- Content Below -->
+                <div class="flex flex-col">
+                  <p class="text-blue-accent font-mono text-xs mb-3 tracking-wider font-semibold">
+                    0{index + 1} / {project.type} · 2026
+                  </p>
+                  <h3 class="text-xl md:text-2xl font-bold text-text-1 mb-3 group-hover:text-blue-accent transition-colors duration-300 tracking-tight">{project.title}</h3>
+                  <p class="text-text-2 text-sm leading-relaxed mb-6 opacity-90">{project.desc}</p>
+                  
+                  <div class="flex flex-wrap gap-2 mt-auto">
+                    {project.skills.split(',').map(skill => (
+                      <span class="text-[10px] md:text-xs font-mono text-text-2/80 bg-transparent border border-text-2/30 px-3 py-0.5 rounded-full uppercase tracking-wider">{skill.trim()}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Tools Section -->
+  <section id="tools" class="py-32 w-full relative overflow-hidden">
+    <div class="absolute -left-10 top-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-blue-accent/10 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+    
+    <div class="max-w-[1200px] mx-auto px-6 relative">
+      <div class="text-center animate-on-scroll mb-16 flex flex-col items-center">
+      <Typewriter text="ferramentas" className="text-blue-accent font-mono text-sm mb-4" />
+      <h2 class="text-[2.5rem] md:text-[3.5rem] font-bold text-text-1 mb-6 leading-tight">
+        As tecnologias por trás das minhas<br />
+          <span class="text-blue-accent">soluções.</span>
+      </h2>
+      <p class="text-text-2 text-lg max-w-2xl mx-auto">Tudo aqui foi escolhido por sua performance, escalabilidade e para entregar código limpo e moderno.</p>
+    </div>
+    
+    <div class="max-w-4xl mx-auto animate-on-scroll delay-200 mt-16">
+      <!-- Floating Pills Container with faded edges -->
+      <div 
+        class="flex flex-col gap-4 relative overflow-hidden pb-12 mb-8" 
+        style="mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);"
+      >
+        <!-- Row 1 -->
+        <div class="flex overflow-hidden w-full group">
+          <div class="flex animate-marquee group-hover:[animation-play-state:paused] whitespace-nowrap gap-2 md:gap-4 w-max shrink-0 pr-2 md:pr-4">
+            <!-- Items Set 1 -->
+            <div class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-[10px] md:text-xs">
+              <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div> <span>HTML</span>
+            </div>
+            <div class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-[10px] md:text-xs">
+              <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div> <span>CSS</span>
+            </div>
+            <div class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-bg-2 border border-text-2/20 text-text-1 font-mono text-[10px] md:text-xs shadow-sm">
+              <div class="w-2 h-2 rounded-full bg-blue-accent shadow-[0_0_8px_#a3ea2a]"></div> <span>React</span>
+            </div>
+            <div class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-[10px] md:text-xs">
+              <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div> <span>Next.js</span>
+            </div>
+            <div class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-bg-2 border border-text-2/20 text-text-1 font-mono text-[10px] md:text-xs shadow-sm">
+              <div class="w-2 h-2 rounded-full bg-blue-accent shadow-[0_0_8px_#a3ea2a]"></div> <span>Astro</span>
+            </div>
+            <div class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-[10px] md:text-xs">
+              <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div> <span>Tailwind CSS</span>
+            </div>
+            <div class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-[10px] md:text-xs">
+              <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div> <span>Docker</span>
+            </div>
+          </div>
+          <!-- Items Set 2 (Duplicate for seamless loop) -->
+          <div class="flex animate-marquee group-hover:[animation-play-state:paused] whitespace-nowrap gap-2 md:gap-4 w-max shrink-0 pr-2 md:pr-4" aria-hidden="true">
+            <div class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-[10px] md:text-xs">
+              <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div> <span>HTML</span>
+            </div>
+            <div class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-[10px] md:text-xs">
+              <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div> <span>CSS</span>
+            </div>
+            <div class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-bg-2 border border-text-2/20 text-text-1 font-mono text-[10px] md:text-xs shadow-sm">
+              <div class="w-2 h-2 rounded-full bg-blue-accent shadow-[0_0_8px_#a3ea2a]"></div> <span>React</span>
+            </div>
+            <div class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-[10px] md:text-xs">
+              <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div> <span>Next.js</span>
+            </div>
+            <div class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-bg-2 border border-text-2/20 text-text-1 font-mono text-[10px] md:text-xs shadow-sm">
+              <div class="w-2 h-2 rounded-full bg-blue-accent shadow-[0_0_8px_#a3ea2a]"></div> <span>Astro</span>
+            </div>
+            <div class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-[10px] md:text-xs">
+              <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div> <span>Tailwind CSS</span>
+            </div>
+            <div class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-[10px] md:text-xs">
+              <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div> <span>Docker</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="flex overflow-hidden w-full group">
+          <div class="flex animate-marquee-reverse group-hover:[animation-play-state:paused] whitespace-nowrap gap-2 md:gap-4 w-max shrink-0 pr-2 md:pr-4 md:ml-12">
+            <!-- Items Set 1 -->
+            <div class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-[10px] md:text-xs">
+              <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div> <span>JavaScript</span>
+            </div>
+            <div class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-bg-2 border border-text-2/20 text-text-1 font-mono text-[10px] md:text-xs shadow-sm">
+              <div class="w-2 h-2 rounded-full bg-blue-accent shadow-[0_0_8px_#a3ea2a]"></div> <span>TypeScript</span>
+            </div>
+            <div class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-[10px] md:text-xs">
+              <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div> <span>Node.js</span>
+            </div>
+            <div class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-bg-2 border border-text-2/20 text-text-1 font-mono text-[10px] md:text-xs shadow-sm">
+              <div class="w-2 h-2 rounded-full bg-blue-accent shadow-[0_0_8px_#a3ea2a]"></div> <span>NestJS</span>
+            </div>
+            <div class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-[10px] md:text-xs">
+              <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div> <span>PostgreSQL</span>
+            </div>
+            <div class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-[10px] md:text-xs">
+              <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div> <span>MySQL</span>
+            </div>
+            <div class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-[10px] md:text-xs">
+              <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div> <span>MongoDB</span>
+            </div>
+          </div>
+          <!-- Items Set 2 (Duplicate for seamless loop) -->
+          <div class="flex animate-marquee-reverse group-hover:[animation-play-state:paused] whitespace-nowrap gap-2 md:gap-4 w-max shrink-0 pr-2 md:pr-4 md:ml-12" aria-hidden="true">
+            <div class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-[10px] md:text-xs">
+              <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div> <span>JavaScript</span>
+            </div>
+            <div class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-bg-2 border border-text-2/20 text-text-1 font-mono text-[10px] md:text-xs shadow-sm">
+              <div class="w-2 h-2 rounded-full bg-blue-accent shadow-[0_0_8px_#a3ea2a]"></div> <span>TypeScript</span>
+            </div>
+            <div class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-[10px] md:text-xs">
+              <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div> <span>Node.js</span>
+            </div>
+            <div class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-bg-2 border border-text-2/20 text-text-1 font-mono text-[10px] md:text-xs shadow-sm">
+              <div class="w-2 h-2 rounded-full bg-blue-accent shadow-[0_0_8px_#a3ea2a]"></div> <span>NestJS</span>
+            </div>
+            <div class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-[10px] md:text-xs">
+              <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div> <span>PostgreSQL</span>
+            </div>
+            <div class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-[10px] md:text-xs">
+              <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div> <span>MySQL</span>
+            </div>
+            <div class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-[10px] md:text-xs">
+              <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div> <span>MongoDB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section id="process" class="py-32 bg-bg-2/20 border-y border-bg-2/50">
+    <div class="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row gap-16">
+      <div class="w-full md:w-1/3 animate-on-scroll">
+        <h2 class="text-[2.5rem] md:text-[3.5rem] font-bold text-text-1 leading-tight">Como eu <span class="text-blue-accent">trabalho.</span></h2>
+        <p class="text-text-2 mt-6 text-xl leading-relaxed">Um fluxo otimizado para entregar o máximo de valor com eficiência e transparência.</p>
+      </div>
+      <div class="w-full md:w-2/3 flex flex-col gap-12">
+        {processSteps.map((step, idx) => (
+          <div class={`flex gap-8 animate-on-scroll delay-${(idx + 1) * 100}`}>
+            <div class="flex-shrink-0 w-16 h-16 rounded-full bg-blue-accent/10 border-2 border-blue-accent flex items-center justify-center text-blue-accent font-black text-2xl shadow-[0_0_15px_rgba(163,234,42,0.2)]">
+              {idx + 1}
+            </div>
+            <div>
+              <h3 class="text-3xl font-bold text-text-1 mb-4">{step.title}</h3>
+              <p class="text-text-2 text-xl leading-relaxed">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <Testimonials client:visible />
+
+  <!-- Contact/CTA Section -->
+  <section id="contact" class="py-24 bg-blue-accent text-bg-1 relative overflow-hidden border-t-4 border-blue-accent">
+    <div class="max-w-[1200px] mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-16">
+      
+      <div class="animate-on-scroll w-full md:w-1/2">
+        <Typewriter text="contato" className="text-bg-1 font-mono text-sm mb-4 font-bold" dotClass="bg-bg-1" />
+        <h2 class="text-bg-1 text-[4rem] md:text-[5rem] font-bold mb-8 leading-[1.1] tracking-tight">Pronto para <br/>construir?</h2>
+        <p class="text-bg-1 text-2xl font-medium max-w-lg opacity-90 mb-12 leading-relaxed">Vamos transformar sua ideia em uma aplicação incrível. Preencha os dados e vamos conversar.</p>
+      </div>
+
+      <div class="animate-on-scroll w-full md:w-1/2 delay-200">
+        <form class="bg-bg-1 p-8 rounded-[2rem] text-text-1 flex flex-col gap-5 shadow-2xl relative z-20 border border-bg-2/50">
+          <input type="text" id="w-nome" placeholder="Seu nome" class="w-full bg-bg-2 border border-bg-2 rounded-xl px-5 py-4 focus:outline-none focus:border-blue-accent transition-colors font-medium">
+          
+          <input type="tel" id="w-telefone" placeholder="Seu WhatsApp" class="w-full bg-bg-2 border border-bg-2 rounded-xl px-5 py-4 focus:outline-none focus:border-blue-accent transition-colors font-medium">
+          
+          <div class="relative">
+            <select id="w-servico" class="w-full bg-bg-2 border border-bg-2 rounded-xl px-5 py-4 focus:outline-none focus:border-blue-accent transition-colors text-text-1 font-medium appearance-none">
+              <option value="" disabled selected class="text-text-2">Qual serviço você precisa?</option>
+              <option value="Criação de Site Institucional">Site Institucional</option>
+              <option value="E-commerce / Loja Virtual">E-commerce / Loja Virtual</option>
+              <option value="Landing Page de Alta Conversão">Landing Page de Alta Conversão</option>
+              <option value="Sistema Web Personalizado">Sistema Web Personalizado</option>
+              <option value="Outro">Outro serviço</option>
+            </select>
+            <div class="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
+              <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <textarea id="w-mensagem" placeholder="Fale um pouco sobre o seu projeto..." rows="4" class="w-full bg-bg-2 border border-bg-2 rounded-xl px-5 py-4 focus:outline-none focus:border-blue-accent transition-colors resize-none font-medium"></textarea>
+          
+          <button type="button" onclick="sendWhatsApp()" class="w-full bg-blue-accent text-bg-1 font-bold text-lg px-6 py-4 rounded-xl hover:opacity-90 transition-opacity mt-2 shadow-[0_0_20px_rgba(163,234,42,0.3)]">
+            Enviar Mensagem
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- Background element -->
+    <div class="text-[20rem] md:text-[30rem] font-black text-bg-1/10 absolute -right-20 -bottom-32 select-none animate-on-scroll delay-300 pointer-events-none tracking-tighter">
+      {"{FV}"}
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<script is:inline>
+  function sendWhatsApp() {
+    const nome = document.getElementById('w-nome').value;
+    const telefone = document.getElementById('w-telefone').value;
+    const servico = document.getElementById('w-servico').value;
+    const mensagem = document.getElementById('w-mensagem').value;
+    
+    if (!nome || !servico) {
+      alert("Por favor, preencha pelo menos seu nome e o serviço desejado.");
+      return;
+    }
+    
+    const text = `Olá, meu nome é *${nome}*.\nTenho interesse no serviço: *${servico}*.\n\n${mensagem}`;
+    const encodedText = encodeURIComponent(text);
+    window.open(`https://wa.me/5567992656801?text=${encodedText}`, '_blank');
+  }
+</script>

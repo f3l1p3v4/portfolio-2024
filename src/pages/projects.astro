@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Card, { type ProjectType } from '../components/Card.astro';
+
+const projects: ProjectType[] = [
+    {
+      id: 1,
+      image: '/projects/img-01.png',
+      title: 'Focus',
+      description: 'Trata-se de um to to list integrado com o pomodoro, onde pode criar tarefas com timer de pomodoro ou editavel, marcar como concluídas e deletar.',
+      link: 'https://focus.felipevaldez.com.br',
+      skills: 'react, typescript, docker, node, postgres',
+      reference: 'Felipe Valdez'
+    },
+    {
+      id: 4,
+      image: '/projects/img-04.png',
+      title: 'DT Money',
+      description: 'A ideia deste projeto é criar um controle financeiro para o usuário. Nele o usuário pode adicionar as entradas e saídas financeiras do seu dia-a-dia.',
+      link: 'https://ignite-react-03-dt-money.vercel.app',
+      skills: 'reactjs, typescript, vite, styled-components, date-fns, zod',
+      reference: 'Rocketseat'
+    },
+];
+---
+
+<Layout title="Projetos | Felipe Valdez">
+  <Header />
+  <main class="w-full mt-24 mb-20 px-4 md:px-0">
+    <h1 class="text-3xl font-bold md:ml-10">Alguns Projetos</h1>
+
+    <section class="grid grid-cols-1 md:grid-cols-2 mt-6 md:mx-10 md:py-10 gap-[30px] transition-colors duration-300">
+      {projects.map((project) => (
+        <Card projects={project} />
+      ))}
+    </section>
+  </main>
+  <Footer />
+</Layout>

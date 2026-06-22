@@ -1,0 +1,26 @@
+---
+import { CgReadme, CgWebsite } from "react-icons/cg";
+import { FaRegAddressCard } from "react-icons/fa";
+
+const pathname = new URL(Astro.request.url).pathname;
+
+// Removes trailing slash if it's not root, for matching
+const currentPath = pathname.length > 1 && pathname.endsWith('/') ? pathname.slice(0, -1) : pathname;
+
+const linkClass = "p-[10px] md:p-[10px] font-extrabold no-underline rounded-[4px] border border-blue-accent flex items-center justify-start gap-[0.5rem] transition-colors duration-300 hover:bg-transparent text-[0.78rem] md:text-[0.8rem]";
+---
+
+<div class="flex flex-col mt-[15px] text-[0.8rem] leading-[1.4] gap-[10px]">
+    <a href="/posts" class={`${linkClass} ${currentPath === '/posts' ? 'text-text-1 bg-blue-accent' : 'text-text-1'}`}>
+        <CgReadme className="text-[1rem]" />
+        Posts
+    </a>
+    <a href="/projects" class={`${linkClass} ${currentPath === '/projects' ? 'text-text-1 bg-blue-accent' : 'text-text-1'}`}>
+        <CgWebsite className="text-[1rem]" />
+        Projetos
+    </a>
+    <a href="/about" class={`${linkClass} ${currentPath === '/about' ? 'text-text-1 bg-blue-accent' : 'text-text-1'}`}>
+        <FaRegAddressCard className="text-[1rem]" />
+        Sobre Mim
+    </a>
+</div>

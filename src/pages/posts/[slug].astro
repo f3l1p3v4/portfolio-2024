@@ -1,0 +1,136 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getPostTheme } from '../../utils/postStyles';
+import type { CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+type Props = {
+  post: CollectionEntry<'posts'>;
+};
+
+const { post } = Astro.props as Props;
+const { Content } = await post.render();
+const theme = getPostTheme(post.data.tags, post.slug);
+---
+
+<Layout title={`${post.data.title} | Felipe Valdez`}>
+  <Header />
+  
+  {/* Hero Section */}
+  <section class={`w-full relative overflow-hidden pt-40 pb-24 px-6 ${theme.cardBgClass} border-b border-bg-2`}>
+    {theme.imageSrc && (
+      <div class="absolute inset-0 w-full h-full opacity-100 pointer-events-none z-0">
+        <img src={theme.imageSrc} alt="" class="w-full h-full object-cover object-center" />
+        <div class="absolute inset-0 bg-gradient-to-r from-bg-1/90 via-bg-1/70 to-bg-1/30"></div>
+      </div>
+    )}
+    
+    <div class="max-w-6xl mx-auto relative z-10">
+      <span class={`inline-block text-xs md:text-sm uppercase tracking-wider px-4 py-1.5 rounded-full shadow-sm mb-6 ${theme.categoryColorClass}`}>
+        {theme.category}
+      </span>
+      
+      <h1 class="text-4xl md:text-6xl font-bold text-text-1 mb-6 leading-tight tracking-tight max-w-4xl">
+        {post.data.title}
+      </h1>
+      
+      <p class="text-lg md:text-xl text-text-2 max-w-2xl mb-10 leading-relaxed">
+        {post.data.description}
+      </p>
+      
+      <div class="flex items-center gap-6 mt-8">
+        <div class="flex items-center gap-2">
+          <div class="w-2.5 h-2.5 rounded-full bg-blue-accent"></div>
+          <span class="text-xs font-mono text-text-2 uppercase">{post.data.tags && post.data.tags.length > 0 ? post.data.tags[0] : 'Geral'}</span>
+        </div>
+        <span class="text-text-2/60 text-xs font-mono">{post.data.date}</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="w-full max-w-6xl mx-auto mt-16 mb-24 px-6">
+    
+    {/* Content Area */}
+    <div class="markdown">
+      <Content />
+    </div>
+
+  </main>
+  <Footer />
+</Layout>
+
+<style is:global>
+.markdown {
+  @apply text-text-2 text-[1.1rem] leading-[1.8];
+}
+.markdown h1 {
+  @apply text-[2.5rem] tracking-tight mt-[3rem] mb-6 text-text-1 font-bold leading-tight;
+}
+.markdown h2 {
+  @apply text-[1.8rem] tracking-tight mt-[3rem] mb-6 text-text-1 font-bold leading-tight;
+}
+.markdown h3 {
+  @apply text-[1.4rem] tracking-tight mt-[2.5rem] mb-4 text-text-1 font-bold leading-tight;
+}
+.markdown p {
+  @apply mb-6;
+}
+.markdown a {
+  @apply text-blue-accent hover:underline font-medium;
+}
+.markdown pre {
+  @apply rounded-2xl overflow-x-auto bg-[#0a0e14] border border-bg-2 p-6 my-8 text-[0.9rem] shadow-xl;
+  scrollbar-width: thin;
+  scrollbar-color: #212C42 transparent;
+}
+.markdown pre::-webkit-scrollbar {
+  height: 8px;
+}
+.markdown pre::-webkit-scrollbar-thumb {
+  background-color: #212C42;
+  border-radius: 4px;
+}
+.markdown code {
+  @apply bg-bg-2/80 text-blue-accent px-1.5 py-0.5 rounded-md font-mono text-[0.9em] border border-bg-2/50;
+}
+.markdown pre code {
+  @apply bg-transparent text-gray-300 p-0 border-none leading-relaxed;
+}
+.markdown blockquote {
+  @apply border-l-4 border-blue-accent bg-blue-accent/5 text-text-2 italic my-8 p-6 rounded-r-2xl;
+}
+.markdown img {
+  @apply block w-full rounded-2xl mx-auto my-10 border border-bg-2 shadow-2xl;
+}
+.markdown ul {
+  @apply list-disc pl-6 mb-8 marker:text-blue-accent;
+}
+.markdown li {
+  @apply mb-2;
+}
+.markdown ol {
+  @apply list-decimal pl-6 mb-8 marker:text-blue-accent;
+}
+.markdown table {
+  @apply w-full border-collapse my-8 text-sm md:text-base;
+}
+.markdown th, .markdown td {
+  @apply border border-bg-2 p-4 text-left;
+}
+.markdown th {
+  @apply bg-bg-2/50 text-text-1 font-medium;
+}
+.markdown hr {
+  @apply border-bg-2/50 my-10;
+}
+</style>

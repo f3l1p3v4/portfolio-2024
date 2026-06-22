@@ -1,0 +1,45 @@
+---
+interface Props {
+  text: string;
+  className?: string;
+  dotClass?: string;
+}
+
+const { text, className = "", dotClass = "bg-blue-accent" } = Astro.props;
+---
+
+<typewriter-effect data-text={text} class={`inline-flex items-center gap-2 ${className}`}>
+  <span class={`w-1.5 h-1.5 rounded-full shrink-0 ${dotClass}`}></span>
+  <span><span class="typewriter-output"></span><span class="blinking-cursor ml-[1px] font-mono">|</span></span>
+</typewriter-effect>
+
+<script>
+  class TypewriterEffect extends HTMLElement {
+    constructor() {
+      super();
+      const text = this.dataset.text || '';
+      const output = this.querySelector('.typewriter-output');
+      
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          observer.disconnect();
+          let i = 0;
+          const interval = setInterval(() => {
+            if (i < text.length) {
+              if (output) output.textContent += text.charAt(i);
+              i++;
+            } else {
+              clearInterval(interval);
+            }
+          }, 80);
+        }
+      });
+      
+      observer.observe(this);
+    }
+  }
+
+  if (!customElements.get('typewriter-effect')) {
+    customElements.define('typewriter-effect', TypewriterEffect);
+  }
+</script>

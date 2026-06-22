@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-bg-1 text-text-2 font-sans font-medium antialiased overflow-y-scroll scroll-smooth;
+    line-height: 1.4rem;
+  }
+
+  h1, h2, h3 {
+    @apply text-text-1;
+  }
+
+  *:focus {
+    @apply outline-none;
+  }
+
+  pre {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    @apply mb-4 whitespace-pre-wrap break-words break-all overflow-x-auto max-w-full box-border;
+  }
+
+  pre::-webkit-scrollbar {
+    display: none;
+  }
+
+  input[type='text'],
+  input[type='email'] {
+    @apply appearance-none;
+  }
+
+  table {
+    @apply block max-w-fit overflow-x-auto whitespace-nowrap;
+  }
+}
+
+@layer utilities {
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+
+  .animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .delay-100 { transition-delay: 100ms; }
+  .delay-200 { transition-delay: 200ms; }
+  .delay-300 { transition-delay: 300ms; }
+  .delay-400 { transition-delay: 400ms; }
+  .delay-500 { transition-delay: 500ms; }
+  .delay-600 { transition-delay: 600ms; }
+
+  .animate-marquee {
+    animation: marquee 35s linear infinite;
+  }
+  .animate-marquee-reverse {
+    animation: marquee 40s linear infinite reverse;
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+.title {
+  text-wrap: balance;
+}
+
+.blinking-cursor {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}

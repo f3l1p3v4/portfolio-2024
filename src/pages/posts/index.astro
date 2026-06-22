@@ -1,0 +1,29 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import PostItem from "../../components/PostItem.astro";
+
+// Obter todos os posts e ordenar pela data mais recente
+const allPosts = await getCollection("posts");
+const sortedPosts = allPosts.sort(
+  (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf(),
+);
+---
+
+<Layout title="Posts | Felipe Valdez">
+  <Header />
+  <main class="w-full max-w-[1200px] mx-auto mt-24 mb-20 px-4 md:px-6">
+    <h1
+      class="text-[2.5rem] md:text-[3.5rem] font-bold text-text-1 mb-12 text-center md:text-left pt-20"
+    >
+      Posts <span class="text-blue-accent">...</span>
+    </h1>
+
+    <section class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-fr">
+      <PostItem posts={sortedPosts} />
+    </section>
+  </main>
+  <Footer />
+</Layout>

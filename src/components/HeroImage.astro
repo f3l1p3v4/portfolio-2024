@@ -1,0 +1,182 @@
+---
+import { FaRocket, FaHandshake, FaLaptopCode } from "react-icons/fa6";
+---
+
+<div class="relative w-full max-w-[320px] md:max-w-[450px] h-[250px] md:h-[400px] mx-auto flex items-center justify-center mt-8 md:mt-0">
+  <!-- Outer glow -->
+  <div class="absolute inset-0 bg-blue-accent/10 blur-3xl rounded-full z-0 pointer-events-none"></div>
+  
+  <!-- Window Mockup -->
+  <div class="w-full h-full rounded-2xl border border-bg-2 bg-bg-1 shadow-2xl flex flex-col relative z-10 overflow-hidden transform hover:scale-[1.02] transition-transform duration-500">
+    <!-- Top Bar -->
+    <div class="h-10 md:h-12 bg-bg-2/40 flex items-center px-4 border-b border-bg-2/60 relative">
+      <!-- Mac Dots -->
+      <div class="flex gap-2 absolute left-4">
+        <div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
+        <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+        <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+      </div>
+      <!-- Address Bar -->
+      <div class="mx-auto flex items-center justify-center bg-bg-1/80 px-4 py-1.5 rounded-md text-[10px] md:text-xs font-medium text-text-2 border border-bg-2/50 gap-2">
+        <svg class="w-3 h-3 text-blue-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+        felipevaldez.dev
+      </div>
+    </div>
+
+    <!-- Editor Body -->
+    <div class="flex-1 flex overflow-hidden">
+      <!-- Sidebar -->
+      <div class="w-12 md:w-16 border-r border-bg-2/60 bg-bg-2/20 flex flex-col items-center py-4 gap-4">
+        <div class="w-8 h-8 rounded-lg bg-blue-accent/20 border border-blue-accent/30 flex items-center justify-center">
+           <div class="w-4 h-4 bg-blue-accent rounded-sm"></div>
+        </div>
+        <div class="w-6 h-6 rounded-md bg-bg-2/60"></div>
+        <div class="w-6 h-6 rounded-md bg-bg-2/60"></div>
+        <div class="w-6 h-6 rounded-md bg-bg-2/60"></div>
+      </div>
+      
+      <!-- Code Area -->
+      <div class="flex-1 p-4 md:p-6 flex flex-col gap-3 relative overflow-hidden">
+        <!-- Floating 60fps badge -->
+        <div class="absolute top-4 right-4 bg-bg-2/80 border border-bg-2 px-2 py-0.5 md:px-3 md:py-1 rounded-full text-[9px] md:text-[10px] font-bold text-blue-accent tracking-wider shadow-lg">
+          60 FPS
+        </div>
+
+        <!-- Line 1 -->
+        <div class="code-line flex gap-2 items-center" style="--line-delay: 0.1s">
+           <div class="text-[10px] text-text-2/30 w-4 text-right select-none font-mono">1</div>
+           <div class="code-block w-8 md:w-12 bg-blue-accent" style="--block-delay: 0.1s"></div>
+           <div class="code-block w-16 md:w-24 bg-text-2" style="--block-delay: 0.2s"></div>
+           <div class="code-block w-12 md:w-16 bg-blue-2" style="--block-delay: 0.3s"></div>
+        </div>
+        <!-- Line 2 -->
+        <div class="code-line flex gap-2 items-center pl-4 md:pl-6" style="--line-delay: 0.4s">
+           <div class="text-[10px] text-text-2/30 w-4 text-right select-none font-mono -ml-4 md:-ml-6">2</div>
+           <div class="code-block w-12 md:w-20 bg-text-1" style="--block-delay: 0.4s"></div>
+           <div class="code-block w-20 md:w-32 bg-text-2" style="--block-delay: 0.5s"></div>
+        </div>
+        <!-- Line 3 -->
+        <div class="code-line flex gap-2 items-center pl-4 md:pl-6" style="--line-delay: 0.6s">
+           <div class="text-[10px] text-text-2/30 w-4 text-right select-none font-mono -ml-4 md:-ml-6">3</div>
+           <div class="code-block w-10 md:w-16 bg-blue-accent" style="--block-delay: 0.6s"></div>
+           <div class="code-block w-24 md:w-40 bg-blue-2" style="--block-delay: 0.7s"></div>
+        </div>
+        <!-- Line 4 -->
+        <div class="code-line flex gap-2 items-center" style="--line-delay: 0.8s">
+           <div class="text-[10px] text-text-2/30 w-4 text-right select-none font-mono">4</div>
+           <div class="code-block w-8 md:w-12 bg-text-2" style="--block-delay: 0.8s"></div>
+        </div>
+        <!-- Line 5 -->
+        <div class="code-line flex gap-2 items-center mt-2" style="--line-delay: 0.9s">
+           <div class="text-[10px] text-text-2/30 w-4 text-right select-none font-mono">5</div>
+           <div class="code-block w-16 md:w-24 bg-blue-accent" style="--block-delay: 0.9s"></div>
+           <div class="code-block w-10 md:w-16 bg-text-2" style="--block-delay: 1.0s"></div>
+           <div class="code-block w-12 md:w-20 bg-text-1" style="--block-delay: 1.1s"></div>
+        </div>
+        <!-- Line 6 -->
+        <div class="code-line hidden md:flex gap-2 items-center pl-4 md:pl-6" style="--line-delay: 1.2s">
+           <div class="text-[10px] text-text-2/30 w-4 text-right select-none font-mono -ml-4 md:-ml-6">6</div>
+           <div class="code-block w-20 md:w-32 bg-blue-2" style="--block-delay: 1.2s"></div>
+           <div class="code-block w-8 md:w-12 bg-blue-accent" style="--block-delay: 1.3s"></div>
+        </div>
+        <!-- Line 7 -->
+        <div class="code-line hidden md:flex gap-2 items-center pl-8 md:pl-12" style="--line-delay: 1.4s">
+           <div class="text-[10px] text-text-2/30 w-4 text-right select-none font-mono -ml-8 md:-ml-12">7</div>
+           <div class="code-block w-24 md:w-48 bg-text-2" style="--block-delay: 1.4s"></div>
+        </div>
+        <!-- Line 8 -->
+        <div class="code-line hidden md:flex gap-2 items-center pl-4 md:pl-6" style="--line-delay: 1.6s">
+           <div class="text-[10px] text-text-2/30 w-4 text-right select-none font-mono -ml-4 md:-ml-6">8</div>
+           <div class="code-block w-8 md:w-12 bg-text-2" style="--block-delay: 1.6s"></div>
+        </div>
+        <!-- Line 9 -->
+        <div class="code-line hidden md:flex gap-2 items-center" style="--line-delay: 1.7s">
+           <div class="text-[10px] text-text-2/30 w-4 text-right select-none font-mono">9</div>
+           <div class="code-block w-6 md:w-8 bg-text-2" style="--block-delay: 1.7s"></div>
+        </div>
+        <!-- Line 10 -->
+        <div class="code-line hidden md:flex gap-2 items-center mt-2" style="--line-delay: 1.8s">
+           <div class="text-[10px] text-text-2/30 w-4 text-right select-none font-mono">10</div>
+           <div class="code-block w-10 md:w-16 bg-blue-accent" style="--block-delay: 1.8s"></div>
+           <div class="code-block w-16 md:w-28 bg-blue-2" style="--block-delay: 1.9s"></div>
+        </div>
+        <!-- Line 11 (Cursor) -->
+        <div class="code-line hidden md:flex gap-2 items-center pl-4 md:pl-6" style="--line-delay: 2.1s">
+           <div class="text-[10px] text-text-2/30 w-4 text-right select-none font-mono -ml-4 md:-ml-6">11</div>
+           <div class="w-1.5 h-3 md:w-2 md:h-4 bg-blue-accent animate-pulse" style="animation-delay: 2.1s"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Badges (Bolas flutuantes) -->
+  <div class="absolute -left-4 md:-left-6 top-1/4 -translate-y-1/2 z-20 animate-float">
+    <div class="w-12 h-12 md:w-14 md:h-14 bg-bg-2 rounded-full flex items-center justify-center text-blue-accent text-lg md:text-xl shadow-[0_0_15px_rgba(163,234,42,0.15)] border border-bg-2/80 backdrop-blur-md">
+      <FaRocket />
+    </div>
+  </div>
+
+  <div class="absolute -right-2 md:-right-4 top-1/3 z-20 animate-float delay-1000">
+    <div class="w-12 h-12 md:w-14 md:h-14 bg-bg-2 rounded-full flex items-center justify-center text-blue-accent text-lg md:text-xl shadow-[0_0_15px_rgba(163,234,42,0.15)] border border-bg-2/80 backdrop-blur-md">
+      <FaHandshake />
+    </div>
+  </div>
+
+  <div class="absolute right-4 md:right-8 -bottom-4 md:-bottom-6 z-20 animate-float delay-2000">
+    <div class="w-12 h-12 md:w-14 md:h-14 bg-bg-2 rounded-full flex items-center justify-center text-blue-accent text-lg md:text-xl shadow-[0_0_15px_rgba(163,234,42,0.15)] border border-bg-2/80 backdrop-blur-md">
+      <FaLaptopCode />
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .delay-1000 {
+    animation-delay: 1.3s;
+  }
+
+  .delay-2000 {
+    animation-delay: 2.6s;
+  }
+
+  /* Typing effect animations */
+  @keyframes fadeInLine {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes typeBlock {
+    0% { transform: scaleX(0); opacity: 0; }
+    1% { opacity: 1; }
+    100% { transform: scaleX(1); opacity: 1; }
+  }
+
+  .code-line {
+    opacity: 0;
+    animation: fadeInLine 0.1s forwards;
+    animation-delay: var(--line-delay);
+  }
+
+  .code-block {
+    height: 0.5rem;
+    border-radius: 0.15rem;
+    transform-origin: left;
+    opacity: 0;
+    animation: typeBlock 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation-delay: var(--block-delay);
+  }
+</style>

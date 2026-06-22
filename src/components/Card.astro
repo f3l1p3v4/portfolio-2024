@@ -1,0 +1,55 @@
+---
+import { FaArrowRight } from "react-icons/fa6";
+
+export interface ProjectType {
+    id: number;
+    image: string;
+    title: string;
+    description: string;
+    link: string;
+    skills: string;
+    reference?: string;
+}
+
+interface Props {
+    projects: ProjectType;
+}
+
+const { projects } = Astro.props;
+
+const skillList = projects.skills.split(",").map((skill) => skill.trim());
+---
+
+<a
+    href={projects.link}
+    class="block w-full overflow-hidden pb-[1rem] border-b-[2px] border-dashed border-bg-2 transition-all duration-300 hover:opacity-80 hover:underline decoration-text-2"
+>
+    <img
+        width="500"
+        height="500"
+        class="w-full h-[82px] md:h-[72px] object-cover"
+        src={projects.image}
+        alt=""
+    />
+    <div class="leading-[1.6] mt-[1rem]">
+        <h2 class="text-[0.7rem] text-text-1">{projects.title}</h2>
+        <p class="text-[0.7rem] my-[1rem] text-text-2">
+            {projects.description}
+        </p>
+        <h3 class="text-[0.8rem] text-text-1">Tecnologias:</h3>
+        <div class="flex flex-wrap mt-[0.5rem] mb-[1.4rem] md:mb-0 gap-[5px]">
+            {
+                skillList.map((skill) => (
+                    <span class="text-[0.5rem] text-text-2 border border-blue-accent px-[4px] py-[2px] rounded-[10px]">
+                        {skill}
+                    </span>
+                ))
+            }
+        </div>
+        <button
+            class="flex md:hidden w-full text-[0.8rem] py-[15px] px-[10px] rounded-[4px] justify-center items-center text-text-1 bg-bg-2 border border-bg-2 gap-[10px] transition-colors duration-300"
+        >
+            Ver projeto <FaArrowRight />
+        </button>
+    </div>
+</a>

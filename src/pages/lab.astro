@@ -1,0 +1,20 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Lab | Felipe Valdez">
+  <Header />
+  <main class="w-full min-h-[70vh] flex flex-col items-center justify-center mt-24 mb-20 px-6 text-center animate-on-scroll">
+    <div class="text-blue-accent text-6xl mb-6">&lt;/&gt;</div>
+    <h1 class="text-4xl md:text-5xl font-bold text-text-1 mb-4">Laboratório</h1>
+    <p class="text-text-2 text-lg max-w-lg">
+      Um espaço dedicado para experimentos, testes de novas tecnologias e protótipos que ainda estão em desenvolvimento.
+    </p>
+    <div class="mt-10 px-6 py-2 border border-bg-2 rounded-full text-sm font-bold text-text-2 uppercase tracking-widest bg-bg-2/30">
+      Em breve
+    </div>
+  </main>
+  <Footer />
+</Layout>

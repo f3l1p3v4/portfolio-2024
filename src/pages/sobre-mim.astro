@@ -1,0 +1,329 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Typewriter from "../components/Typewriter.astro";
+import {
+  FaLayerGroup,
+  FaCode,
+  FaDatabase,
+  FaBolt,
+  FaTerminal,
+} from "react-icons/fa6";
+---
+
+<Layout title="Sobre Mim | Felipe Valdez">
+  <Header />
+
+  <main class="pt-32 pb-16 min-h-[80vh]">
+    <!-- Tools Section -->
+    <section
+      id="tools"
+      class="py-16 max-w-[1200px] mx-auto px-6 relative overflow-hidden"
+    >
+      <div
+        class="absolute left-0 top-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-blue-accent/10 blur-[120px] rounded-full pointer-events-none -z-10"
+      >
+      </div>
+
+      <div
+        class="text-center animate-on-scroll mb-16 flex flex-col items-center"
+      >
+        <Typewriter
+          text="ferramentas"
+          className="text-blue-accent font-mono text-sm mb-4"
+        />
+        <h2
+          class="text-[2.5rem] md:text-[3.5rem] font-bold text-text-1 mb-6 leading-tight"
+        >
+          As tecnologias por trás das minhas<br />
+          <span class="text-blue-accent">soluções.</span>
+        </h2>
+        <p class="text-text-2 text-xl max-w-2xl mx-auto">
+          Tudo aqui foi escolhido por sua performance, escalabilidade e para
+          entregar código limpo e moderno.
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto animate-on-scroll delay-200 mt-16">
+        <!-- Floating Pills Container with faded edges -->
+        <div
+          class="flex flex-col gap-4 relative overflow-hidden pb-12 mb-8 border-b border-bg-2/50"
+          style="mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);"
+        >
+          <!-- Row 1 -->
+          <div class="flex overflow-hidden w-full group">
+            <div
+              class="flex animate-marquee group-hover:[animation-play-state:paused] whitespace-nowrap gap-2 md:gap-4 w-max shrink-0 pr-2 md:pr-4"
+            >
+              <!-- Items Set 1 -->
+              <div
+                class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-xs md:text-sm"
+              >
+                <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div>
+                <span>HTML</span>
+              </div>
+              <div
+                class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-xs md:text-sm"
+              >
+                <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div>
+                <span>CSS</span>
+              </div>
+              <div
+                class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-bg-2 border border-text-2/20 text-text-1 font-mono text-xs md:text-sm shadow-sm"
+              >
+                <div
+                  class="w-2 h-2 rounded-full bg-blue-accent shadow-[0_0_8px_#a3ea2a]"
+                >
+                </div>
+                <span>React</span>
+              </div>
+              <div
+                class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-xs md:text-sm"
+              >
+                <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div>
+                <span>Next.js</span>
+              </div>
+              <div
+                class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-bg-2 border border-text-2/20 text-text-1 font-mono text-xs md:text-sm shadow-sm"
+              >
+                <div
+                  class="w-2 h-2 rounded-full bg-blue-accent shadow-[0_0_8px_#a3ea2a]"
+                >
+                </div>
+                <span>Astro</span>
+              </div>
+              <div
+                class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-xs md:text-sm"
+              >
+                <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div>
+                <span>Tailwind CSS</span>
+              </div>
+              <div
+                class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-xs md:text-sm"
+              >
+                <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div>
+                <span>Docker</span>
+              </div>
+            </div>
+            <!-- Items Set 2 (Duplicate for seamless loop) -->
+            <div
+              class="flex animate-marquee group-hover:[animation-play-state:paused] whitespace-nowrap gap-2 md:gap-4 w-max shrink-0 pr-2 md:pr-4"
+              aria-hidden="true"
+            >
+              <div
+                class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-xs md:text-sm"
+              >
+                <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div>
+                <span>HTML</span>
+              </div>
+              <div
+                class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-xs md:text-sm"
+              >
+                <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div>
+                <span>CSS</span>
+              </div>
+              <div
+                class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-bg-2 border border-text-2/20 text-text-1 font-mono text-xs md:text-sm shadow-sm"
+              >
+                <div
+                  class="w-2 h-2 rounded-full bg-blue-accent shadow-[0_0_8px_#a3ea2a]"
+                >
+                </div>
+                <span>React</span>
+              </div>
+              <div
+                class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-xs md:text-sm"
+              >
+                <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div>
+                <span>Next.js</span>
+              </div>
+              <div
+                class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-bg-2 border border-text-2/20 text-text-1 font-mono text-xs md:text-sm shadow-sm"
+              >
+                <div
+                  class="w-2 h-2 rounded-full bg-blue-accent shadow-[0_0_8px_#a3ea2a]"
+                >
+                </div>
+                <span>Astro</span>
+              </div>
+              <div
+                class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-xs md:text-sm"
+              >
+                <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div>
+                <span>Tailwind CSS</span>
+              </div>
+              <div
+                class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-xs md:text-sm"
+              >
+                <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div>
+                <span>Docker</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 2 -->
+          <div class="flex overflow-hidden w-full group">
+            <div
+              class="flex animate-marquee-reverse group-hover:[animation-play-state:paused] whitespace-nowrap gap-2 md:gap-4 w-max shrink-0 pr-2 md:pr-4 md:ml-12"
+            >
+              <!-- Items Set 1 -->
+              <div
+                class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-xs md:text-sm"
+              >
+                <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div>
+                <span>JavaScript</span>
+              </div>
+              <div
+                class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-bg-2 border border-text-2/20 text-text-1 font-mono text-xs md:text-sm shadow-sm"
+              >
+                <div
+                  class="w-2 h-2 rounded-full bg-blue-accent shadow-[0_0_8px_#a3ea2a]"
+                >
+                </div>
+                <span>TypeScript</span>
+              </div>
+              <div
+                class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-xs md:text-sm"
+              >
+                <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div>
+                <span>Node.js</span>
+              </div>
+              <div
+                class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-bg-2 border border-text-2/20 text-text-1 font-mono text-xs md:text-sm shadow-sm"
+              >
+                <div
+                  class="w-2 h-2 rounded-full bg-blue-accent shadow-[0_0_8px_#a3ea2a]"
+                >
+                </div>
+                <span>NestJS</span>
+              </div>
+              <div
+                class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-xs md:text-sm"
+              >
+                <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div>
+                <span>PostgreSQL</span>
+              </div>
+              <div
+                class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-xs md:text-sm"
+              >
+                <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div>
+                <span>MySQL</span>
+              </div>
+              <div
+                class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-xs md:text-sm"
+              >
+                <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div>
+                <span>MongoDB</span>
+              </div>
+            </div>
+            <!-- Items Set 2 (Duplicate for seamless loop) -->
+            <div
+              class="flex animate-marquee-reverse group-hover:[animation-play-state:paused] whitespace-nowrap gap-2 md:gap-4 w-max shrink-0 pr-2 md:pr-4 md:ml-12"
+              aria-hidden="true"
+            >
+              <div
+                class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-xs md:text-sm"
+              >
+                <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div>
+                <span>JavaScript</span>
+              </div>
+              <div
+                class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-bg-2 border border-text-2/20 text-text-1 font-mono text-xs md:text-sm shadow-sm"
+              >
+                <div
+                  class="w-2 h-2 rounded-full bg-blue-accent shadow-[0_0_8px_#a3ea2a]"
+                >
+                </div>
+                <span>TypeScript</span>
+              </div>
+              <div
+                class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-xs md:text-sm"
+              >
+                <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div>
+                <span>Node.js</span>
+              </div>
+              <div
+                class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-bg-2 border border-text-2/20 text-text-1 font-mono text-xs md:text-sm shadow-sm"
+              >
+                <div
+                  class="w-2 h-2 rounded-full bg-blue-accent shadow-[0_0_8px_#a3ea2a]"
+                >
+                </div>
+                <span>NestJS</span>
+              </div>
+              <div
+                class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-xs md:text-sm"
+              >
+                <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div>
+                <span>PostgreSQL</span>
+              </div>
+              <div
+                class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-xs md:text-sm"
+              >
+                <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div>
+                <span>MySQL</span>
+              </div>
+              <div
+                class="flex items-center gap-2 rounded-full px-4 md:px-5 py-2 md:py-2.5 bg-transparent text-text-2/60 font-mono text-xs md:text-sm"
+              >
+                <div class="w-1.5 h-1.5 rounded-full bg-text-2/30"></div>
+                <span>MongoDB</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stack Details -->
+        <div
+          class="flex flex-col gap-6 font-mono text-text-2 text-[13px] md:text-[15px] mx-auto md:w-fit mt-8 pl-4 md:pl-0"
+        >
+          <div class="flex items-center gap-4">
+            <FaLayerGroup
+              className="text-blue-accent w-4 h-4 md:w-5 md:h-5 shrink-0"
+            />
+            <p>
+              <span class="text-text-1">Frontend</span> : React · Next.js · Astro
+              · Tailwind CSS
+            </p>
+          </div>
+          <div class="flex items-center gap-4">
+            <FaCode
+              className="text-blue-accent w-4 h-4 md:w-5 md:h-5 shrink-0"
+            />
+            <p>
+              <span class="text-text-1">Backend</span> &nbsp;: Node.js · NestJS ·
+              TypeScript
+            </p>
+          </div>
+          <div class="flex items-center gap-4">
+            <FaDatabase
+              className="text-blue-accent w-4 h-4 md:w-5 md:h-5 shrink-0"
+            />
+            <p>
+              <span class="text-text-1">Database</span> : PostgreSQL · MySQL · MongoDB
+            </p>
+          </div>
+          <div
+            class="flex flex-col md:flex-row md:items-center gap-6 md:gap-16"
+          >
+            <div class="flex items-center gap-4">
+              <FaBolt
+                className="text-blue-accent w-4 h-4 md:w-5 md:h-5 shrink-0"
+              />
+              <p><span class="text-text-1">DevOps</span> : Docker</p>
+            </div>
+            <div class="flex items-center gap-4">
+              <FaTerminal
+                className="text-blue-accent w-4 h-4 md:w-5 md:h-5 shrink-0"
+              />
+              <p><span class="text-text-1">Base</span> : HTML · CSS · JS</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

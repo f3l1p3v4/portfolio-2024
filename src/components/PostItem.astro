@@ -1,0 +1,67 @@
+---
+import { getPostTheme, getGridSpanClass } from '../utils/postStyles';
+
+interface Post {
+    slug: string;
+    data: {
+        title: string;
+        description: string;
+        date: string;
+        tags: string[];
+    };
+}
+
+interface Props {
+  posts: Post[];
+}
+
+const { posts } = Astro.props;
+---
+
+<>
+  {posts.map((post, index) => {
+    const theme = getPostTheme(post.data.tags, post.slug);
+    const spanClass = getGridSpanClass(index);
+    
+    return (
+      <a 
+        href={`/posts/${post.slug}`} 
+        class={`group relative overflow-hidden rounded-2xl p-8 flex flex-col justify-between min-h-[320px] shadow-lg transition-transform duration-500 hover:-translate-y-2 no-underline ${spanClass} ${theme.cardBgClass} hover:border-blue-accent/50`}
+      >
+        {/* Marca d'água (Imagem) */}
+        {theme.imageSrc && (
+          <div class="absolute inset-0 w-full h-full transition-transform duration-500 pointer-events-none group-hover:scale-105 z-0">
+            <img src={theme.imageSrc} alt="" class="w-full h-full object-cover object-center" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-r from-bg-1/80 via-bg-1/40 to-transparent"></div>
+          </div>
+        )}
+
+        {/* Categoria */}
+        <div class="flex items-start z-10">
+          <span class={`text-[11px] uppercase tracking-wider px-3 py-1 rounded-full shadow-sm ${theme.categoryColorClass}`}>
+            {theme.category}
+          </span>
+        </div>
+
+        {/* Título e Descrição */}
+        <div class="z-10 mt-8 flex-1 flex flex-col justify-center">
+          <h2 class="text-[1.5rem] md:text-[1.75rem] font-bold text-text-1 mb-4 leading-tight group-hover:text-blue-accent transition-colors duration-300">
+            {post.data.title}
+          </h2>
+          <p class="text-text-2 text-[0.95rem] leading-relaxed line-clamp-3">
+            {post.data.description}
+          </p>
+        </div>
+
+        {/* Footer do Card */}
+        <div class="z-10 mt-8 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <div class="w-2.5 h-2.5 rounded-full bg-blue-accent"></div>
+            <span class="text-xs font-mono text-text-2 uppercase">{post.data.tags[0] || 'Geral'}</span>
+          </div>
+          <time class="text-xs font-mono text-text-2/60">{post.data.date}</time>
+        </div>
+      </a>
+    );
+  })}
+</>
