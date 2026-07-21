@@ -37,13 +37,13 @@ const processSteps = [
 ];
 
 const portfolioProjects = [
-  { id: 1, type: "Sistema", title: "Devload", desc: "Plataforma educacional para desenvolvedores com foco em usabilidade e gamificação.", skills: "React, Node.js, PostgreSQL", url: "app.devload.com.br", image: "/images/projects/1.jpg" },
-  { id: 2, type: "Agência Digital", title: "Reitec Engenharia", desc: "Site corporativo otimizado para SEO com apresentação de serviços e portfólio de obras.", skills: "Astro, Tailwind CSS", url: "reitecengenharia.com.br", image: "/images/projects/2.jpg" },
-  { id: 3, type: "Landing Page", title: "Marsura Digital", desc: "Página de altíssima conversão para agência de marketing, utilizando animações dinâmicas.", skills: "Next.js, Framer Motion", url: "marsuradigital.com", image: "/images/projects/3.jpg" },
-  { id: 4, type: "E-commerce", title: "True North", desc: "Loja virtual de alta performance com revelação de produtos baseada no scroll da página.", skills: "Webflow, GSAP", url: "truenorth.com", image: "/images/projects/4.jpg" },
-  { id: 5, type: "Blog", title: "Tech News", desc: "Portal de notícias de tecnologia focado em velocidade de carregamento e experiência do leitor.", skills: "Next.js, Tailwind, CMS", url: "technews.com.br", image: "/images/projects/5.jpg" },
-  { id: 6, type: "Sales Page", title: "K2B Tools", desc: "Página de vendas focada em conversão com integrações de pagamento e área de membros.", skills: "React, Stripe", url: "web.k2btools.com", image: "/images/projects/6.jpg" },
-  { id: 7, type: "Sistema", title: "Focus Timer", desc: "Gerenciador de tempo estilo pomodoro integrado com lista de tarefas.", skills: "React, TypeScript", url: "focus.felipevaldez.com.br", image: "/images/projects/7.jpg" }
+  { id: 1, type: "Site Institucional", title: "Rengetec Engenharia", desc: "Site corporativo otimizado para SEO com apresentação de serviços e portfólio de obras.", skills: "Gatsby, CSS", url: "rengetec.com.br/", image: "/images/projects/1.jpg", year: "2018" },
+  { id: 2, type: "Site Institucional", title: "MSC Telecomunicações", desc: "Site corporativo com apresentação de serviços de telecomunicações.", skills: "Gatsby, CSS", url: "msctelecomunicacoes.com.br/", image: "/images/projects/2.jpg", year: "2019" },
+  { id: 3, type: "Site Institucional", title: "Vop Segurança", desc: "Site corporativo com apresentação de serviços relacionados à segurança.", skills: "React, CSS", url: "vopseguranca.com.br/", image: "/images/projects/3.jpg", year: "2019" },
+  { id: 4, type: "Blog", title: "Blog Devload", desc: "Portal de notícias de tecnologia focado em velocidade de carregamento e experiência do leitor.", skills: "Gatsby, Netlify CMS", url: "blog.devload.com.br/", image: "/images/projects/4.jpg", year: "2020" },
+  { id: 5, type: "Landing Page", title: "LP Dra. Bianca", desc: "Landing Page focada em conversão de leads.", skills: "Astro, Tailwind CSS", url: "drabiancadias.com.br/", image: "/images/projects/5.png", year: "2022" },
+  { id: 6, type: "E-commerce", title: "Bela Bagunça", desc: "Plataforma de e-commerce para venda de roupas infantis.", skills: "Next.js, Tailwind CSS, Stripe", url: "belabagunca.com.br/", image: "/images/projects/6.png", year: "2023" },
+  { id: 7, type: "Sistema", title: "MusicosOn", desc: "Sistema de gerenciamento de estudos e controle de desempenho dos alunos.", skills: "React, Tailwind CSS, Node.js, PostgreSQL, Docker", url: "musicason.com.br/", image: "/images/projects/7.png", year: "2025" }
 ];
 ---
 
@@ -156,14 +156,14 @@ const portfolioProjects = [
                 <!-- Content Below -->
                 <div class="flex flex-col">
                   <p class="text-blue-accent font-mono text-xs mb-3 tracking-wider font-semibold">
-                    0{index + 1} / {project.type} · 2026
+                    0{index + 1} / {project.type} · {project.year}
                   </p>
-                  <h3 class="text-xl md:text-2xl font-bold text-text-1 mb-3 group-hover:text-blue-accent transition-colors duration-300 tracking-tight">{project.title}</h3>
-                  <p class="text-text-2 text-sm leading-relaxed mb-6 opacity-90">{project.desc}</p>
+                  <h3 class="text-lg md:text-xl font-bold text-text-1 mb-2 group-hover:text-blue-accent transition-colors duration-300 tracking-tight">{project.title}</h3>
+                  <p class="text-text-2 text-xs md:text-sm leading-relaxed mb-4 opacity-90">{project.desc}</p>
                   
-                  <div class="flex flex-wrap gap-2 mt-auto">
+                  <div class="flex flex-wrap gap-1.5 mt-auto">
                     {project.skills.split(',').map(skill => (
-                      <span class="text-[10px] md:text-xs font-mono text-text-2/80 bg-transparent border border-text-2/30 px-3 py-0.5 rounded-full uppercase tracking-wider">{skill.trim()}</span>
+                      <span class="text-[10px] md:text-xs font-mono text-text-2/80 bg-transparent border border-text-2/30 px-2.5 py-1 rounded-full uppercase tracking-wider">{skill.trim()}</span>
                     ))}
                   </div>
                 </div>
@@ -193,14 +193,14 @@ const portfolioProjects = [
                 <!-- Content Below -->
                 <div class="flex flex-col">
                   <p class="text-blue-accent font-mono text-xs mb-3 tracking-wider font-semibold">
-                    0{index + 1} / {project.type} · 2026
+                    0{index + 1} / {project.type}  · {project.year}
                   </p>
-                  <h3 class="text-xl md:text-2xl font-bold text-text-1 mb-3 group-hover:text-blue-accent transition-colors duration-300 tracking-tight">{project.title}</h3>
-                  <p class="text-text-2 text-sm leading-relaxed mb-6 opacity-90">{project.desc}</p>
+                  <h3 class="text-lg md:text-xl font-bold text-text-1 mb-2 group-hover:text-blue-accent transition-colors duration-300 tracking-tight">{project.title}</h3>
+                  <p class="text-text-2 text-xs md:text-sm leading-relaxed mb-4 opacity-90">{project.desc}</p>
                   
-                  <div class="flex flex-wrap gap-2 mt-auto">
+                  <div class="flex flex-wrap gap-1.5 mt-auto">
                     {project.skills.split(',').map(skill => (
-                      <span class="text-[10px] md:text-xs font-mono text-text-2/80 bg-transparent border border-text-2/30 px-3 py-0.5 rounded-full uppercase tracking-wider">{skill.trim()}</span>
+                      <span class="text-[10px] md:text-xs font-mono text-text-2/80 bg-transparent border border-text-2/30 px-2.5 py-1 rounded-full uppercase tracking-wider">{skill.trim()}</span>
                     ))}
                   </div>
                 </div>
@@ -214,7 +214,7 @@ const portfolioProjects = [
   </section>
 
   <!-- Tools Section -->
-  <section id="tools" class="py-32 w-full relative overflow-hidden">
+  <section id="tools" class="py-26 w-full relative overflow-hidden">
     <div class="absolute -left-10 top-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-blue-accent/10 blur-[120px] rounded-full pointer-events-none -z-10"></div>
     
     <div class="max-w-[1200px] mx-auto px-6 relative">
@@ -351,12 +351,12 @@ const portfolioProjects = [
       <div class="w-full md:w-2/3 flex flex-col gap-12">
         {processSteps.map((step, idx) => (
           <div class={`flex gap-8 animate-on-scroll delay-${(idx + 1) * 100}`}>
-            <div class="flex-shrink-0 w-16 h-16 rounded-full bg-blue-accent/10 border-2 border-blue-accent flex items-center justify-center text-blue-accent font-black text-2xl shadow-[0_0_15px_rgba(163,234,42,0.2)]">
+            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-accent/10 border-2 border-blue-accent flex items-center justify-center text-blue-accent font-black text-2xl shadow-[0_0_15px_rgba(163,234,42,0.2)]">
               {idx + 1}
             </div>
             <div>
-              <h3 class="text-3xl font-bold text-text-1 mb-4">{step.title}</h3>
-              <p class="text-text-2 text-xl leading-relaxed">{step.desc}</p>
+              <h3 class="text-2xl font-bold text-text-1 mb-4">{step.title}</h3>
+              <p class="text-text-2 text-sm leading-relaxed">{step.desc}</p>
             </div>
           </div>
         ))}
@@ -374,11 +374,11 @@ const portfolioProjects = [
       <div class="animate-on-scroll w-full md:w-1/2">
         <Typewriter text="contato" className="text-bg-1 font-mono text-sm mb-4 font-bold" dotClass="bg-bg-1" />
         <h2 class="text-bg-1 text-[4rem] md:text-[5rem] font-bold mb-8 leading-[1.1] tracking-tight">Pronto para <br/>construir?</h2>
-        <p class="text-bg-1 text-2xl font-medium max-w-lg opacity-90 mb-12 leading-relaxed">Vamos transformar sua ideia em uma aplicação incrível. Preencha os dados e vamos conversar.</p>
+        <p class="text-bg-1 text-xl font-medium max-w-lg opacity-90 mb-4 leading-relaxed">Vamos transformar sua ideia em uma aplicação incrível. Preencha os dados e vamos conversar.</p>
       </div>
 
       <div class="animate-on-scroll w-full md:w-1/2 delay-200">
-        <form class="bg-bg-1 p-8 rounded-[2rem] text-text-1 flex flex-col gap-5 shadow-2xl relative z-20 border border-bg-2/50">
+        <form class="bg-bg-1 px-5 py-8 rounded-[1.6rem] text-text-1 flex flex-col gap-5 shadow-2xl relative z-20 border border-bg-2/50">
           <input type="text" id="w-nome" placeholder="Seu nome" class="w-full bg-bg-2 border border-bg-2 rounded-xl px-5 py-4 focus:outline-none focus:border-blue-accent transition-colors font-medium">
           
           <input type="tel" id="w-telefone" placeholder="Seu WhatsApp" class="w-full bg-bg-2 border border-bg-2 rounded-xl px-5 py-4 focus:outline-none focus:border-blue-accent transition-colors font-medium">

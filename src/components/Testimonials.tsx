@@ -78,11 +78,11 @@ export default function Testimonials() {
 
       <div className="flex flex-col md:flex-row gap-8 lg:gap-12 animate-on-scroll delay-200">
         {/* Left Panel: Active Testimonial */}
-        <div className="flex-1 bg-bg-2/20 border border-bg-2 rounded-[2rem] p-8 md:p-12 relative overflow-hidden flex flex-col justify-between shadow-2xl">
+        <div className="flex-1 bg-bg-2/20 border border-bg-2 rounded-[2rem] p-6 md:p-12 relative overflow-hidden flex flex-col justify-between shadow-2xl">
           <div>
             <FaQuoteLeft className="text-blue-accent w-10 h-10 mb-8" />
             <p
-              className="text-2xl md:text-[1.75rem] leading-relaxed text-text-1 font-medium mb-12"
+              className="text-1xl md:text-[1.75rem] leading-relaxed text-text-1 font-medium mb-12"
               dangerouslySetInnerHTML={{ __html: activeTestimonial.text }}
             />
           </div>
