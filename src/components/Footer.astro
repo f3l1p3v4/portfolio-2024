@@ -1,36 +1,87 @@
 ---
-import { FaGithub, FaLinkedin } from "react-icons/fa6";
+import { FaGithub, FaLinkedin, FaHouse, FaPenToSquare, FaFlask, FaRegAddressCard } from "react-icons/fa6";
+import { CgWebsite } from "react-icons/cg";
+
+const navLinks = [
+  { name: "Home", url: "/", icon: FaHouse },
+  { name: "Blog", url: "/posts", icon: FaPenToSquare },
+  { name: "Projetos", url: "/projects", icon: CgWebsite },
+  { name: "Lab", url: "/lab", icon: FaFlask },
+  { name: "Sobre Mim", url: "/about", icon: FaRegAddressCard },
+];
+
+const socialLinks = [
+  { name: "GitHub", url: "https://github.com/f3l1p3v4", icon: FaGithub },
+  { name: "LinkedIn", url: "https://linkedin.com/in/lipe-dev", icon: FaLinkedin },
+];
 ---
 
-<footer class="w-full bg-bg-1 py-8 border-t border-bg-2">
-  <div
-    class="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4"
-  >
-    <h1 class="text-blue-accent text-1xl font-bold">
-      {"{"}F<span class="text-white">V{"}"}</span>
-    </h1>
-    <div class="flex gap-6">
-      <a
-        href="https://github.com/f3l1p3v4"
-        target="_blank"
-        rel="noreferrer"
-        class="text-text-2 hover:text-blue-accent transition-colors no-underline text-[1.5rem]"
-        aria-label="GitHub"
-      >
-        <FaGithub />
-      </a>
-      <a
-        href="https://linkedin.com/in/lipe-dev"
-        target="_blank"
-        rel="noreferrer"
-        class="text-text-2 hover:text-blue-accent transition-colors no-underline text-[1.5rem]"
-        aria-label="LinkedIn"
-      >
-        <FaLinkedin />
-      </a>
+<footer class="w-full bg-bg-1 border-t border-bg-2">
+  <div class="max-w-[1200px] mx-auto px-6 pt-16 pb-8">
+    <!-- Grid principal -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+      
+      <!-- Coluna 1: Logo + Descrição -->
+      <div class="flex flex-col gap-4">
+        <a href="/" class="flex items-center gap-3 no-underline group w-fit">
+          <h2 class="text-blue-accent text-2xl font-bold m-0">
+            {"{"}F<span class="text-white">V{"}"}</span>
+          </h2>
+        </a>
+        <p class="text-text-2 text-sm leading-relaxed max-w-xs">
+          Desenvolvedor Web criando soluções digitais modernas e performáticas.
+        </p>
+      </div>
+
+      <!-- Coluna 2: Navegação -->
+      <div class="flex flex-col gap-4 items-left md:items-center">
+        <h3 class="text-text-1 text-sm font-bold uppercase tracking-wider m-0">Navegação</h3>
+        <nav class="flex flex-col gap-3 align-center">
+          {navLinks.map((link) => {
+            const Icon = link.icon;
+            return (
+              <a
+                href={link.url}
+                class="text-text-2 text-sm hover:text-blue-accent transition-colors no-underline flex items-center gap-2 w-fit"
+              >
+                <Icon class="text-xs opacity-60" />
+                {link.name}
+              </a>
+            );
+          })}
+        </nav>
+      </div>
+
+      <!-- Coluna 3: Redes Sociais + Contato -->
+      <div class="flex flex-col gap-4 items-left md:items-center">
+        <h3 class="text-text-1 text-sm font-bold uppercase tracking-wider m-0">Conecte-se</h3>
+        <div class="flex gap-4">
+          {socialLinks.map((social) => {
+            const Icon = social.icon;
+            return (
+              <a
+                href={social.url}
+                target="_blank"
+                rel="noreferrer"
+                class="w-10 h-10 rounded-xl bg-bg-2 border border-bg-2 hover:border-blue-accent hover:bg-blue-accent/10 flex items-center justify-center text-text-2 hover:text-blue-accent transition-all no-underline text-lg"
+                aria-label={social.name}
+              >
+                <Icon />
+              </a>
+            );
+          })}
+        </div>
+      </div>
     </div>
-    <p class="text-sm text-text-2 m-0">
-      © 2019 | Todos os direitos reservados. 6.0 🚀
-    </p>
+
+    <!-- Barra inferior -->
+    <div class="border-t border-bg-2 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-text-2 text-xs m-0">
+        &copy; 2019/{new Date().getFullYear()} - Felipe Valdez. Todos os direitos reservados.
+      </p>
+      <p class="text-text-2 text-xs m-0">
+        Feito com ❤️ e muito ☕.
+      </p>
+    </div>
   </div>
 </footer>

@@ -83,52 +83,50 @@ const navLinks = [
       </button>
     </div>
   </div>
-
-  <!-- Menu Mobile Overlay -->
-  <div
-    id="mobile-menu"
-    class="fixed inset-0 bg-bg-1 z-[2000] translate-x-full transition-transform duration-300 flex flex-col items-center justify-center px-6 md:hidden"
-  >
-    <button
-      id="mobile-close-btn"
-      class="absolute top-6 right-6 text-text-1 hover:text-blue-accent transition-colors p-2"
-      aria-label="Fechar Menu"
-    >
-      <FaXmark size={32} />
-    </button>
-
-    <nav
-      class="flex flex-col items-center justify-center gap-6 text-xl w-full max-w-xs"
-    >
-      {
-        navLinks.map((link) => {
-          const isActive =
-            pathname === link.url ||
-            (link.url !== "/" && pathname.startsWith(link.url));
-          const Icon = link.icon;
-          return (
-            <a
-              href={link.url}
-              class={`font-medium transition-colors hover:text-blue-accent flex items-center gap-4 py-3 border-b border-bg-2/50 ${
-                isActive ? "text-blue-accent" : "text-text-2"
-              }`}
-            >
-              <Icon size={24} /> {link.name}
-            </a>
-          );
-        })
-      }
-      <a
-        href="https://wa.me/5567992656801?text=Ol%C3%A1!%20Encontrei%20seu%20contato%20atrav%C3%A9s%20do%20seu%20site."
-        target="_blank"
-        rel="noreferrer"
-        class="bg-blue-accent text-bg-1 font-bold text-center px-6 py-4 rounded-full mt-4"
-      >
-        Entrar em Contato
-      </a>
-    </nav>
-  </div>
 </header>
+
+<!-- Menu Mobile Overlay (fora do header para escapar do stacking context) -->
+<div
+  id="mobile-menu"
+  class="fixed inset-0 bg-bg-1 z-[2000] translate-x-full transition-transform duration-300 flex flex-col items-center justify-center px-6 md:hidden"
+>
+  <button
+    id="mobile-close-btn"
+    class="absolute top-6 right-6 text-text-1 hover:text-blue-accent transition-colors p-2"
+    aria-label="Fechar Menu"
+  >
+    <FaXmark size={32} />
+  </button>
+
+  <nav
+    class="flex flex-col items-center justify-center gap-6 text-xl w-full max-w-xs"
+  >
+    {
+      navLinks.map((link) => {
+        const isActive =
+          pathname === link.url ||
+          (link.url !== "/" && pathname.startsWith(link.url));
+        const Icon = link.icon;
+        return (
+          <a
+            href={link.url}
+            class={`font-medium transition-colors hover:text-blue-accent flex items-center gap-4 py-3 border-b border-bg-2/50 ${
+              isActive ? "text-blue-accent" : "text-text-2"
+            }`}
+          >
+            <Icon size={24} /> {link.name}
+          </a>
+        );
+      })
+    }
+    <a
+      onclick="document.getElementById('mobile-menu').classList.add('translate-x-full'); document.getElementById('contact').scrollIntoView({behavior:'smooth'})"
+      class="bg-blue-accent text-bg-1 font-bold text-center px-6 py-4 rounded-full mt-4 cursor-pointer"
+    >
+      Entrar em Contato
+    </a>
+  </nav>
+</div>
 
 <script>
   document.addEventListener("astro:page-load", () => {

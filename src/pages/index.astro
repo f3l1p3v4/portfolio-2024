@@ -45,6 +45,11 @@ const portfolioProjects = [
   { id: 6, type: "E-commerce", title: "Bela Bagunça", desc: "Plataforma de e-commerce para venda de roupas infantis.", skills: "Next.js, Tailwind CSS, Stripe", url: "belabagunca.com.br/", image: "/images/projects/6.png", year: "2023" },
   { id: 7, type: "Sistema", title: "MusicosOn", desc: "Sistema de gerenciamento de estudos e controle de desempenho dos alunos.", skills: "React, Tailwind CSS, Node.js, PostgreSQL, Docker", url: "musicason.com.br/", image: "/images/projects/7.png", year: "2025" }
 ];
+
+const socialLinks = [
+  { name: "GitHub", url: "https://github.com/f3l1p3v4", icon: FaGithub },
+  { name: "LinkedIn", url: "https://linkedin.com/in/lipe-dev", icon: FaLinkedin },
+];
 ---
 
 <Layout title="Felipe Valdez | Web Developer">
@@ -63,7 +68,7 @@ const portfolioProjects = [
         <a href="#projects" class="bg-blue-accent text-bg-1 font-bold px-8 py-4 rounded-full hover:opacity-80 transition-opacity no-underline w-full sm:w-auto text-center">
           Ver meus projetos
         </a>
-        <a onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" target="_blank" rel="noreferrer" class="cursor-pointer text-text-1 font-bold px-8 py-4 rounded-full border-2 border-text-1 hover:bg-text-1 hover:text-bg-1 transition-colors no-underline w-full sm:w-auto text-center">
+        <a onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="cursor-pointer text-text-1 font-bold px-8 py-4 rounded-full border-2 border-text-1 hover:bg-text-1 hover:text-bg-1 transition-colors no-underline w-full sm:w-auto text-center">
           Enviar mensagem
         </a>
       </div>
@@ -85,17 +90,28 @@ const portfolioProjects = [
         <h2 class="text-[2.5rem] md:text-[3.5rem] font-bold text-text-1 mb-8 leading-tight">
           Olá, eu sou <span class="text-blue-accent">Felipe Valdez</span>
         </h2>
-        <p class="text-text-2 text-xl mb-6 leading-relaxed max-w-2xl">
+        <p class="text-text-2 text-lg md:text-xl mb-6 leading-relaxed max-w-2xl">
           Minha jornada na tecnologia começou em 2016. Sou apaixonado por arquitetura de software, otimização de performance e construção de interfaces intuitivas. Atuo tanto no Frontend quanto no Backend para garantir a excelência da aplicação de ponta a ponta.
         </p>
         
-        <div class="flex gap-4 mb-10">
-          <a href="https://github.com/f3l1p3v4" target="_blank" rel="noreferrer" class="text-blue-accent hover:opacity-50 transition-colors text-3xl" aria-label="GitHub">
-            <FaGithub />
-          </a>
-          <a href="https://linkedin.com/in/lipe-dev" target="_blank" rel="noreferrer" class="text-blue-accent hover:opacity-50 transition-colors text-3xl" aria-label="LinkedIn">
-            <FaLinkedin />
-          </a>
+        <div class="gap-4 mb-10">
+          <h3 class="text-sx font-bold uppercase tracking-wider mb-8">Redes <span class="text-blue-accent">Sociais</span></h3>
+          <div class="flex gap-4">
+            {socialLinks.map((social) => {
+              const Icon = social.icon;
+              return (
+                <a
+                  href={social.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="w-10 h-10 rounded-xl bg-bg-2 border border-bg-2 hover:border-blue-accent hover:bg-blue-accent/10 flex items-center justify-center text-text-2 hover:text-blue-accent transition-all no-underline text-lg"
+                  aria-label={social.name}
+                >
+                  <Icon />
+                </a>
+              );
+            })}
+          </div>
         </div>
         
         <div class="grid grid-cols-2 md:grid-cols-3 gap-8 py-8 border-y border-bg-2/50">
@@ -356,7 +372,7 @@ const portfolioProjects = [
             </div>
             <div>
               <h3 class="text-2xl font-bold text-text-1 mb-4">{step.title}</h3>
-              <p class="text-text-2 text-sm leading-relaxed">{step.desc}</p>
+              <p class="text-text-2 text-sm md:text-[1.2rem] leading-relaxed">{step.desc}</p>
             </div>
           </div>
         ))}
@@ -401,6 +417,13 @@ const portfolioProjects = [
 
           <textarea id="w-mensagem" placeholder="Fale um pouco sobre o seu projeto..." rows="4" class="w-full bg-bg-2 border border-bg-2 rounded-xl px-5 py-4 focus:outline-none focus:border-blue-accent transition-colors resize-none font-medium"></textarea>
           
+          <div id="form-alert" class="hidden bg-red-500/10 border border-red-500/30 rounded-xl px-5 py-4 text-red-400 text-sm font-medium flex items-center gap-3 animate-slide-in">
+            <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            <span id="form-alert-text"></span>
+          </div>
+
           <button type="button" onclick="sendWhatsApp()" class="w-full bg-blue-accent text-bg-1 font-bold text-lg px-6 py-4 rounded-xl hover:opacity-90 transition-opacity mt-2 shadow-[0_0_20px_rgba(163,234,42,0.3)]">
             Enviar Mensagem
           </button>
@@ -417,14 +440,31 @@ const portfolioProjects = [
 </Layout>
 
 <script is:inline>
+  function showFormAlert(message) {
+    const alertEl = document.getElementById('form-alert');
+    const alertText = document.getElementById('form-alert-text');
+    alertText.textContent = message;
+    alertEl.classList.remove('hidden');
+    alertEl.style.animation = 'none';
+    alertEl.offsetHeight;
+    alertEl.style.animation = '';
+  }
+
+  function hideFormAlert() {
+    const alertEl = document.getElementById('form-alert');
+    alertEl.classList.add('hidden');
+  }
+
   function sendWhatsApp() {
     const nome = document.getElementById('w-nome').value;
     const telefone = document.getElementById('w-telefone').value;
     const servico = document.getElementById('w-servico').value;
     const mensagem = document.getElementById('w-mensagem').value;
     
+    hideFormAlert();
+    
     if (!nome || !servico) {
-      alert("Por favor, preencha pelo menos seu nome e o serviço desejado.");
+      showFormAlert("Por favor, preencha pelo menos seu nome e o serviço desejado.");
       return;
     }
     
