@@ -46,8 +46,24 @@ const { title = "Felipe Valdez - Web Developer", description = "Site de Portfoli
 				elements.forEach(el => observer.observe(el));
 			}
 
+			// Rolar para o hash na URL (ex: /#contact)
+			function handleHashScroll() {
+				const hash = window.location.hash;
+				if (hash) {
+					const el = document.querySelector(hash);
+					if (el) {
+						setTimeout(() => {
+							el.scrollIntoView({ behavior: 'smooth' });
+						}, 300);
+					}
+				}
+			}
+
 			// Executar na primeira carga da página e após cada transição de página (ViewTransitions)
-			document.addEventListener('astro:page-load', initScrollAnimations);
+			document.addEventListener('astro:page-load', () => {
+				initScrollAnimations();
+				handleHashScroll();
+			});
 		</script>
 	</body>
 </html>

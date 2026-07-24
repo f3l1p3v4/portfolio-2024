@@ -172,7 +172,7 @@ const socialLinks = [
                 <!-- Content Below -->
                 <div class="flex flex-col">
                   <p class="text-blue-accent font-mono text-xs mb-3 tracking-wider font-semibold">
-                    0{index + 1} / {project.type} · {project.year}
+                    {project.type} · {project.year}
                   </p>
                   <h3 class="text-lg md:text-xl font-bold text-text-1 mb-2 group-hover:text-blue-accent transition-colors duration-300 tracking-tight">{project.title}</h3>
                   <p class="text-text-2 text-xs md:text-sm leading-relaxed mb-4 opacity-90">{project.desc}</p>
@@ -364,27 +364,82 @@ const socialLinks = [
         <h2 class="text-[2.5rem] md:text-[3.5rem] font-bold text-text-1 leading-tight">Como eu <span class="text-blue-accent">trabalho.</span></h2>
         <p class="text-text-2 mt-6 text-xl leading-relaxed">Um fluxo otimizado para entregar o máximo de valor com eficiência e transparência.</p>
       </div>
-      <div class="w-full md:w-2/3 flex flex-col gap-12">
+      <div class="w-full md:w-2/3 process-timeline relative" id="process-timeline">
         {processSteps.map((step, idx) => (
-          <div class={`flex gap-8 animate-on-scroll delay-${(idx + 1) * 100}`}>
-            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-accent/10 border-2 border-blue-accent flex items-center justify-center text-blue-accent font-black text-2xl shadow-[0_0_15px_rgba(163,234,42,0.2)]">
+          <div class={`process-step flex gap-8 relative opacity-0 translate-y-8 transition-all duration-700`} data-step={idx}>
+            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-accent/10 border-2 border-blue-accent flex items-center justify-center text-blue-accent font-black text-2xl shadow-[0_0_15px_rgba(163,234,42,0.2)] z-10">
               {idx + 1}
             </div>
-            <div>
+            <div class="pb-16">
               <h3 class="text-2xl font-bold text-text-1 mb-4">{step.title}</h3>
               <p class="text-text-2 text-sm md:text-[1.2rem] leading-relaxed">{step.desc}</p>
             </div>
+            {idx < processSteps.length - 1 && (
+              <div class="process-line absolute left-6 top-12 w-0.5 bg-blue-accent/30 z-0" data-line={idx}></div>
+            )}
           </div>
         ))}
       </div>
     </div>
   </section>
 
+  <style>
+    .process-step.is-visible {
+      opacity: 1;
+      translate: 0 0;
+    }
+    .process-line {
+      height: 0;
+      transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .process-line.is-visible {
+      height: calc(100% - 3rem);
+    }
+  </style>
+
+  <script is:inline>
+    function initProcessAnimation() {
+      const timeline = document.getElementById('process-timeline');
+      if (!timeline) return;
+
+      const steps = timeline.querySelectorAll('.process-step');
+      const lines = timeline.querySelectorAll('.process-line');
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            observer.unobserve(entry.target);
+            
+            let delay = 0;
+            steps.forEach((step, idx) => {
+              setTimeout(() => {
+                step.classList.add('is-visible');
+                
+                if (idx < lines.length) {
+                  setTimeout(() => {
+                    lines[idx].classList.add('is-visible');
+                  }, 300);
+                }
+              }, delay);
+              delay += 600;
+            });
+          }
+        });
+      }, { threshold: 0.2 });
+
+      observer.observe(timeline);
+    }
+
+    document.addEventListener('astro:page-load', initProcessAnimation);
+    initProcessAnimation();
+  </script>
+
   <!-- Testimonials Section -->
   <Testimonials client:visible />
 
   <!-- Contact/CTA Section -->
   <section id="contact" class="py-24 bg-blue-accent text-bg-1 relative overflow-hidden border-t-4 border-blue-accent">
+    <img src="/images/bg-contact.png" alt="" class="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none" />
     <div class="max-w-[1200px] mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-16">
       
       <div class="animate-on-scroll w-full md:w-1/2">
