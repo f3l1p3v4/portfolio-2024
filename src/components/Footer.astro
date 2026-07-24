@@ -1,5 +1,5 @@
 ---
-import { FaGithub, FaLinkedin, FaHouse, FaPenToSquare, FaFlask, FaRegAddressCard } from "react-icons/fa6";
+import { FaGithub, FaLinkedin, FaHouse, FaPenToSquare, FaFlask, FaRegAddressCard, FaEnvelope } from "react-icons/fa6";
 import { CgWebsite } from "react-icons/cg";
 
 const navLinks = [
@@ -13,6 +13,7 @@ const navLinks = [
 const socialLinks = [
   { name: "GitHub", url: "https://github.com/f3l1p3v4", icon: FaGithub },
   { name: "LinkedIn", url: "https://linkedin.com/in/lipe-dev", icon: FaLinkedin },
+  { name: "Email", url: "mailto:fvaldez018@gmail.com", icon: FaEnvelope }
 ];
 ---
 
@@ -21,7 +22,7 @@ const socialLinks = [
     <!-- Grid principal -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
       
-      <!-- Coluna 1: Logo + Descrição -->
+      <!-- Coluna 1: Logo + Descrição + Badge -->
       <div class="flex flex-col gap-4">
         <a href="/" class="flex items-center gap-3 no-underline group w-fit">
           <h2 class="text-blue-accent text-2xl font-bold m-0">
@@ -31,6 +32,17 @@ const socialLinks = [
         <p class="text-text-2 text-sm leading-relaxed max-w-xs">
           Desenvolvedor Web criando soluções digitais modernas e performáticas.
         </p>
+
+        <!-- Google Safe Badge -->
+        <div class="flex items-center gap-2 bg-bg-2/50 border border-bg-2 rounded-lg px-3 py-2 w-fit mt-2">
+          <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L3 7V12C3 17.25 6.75 22.0 12 23C17.25 22.0 21 17.25 21 12V7L12 2Z" fill="#34A853"/>
+            <path d="M10.5 16.5L7.75 13.75L9.15 12.35L10.5 13.7L14.85 9.35L16.25 10.75L10.5 16.5Z" fill="white"/>
+          </svg>
+          <div class="flex flex-col">
+            <span class="text-text-1 text-xs font-bold leading-tight">Site Seguro</span>
+          </div>
+        </div>
       </div>
 
       <!-- Coluna 2: Navegação -->
@@ -53,7 +65,7 @@ const socialLinks = [
       </div>
 
       <!-- Coluna 3: Redes Sociais + Contato -->
-      <div class="flex flex-col gap-4 items-left md:items-center">
+      <div class="flex flex-col gap-4 items-left">
         <h3 class="text-text-1 text-sm font-bold uppercase tracking-wider m-0">Conecte-se</h3>
         <div class="flex gap-4">
           {socialLinks.map((social) => {
@@ -77,7 +89,7 @@ const socialLinks = [
     <!-- Barra inferior -->
     <div class="border-t border-bg-2 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
       <p class="text-text-2 text-xs m-0">
-        &copy; 2019/{new Date().getFullYear()} - Felipe Valdez. Todos os direitos reservados.
+        © 2019/{new Date().getFullYear()} - Felipe Valdez. Todos os direitos reservados.
       </p>
       <p class="text-text-2 text-xs m-0">
         Feito com ❤️ e muito ☕.

@@ -157,9 +157,10 @@ const socialLinks = [
                 <div class="rounded-t-2xl border border-bg-2/50 bg-bg-1 overflow-hidden shadow-2xl relative aspect-[4/3] flex flex-col mb-6">
                   <!-- Browser Top Bar -->
                   <div class="h-6 md:h-8 bg-bg-2/40 border-b border-bg-2/50 flex items-center px-4 shrink-0 relative">
-                    <div class="mx-auto flex items-center gap-2">
-                      <div class="w-1.5 h-1.5 rounded-full bg-blue-accent/50 group-hover:bg-blue-accent transition-colors duration-500"></div>
-                      <span class="text-[9px] md:text-[10px] text-text-2/40 font-mono tracking-wider group-hover:text-text-2/80 transition-colors duration-500">{project.url}</span>
+                    <div class="flex items-center justify-start gap-1">
+                      <div class="w-1.5 h-1.5 rounded-full bg-red-500 group-hover:bg-blue-accent transition-colors duration-500"></div>
+                      <div class="w-1.5 h-1.5 rounded-full bg-yellow-500 group-hover:bg-blue-accent transition-colors duration-500"></div>
+                      <div class="w-1.5 h-1.5 rounded-full bg-green-500 group-hover:bg-blue-accent transition-colors duration-500"></div>
                     </div>
                   </div>
                   <!-- Image -->
@@ -172,31 +173,26 @@ const socialLinks = [
                 <!-- Content Below -->
                 <div class="flex flex-col">
                   <p class="text-blue-accent font-mono text-xs mb-3 tracking-wider font-semibold">
-                    {project.type} · {project.year}
+                    {project.url}
                   </p>
                   <h3 class="text-lg md:text-xl font-bold text-text-1 mb-2 group-hover:text-blue-accent transition-colors duration-300 tracking-tight">{project.title}</h3>
                   <p class="text-text-2 text-xs md:text-sm leading-relaxed mb-4 opacity-90">{project.desc}</p>
-                  
-                  <div class="flex flex-wrap gap-1.5 mt-auto">
-                    {project.skills.split(',').map(skill => (
-                      <span class="text-[10px] md:text-xs font-mono text-text-2/80 bg-transparent border border-text-2/30 px-2.5 py-1 rounded-full uppercase tracking-wider">{skill.trim()}</span>
-                    ))}
-                  </div>
                 </div>
               </div>
             ))}
           </div>
           <!-- Duplicate for seamless loop -->
-          <div class="flex flex-nowrap gap-4 md:gap-6 animate-marquee w-max shrink-0 items-start pr-4 md:pr-6" aria-hidden="true">
+          <div class="flex flex-nowrap gap-4 md:gap-6 animate-marquee w-max shrink-0 items-start pr-4 md:pr-6">
             {portfolioProjects.map((project, index) => (
               <div class="w-[240px] md:w-[260px] shrink-0 group cursor-pointer">
                 <!-- Image Container (Browser Mockup) -->
                 <div class="rounded-t-2xl border border-bg-2/50 bg-bg-1 overflow-hidden shadow-2xl relative aspect-[4/3] flex flex-col mb-6">
                   <!-- Browser Top Bar -->
-                  <div class="h-6 md:h-8 bg-bg-2/40 border-b border-bg-2/50 flex items-center px-4 shrink-0 relative">
-                    <div class="mx-auto flex items-center gap-2">
-                      <div class="w-1.5 h-1.5 rounded-full bg-blue-accent/50 group-hover:bg-blue-accent transition-colors duration-500"></div>
-                      <span class="text-[9px] md:text-[10px] text-text-2/40 font-mono tracking-wider group-hover:text-text-2/80 transition-colors duration-500">{project.url}</span>
+                  <div class="h-6 md:h-8 bg-bg-2/40 border-b border-bg-2/50 flex items-center justify-left px-4 shrink-0 relative">
+                    <div class="flex items-center justify-start gap-1">
+                      <div class="w-1.5 h-1.5 rounded-full bg-red-500 group-hover:bg-blue-accent transition-colors duration-500"></div>
+                      <div class="w-1.5 h-1.5 rounded-full bg-yellow-500 group-hover:bg-blue-accent transition-colors duration-500"></div>
+                      <div class="w-1.5 h-1.5 rounded-full bg-green-500 group-hover:bg-blue-accent transition-colors duration-500"></div>
                     </div>
                   </div>
                   <!-- Image -->
@@ -209,16 +205,10 @@ const socialLinks = [
                 <!-- Content Below -->
                 <div class="flex flex-col">
                   <p class="text-blue-accent font-mono text-xs mb-3 tracking-wider font-semibold">
-                    0{index + 1} / {project.type}  · {project.year}
+                    {project.url}
                   </p>
                   <h3 class="text-lg md:text-xl font-bold text-text-1 mb-2 group-hover:text-blue-accent transition-colors duration-300 tracking-tight">{project.title}</h3>
                   <p class="text-text-2 text-xs md:text-sm leading-relaxed mb-4 opacity-90">{project.desc}</p>
-                  
-                  <div class="flex flex-wrap gap-1.5 mt-auto">
-                    {project.skills.split(',').map(skill => (
-                      <span class="text-[10px] md:text-xs font-mono text-text-2/80 bg-transparent border border-text-2/30 px-2.5 py-1 rounded-full uppercase tracking-wider">{skill.trim()}</span>
-                    ))}
-                  </div>
                 </div>
               </div>
             ))}
