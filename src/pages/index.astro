@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 import HeroImage from '../components/HeroImage.astro';
 import Testimonials from '../components/Testimonials';
 import Typewriter from '../components/Typewriter.astro';
-import { FaLayerGroup, FaCode, FaDatabase, FaBolt, FaTerminal, FaGithub, FaLinkedin } from "react-icons/fa6";
+import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa6";
 
 const projects = [
     {
@@ -49,6 +49,7 @@ const portfolioProjects = [
 const socialLinks = [
   { name: "GitHub", url: "https://github.com/f3l1p3v4", icon: FaGithub },
   { name: "LinkedIn", url: "https://linkedin.com/in/lipe-dev", icon: FaLinkedin },
+  { name: "Email", url: "mailto:fvaldez018@gmail.com", icon: FaEnvelope }
 ];
 ---
 
@@ -91,11 +92,11 @@ const socialLinks = [
           Olá, eu sou <span class="text-blue-accent">Felipe Valdez</span>
         </h2>
         <p class="text-text-2 text-lg md:text-xl mb-6 leading-relaxed max-w-2xl">
-          Minha jornada na tecnologia começou em 2016. Sou apaixonado por arquitetura de software, otimização de performance e construção de interfaces intuitivas. Atuo tanto no Frontend quanto no Backend para garantir a excelência da aplicação de ponta a ponta.
+          Desenvolvedor Full-stack desde 2016, foco em criar sistemas eficientes e de alto desempenho. Especialista em arquitetura de software e otimização de performance, priorizo a construção de interfaces intuitivas. Combinando expertise em Frontend e Backend, crio aplicações de excelência onde performance e usabilidade andam de mãos dadas.
         </p>
         
         <div class="gap-4 mb-10">
-          <h3 class="text-sx font-bold uppercase tracking-wider mb-8">Redes <span class="text-blue-accent">Sociais</span></h3>
+          <h3 class="text-sx font-bold uppercase tracking-wider mb-8">Contato e <span class="text-blue-accent">Links</span></h3>
           <div class="flex gap-4">
             {socialLinks.map((social) => {
               const Icon = social.icon;
@@ -502,7 +503,6 @@ const socialLinks = [
 
   function sendWhatsApp() {
     const nome = document.getElementById('w-nome').value;
-    const telefone = document.getElementById('w-telefone').value;
     const servico = document.getElementById('w-servico').value;
     const mensagem = document.getElementById('w-mensagem').value;
     
