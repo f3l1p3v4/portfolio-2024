@@ -1,20 +1,106 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Typewriter from "../components/Typewriter.astro";
+import type { ProjectType } from "../components/Card.astro";
+
+const labProjects: ProjectType[] = [
+  {
+    id: 4,
+    image: "/projects/img-04.png",
+    title: "DT Money",
+    description:
+      "A ideia deste projeto é criar um controle financeiro para o usuário. Nele o usuário pode adicionar as entradas e saídas financeiras do seu dia-a-dia.",
+    link: "https://ignite-react-03-dt-money.vercel.app",
+    skills: "reactjs, typescript, vite, styled-components, date-fns, zod",
+    reference: "Rocketseat",
+  },
+];
 ---
 
 <Layout title="Lab | Felipe Valdez">
   <Header />
-  <main class="w-full min-h-[70vh] flex flex-col items-center justify-center mt-24 mb-20 px-6 text-center animate-on-scroll">
-    <div class="text-blue-accent text-6xl mb-6">&lt;/&gt;</div>
-    <h1 class="text-4xl md:text-5xl font-bold text-text-1 mb-4">Laboratório</h1>
-    <p class="text-text-2 text-lg max-w-lg">
-      Um espaço dedicado para experimentos, testes de novas tecnologias e protótipos que ainda estão em desenvolvimento.
-    </p>
-    <div class="mt-10 px-6 py-2 border border-bg-2 rounded-full text-sm font-bold text-text-2 uppercase tracking-widest bg-bg-2/30">
-      Em breve
+  <main
+    class="w-full max-w-[1200px] mx-auto mt-24 mb-20 px-4 md:px-6 animate-on-scroll"
+  >
+    <div
+      class="text-center md:text-left pt-10 mb-16 flex flex-col items-center md:items-start"
+    >
+      <Typewriter
+        text="laboratório"
+        className="text-blue-accent font-mono text-sm mb-4"
+      />
+      <h1
+        class="text-[2.5rem] md:text-[3.5rem] font-bold text-text-1 mb-6 leading-tight"
+      >
+        Experimentos e <span class="text-blue-accent">protótipos.</span>
+      </h1>
+      <p class="text-text-2 text-lg md:text-xl max-w-2xl">
+        Um espaço dedicado para testes de novas tecnologias, ideias criativas e
+        projetos que ainda estão em desenvolvimento.
+      </p>
     </div>
+
+    <section
+      class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-fr transition-colors duration-300"
+    >
+      {
+        labProjects.map((project) => (
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group overflow-hidden rounded-2xl flex flex-col shadow-lg no-underline col-span-1 md:col-span-6 bg-bg-2 transition-transform duration-500 hover:-translate-y-1 hover:shadow-xl"
+          >
+            {/* Imagem com badge flutuando */}
+            <div class="relative w-full h-48 sm:h-56 md:h-64 overflow-hidden bg-bg-1">
+              {project.image && (
+                <>
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-r from-bg-1/90 via-bg-1/70 to-transparent pointer-events-none" />
+                </>
+              )}
+
+              {/* Badge flutuando sobre a imagem */}
+              <div class="absolute top-4 left-4 z-10">
+                <span class="text-[11px] uppercase tracking-wider px-3 py-1 rounded-full shadow-sm backdrop-blur-sm text-blue-accent bg-blue-accent/10 border border-blue-accent/30 font-semibold">
+                  {project.reference || "Experimento"}
+                </span>
+              </div>
+            </div>
+
+            {/* Conteúdo Abaixo da Imagem */}
+            <div class="p-6 md:p-8 flex-1 flex flex-col justify-between bg-bg-2 z-10">
+              <div class="flex-1 flex flex-col justify-start">
+                <h2 class="text-[1.5rem] md:text-[1.75rem] font-bold text-text-1 mb-4 leading-tight group-hover:text-blue-accent transition-colors duration-300">
+                  {project.title}
+                </h2>
+                <p class="text-text-2 text-[0.95rem] leading-relaxed line-clamp-3">
+                  {project.description}
+                </p>
+              </div>
+
+              {/* Footer do Card */}
+              <div class="mt-8 flex items-center justify-between">
+                <div class="flex items-center gap-2 flex-wrap">
+                  {project.skills.split(",").map((skill) => (
+                    <span class="text-[10px] font-mono font-bold uppercase px-2 pt-[5px] pb-[3px] leading-none rounded-md border-2 border-blue-accent/50">
+                      {skill.trim()}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </section>
   </main>
   <Footer />
 </Layout>

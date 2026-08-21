@@ -82,21 +82,46 @@ const socialLinks = [
   <!-- About & Stats Section -->
   <section id="about" class="py-32 bg-bg-2/20 border-b border-bg-2/50 relative">
     <div class="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
-      <div class="w-full md:w-1/3 animate-on-scroll relative">
+      <div class="w-full md:w-1/2 animate-on-scroll relative">
         <div class="absolute inset-0 bg-blue-accent/20 blur-3xl rounded-full"></div>
         <img src="https://github.com/f3l1p3v4.png" alt="Felipe Valdez" class="relative w-full aspect-square object-cover rounded-3xl transition-all duration-700 shadow-2xl border border-bg-2" />
       </div>
-      <div class="w-full md:w-2/3 animate-on-scroll delay-200">
+      <div class="w-full md:w-1/2 animate-on-scroll delay-200">
         <Typewriter text="sobre mim" className="text-blue-accent font-mono text-sm mb-4" />
-        <h2 class="text-[2.5rem] md:text-[3.5rem] font-bold text-text-1 mb-8 leading-tight">
+        <h2 class="grid text-[2.5rem] md:text-[3.5rem] font-bold text-text-1 mb-8 leading-tight">
           Olá, eu sou <span class="text-blue-accent">Felipe Valdez</span>
         </h2>
-        <p class="text-text-2 text-lg md:text-xl mb-6 leading-relaxed max-w-2xl">
+        <p class="text-text-2 text-lg leading-relaxed opacity-90 mb-4">
           Desenvolvedor Full-stack desde 2016, foco em criar sistemas eficientes e de alto desempenho. Especialista em arquitetura de software e otimização de performance, priorizo a construção de interfaces intuitivas. Combinando expertise em Frontend e Backend, crio aplicações de excelência onde performance e usabilidade andam de mãos dadas.
         </p>
         
-        <div class="gap-4 mb-10">
-          <h3 class="text-sx font-bold uppercase tracking-wider mb-8">Contato e <span class="text-blue-accent">Links</span></h3>
+        <div class="py-8 border-y border-bg-2/50">
+          <h3 class="text-xs font-bold uppercase tracking-wider mb-6">Meus <span class="text-blue-accent">Apps</span></h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <a 
+              href="https://focus.felipevaldez.site" 
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group block bg-bg-2/40 border border-bg-2 hover:border-blue-accent/30 rounded-2xl overflow-hidden transition-all duration-300 no-underline shadow-sm hover:shadow-md"
+            >
+              {/* Área da Imagem/Ícone */}
+              <div class="h-[70px] bg-white flex items-center justify-center p-2 relative overflow-hidden text-4xl ">
+                🎯
+              </div>
+              
+              {/* Conteúdo */}
+              <div class="p-3">
+                <h4 class="text-[1rem] font-bold text-text-1 mb-1 group-hover:text-blue-accent transition-colors duration-300">Focus</h4>
+                <p class="text-text-2 text-[0.8rem] leading-relaxed line-clamp-2">
+                  Um to-do list integrado com timer Pomodoro para otimizar sua produtividade.
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+        
+        <div class="gap-4 py-8">
+          <h3 class="text-sx font-bold uppercase tracking-wider mb-4">Contato e <span class="text-blue-accent">Links</span></h3>
           <div class="flex gap-4">
             {socialLinks.map((social) => {
               const Icon = social.icon;
@@ -112,17 +137,6 @@ const socialLinks = [
                 </a>
               );
             })}
-          </div>
-        </div>
-        
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-8 py-8 border-y border-bg-2/50">
-          <div>
-            <h4 class="text-5xl md:text-6xl font-bold text-text-1 mb-2">5<span class="text-blue-accent">+</span></h4>
-            <p class="text-text-2 text-sm uppercase tracking-widest font-bold">Anos de XP</p>
-          </div>
-          <div class="col-span-2 md:col-span-1">
-            <h4 class="text-5xl md:text-6xl font-bold text-text-1 mb-2">100<span class="text-blue-accent">%</span></h4>
-            <p class="text-text-2 text-sm uppercase tracking-widest font-bold">Comprometimento</p>
           </div>
         </div>
       </div>
@@ -221,7 +235,7 @@ const socialLinks = [
   </section>
 
   <!-- Tools Section -->
-  <section id="tools" class="py-26 w-full relative overflow-hidden">
+  <section id="tools" class="py-32 w-full relative overflow-hidden">
     <div class="absolute -left-10 top-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-blue-accent/10 blur-[120px] rounded-full pointer-events-none -z-10"></div>
     
     <div class="max-w-[1200px] mx-auto px-6 relative">
@@ -358,7 +372,7 @@ const socialLinks = [
       <div class="w-full md:w-2/3 process-timeline relative" id="process-timeline">
         {processSteps.map((step, idx) => (
           <div class={`process-step flex gap-8 relative opacity-0 translate-y-8 transition-all duration-700`} data-step={idx}>
-            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-accent/10 border-2 border-blue-accent flex items-center justify-center text-blue-accent font-black text-2xl shadow-[0_0_15px_rgba(163,234,42,0.2)] z-10">
+            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-accent/10 border-2 border-blue-accent flex items-center justify-center text-blue-accent font-black text-2xl shadow-[0_0_25px_rgba(163,234,42,0.6)] z-10">
               {idx + 1}
             </div>
             <div class="pb-16">
@@ -366,7 +380,12 @@ const socialLinks = [
               <p class="text-text-2 text-sm md:text-[1.2rem] leading-relaxed">{step.desc}</p>
             </div>
             {idx < processSteps.length - 1 && (
-              <div class="process-line absolute left-6 top-12 w-0.5 bg-blue-accent/30 z-0" data-line={idx}></div>
+              <>
+                <div class="absolute left-6 top-12 w-0.5 h-[calc(100%-3rem)] bg-text-2/20 -translate-x-1/2 z-0"></div>
+                <div class="process-line absolute left-6 top-12 w-0.5 bg-blue-accent shadow-[0_0_20px_rgba(163,234,42,0.8)] -translate-x-1/2 z-10 flex flex-col justify-end items-center" data-line={idx}>
+                  <div class="process-dot w-2 h-2 rounded-full bg-blue-accent shadow-[0_0_15px_4px_rgba(163,234,42,1)] translate-y-1/2"></div>
+                </div>
+              </>
             )}
           </div>
         ))}
@@ -386,6 +405,12 @@ const socialLinks = [
     .process-line.is-visible {
       height: calc(100% - 3rem);
     }
+    .process-line .process-dot {
+      transition: opacity 0.3s ease;
+    }
+    .process-line.is-completed .process-dot {
+      opacity: 0;
+    }
   </style>
 
   <script is:inline>
@@ -401,18 +426,20 @@ const socialLinks = [
           if (entry.isIntersecting) {
             observer.unobserve(entry.target);
             
-            let delay = 0;
             steps.forEach((step, idx) => {
+              const stepDelay = idx * 900;
               setTimeout(() => {
                 step.classList.add('is-visible');
                 
                 if (idx < lines.length) {
                   setTimeout(() => {
                     lines[idx].classList.add('is-visible');
+                    setTimeout(() => {
+                      lines[idx].classList.add('is-completed');
+                    }, 600);
                   }, 300);
                 }
-              }, delay);
-              delay += 600;
+              }, stepDelay);
             });
           }
         });
