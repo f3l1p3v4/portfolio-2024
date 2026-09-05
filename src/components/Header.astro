@@ -20,28 +20,25 @@ const navLinks = [
   class="fixed top-0 left-0 right-0 z-[1000] bg-bg-1/80 backdrop-blur-md border-b border-bg-2 transition-all duration-300"
 >
   <div
-    class="max-w-[1200px] mx-auto px-6 py-4 flex items-center justify-between"
+    class="max-w-[1200px] mx-auto px-6 py-4 flex items-center justify-between relative"
   >
     <!-- Logo -->
-    <a href="/" class="flex items-center gap-3 group no-underline z-50">
-      <div class="relative flex items-center justify-center">
-        <div
-          class="absolute inset-0 bg-blue-accent/50 blur-md rounded-full group-hover:bg-blue-accent/80 transition-colors duration-300"
-        >
-        </div>
-        <img
-          src="https://github.com/f3l1p3v4.png"
-          alt="Felipe Valdez"
-          class="relative w-10 h-10 md:w-11 md:h-11 rounded-full border-2 border-blue-accent object-cover z-10"
-        />
-      </div>
-      <h1 class="text-blue-accent text-2xl font-bold">
-        {"{"}F<span class="text-white">V{"}"}</span>
+    <a
+      href="/"
+      class="flex items-center group no-underline z-50 select-none"
+      aria-label="Felipe Valdez"
+      title="Felipe Valdez"
+    >
+      <h1
+        class="text-blue-accent text-2xl font-bold tracking-tight inline-flex items-center min-h-[2rem] whitespace-pre"
+        aria-hidden="true"
+      >
+        <span id="header-logo-green">{"{"}F</span><span id="header-logo-white" class="text-white">V{"}"}</span><span id="header-logo-cursor" class="blinking-cursor text-blue-accent ml-[1px] font-mono hidden">|</span>
       </h1>
     </a>
 
     <!-- Navegação Desktop -->
-    <nav class="hidden md:flex items-center gap-8">
+    <nav class="hidden md:flex items-center gap-8 md:absolute md:left-1/2 md:-translate-x-1/2">
       {
         navLinks.map((link) => {
           const isActive =
@@ -127,6 +124,117 @@ const navLinks = [
 </div>
 
 <script>
+  let currentAnimationId = 0;
+  let typewriterTimeout: ReturnType<typeof setTimeout> | null = null;
+
+  function runLogoTypewriter() {
+    currentAnimationId++;
+    const animationId = currentAnimationId;
+
+    if (typewriterTimeout) {
+      clearTimeout(typewriterTimeout);
+      typewriterTimeout = null;
+    }
+
+    const greenEl = document.getElementById("header-logo-green");
+    const whiteEl = document.getElementById("header-logo-white");
+    const cursorEl = document.getElementById("header-logo-cursor");
+
+    if (!greenEl || !whiteEl || !cursorEl) return;
+
+    const fullName = "{Felipe Valdez}";
+    const shortName = "{FV}";
+
+    function render(text: string, isFullName: boolean) {
+      if (!greenEl || !whiteEl) return;
+      // For "{Felipe Valdez}", "{Felipe " is 8 chars (green), "Valdez}" is 7 chars (white)
+      // For "{FV}", "{F" is 2 chars (green), "V}" is 2 chars (white)
+      const splitIndex = isFullName ? 8 : 2;
+      greenEl.textContent = text.slice(0, splitIndex);
+      whiteEl.textContent = text.slice(splitIndex);
+    }
+
+    function wait(ms: number) {
+      return new Promise<void>((resolve) => {
+        typewriterTimeout = setTimeout(resolve, ms);
+      });
+    }
+
+    // Initial state: static "{FV}" with no cursor
+    render(shortName, false);
+    cursorEl.classList.add("hidden");
+
+    async function cycle() {
+      if (animationId !== currentAnimationId) return;
+
+      // Wait initially or between cycles with "{FV}" shown
+      await wait(3500);
+      if (animationId !== currentAnimationId) return;
+
+      // Show cursor: "{FV}|"
+      cursorEl.classList.remove("hidden");
+      await wait(300);
+      if (animationId !== currentAnimationId) return;
+
+      // Erase "{FV}"
+      let text = shortName;
+      while (text.length > 0) {
+        text = text.slice(0, -1);
+        render(text, false);
+        await wait(60);
+        if (animationId !== currentAnimationId) return;
+      }
+
+      await wait(250);
+      if (animationId !== currentAnimationId) return;
+
+      // Type "{Felipe Valdez}"
+      for (let i = 1; i <= fullName.length; i++) {
+        render(fullName.slice(0, i), true);
+        await wait(85);
+        if (animationId !== currentAnimationId) return;
+      }
+
+      // Pause displaying "{Felipe Valdez}|"
+      await wait(2200);
+      if (animationId !== currentAnimationId) return;
+
+      // Erase "{Felipe Valdez}"
+      text = fullName;
+      while (text.length > 0) {
+        text = text.slice(0, -1);
+        render(text, true);
+        await wait(45);
+        if (animationId !== currentAnimationId) return;
+      }
+
+      await wait(250);
+      if (animationId !== currentAnimationId) return;
+
+      // Type "{FV}"
+      for (let i = 1; i <= shortName.length; i++) {
+        render(shortName.slice(0, i), false);
+        await wait(85);
+        if (animationId !== currentAnimationId) return;
+      }
+
+      // Brief pause with cursor on "{FV}|"
+      await wait(400);
+      if (animationId !== currentAnimationId) return;
+
+      // Hide cursor: "depois fica apenas {FV}"
+      cursorEl.classList.add("hidden");
+
+      // Stay as "{FV}" before repeating cycle
+      await wait(6500);
+      if (animationId !== currentAnimationId) return;
+
+      cycle();
+    }
+
+    cycle();
+  }
+
   document.addEventListener("astro:page-load", () => {
     const menuBtn = document.getElementById("mobile-menu-btn");
     const mobileMenu = document.getElementById("mobile-menu");
@@ -140,6 +248,16 @@ const navLinks = [
       closeBtn.addEventListener("click", () => {
         mobileMenu.classList.add("translate-x-full");
       });
+    }
+
+    runLogoTypewriter();
+  });
+
+  document.addEventListener("astro:before-swap", () => {
+    currentAnimationId++;
+    if (typewriterTimeout) {
+      clearTimeout(typewriterTimeout);
+      typewriterTimeout = null;
     }
   });
 </script>
