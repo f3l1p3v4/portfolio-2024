@@ -1,5 +1,5 @@
 ---
-import { getPostTheme, getGridSpanClass } from "../utils/postStyles";
+import { getPostTheme } from "../utils/postStyles";
 
 interface Post {
   slug: string;
@@ -16,65 +16,161 @@ interface Props {
 }
 
 const { posts } = Astro.props;
+
+// Função helper para normalizar slugs de filtro
+const toFilterSlug = (text: string) =>
+  text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^\w\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-");
 ---
 
-<>
+<div class="flex flex-col w-full" id="posts-wrapper">
   {
     posts.map((post, index) => {
       const theme = getPostTheme(post.data.tags, post.slug);
-      const spanClass = getGridSpanClass(index);
+      const categorySlug = toFilterSlug(theme.category);
+      const tagsSlugs = post.data.tags.map((t) => toFilterSlug(t)).join(" ");
+      const rawTags = (post.data.tags || []).join(",").toLowerCase();
+      const isFeatured = index === 0;
 
+      if (isFeatured) {
+        // Post mais recente: Destaque conforme Print 1 (sem fundo colorido, sem borda de card, botão de ler post)
+        return (
+          <article
+            class="post-card group relative flex flex-col w-full pb-10 mb-8 border-b border-bg-2/60 transition-all duration-300"
+            data-post-card
+            data-post-index={index}
+            data-category={categorySlug}
+            data-tags={tagsSlugs}
+            data-raw-category={theme.category.toLowerCase()}
+            data-raw-tags={rawTags}
+          >
+            {/* Imagem de Capa do Post Mais Recente */}
+            {theme.imageSrc && (
+              <a
+                href={`/posts/${post.slug}`}
+                class="w-full h-56 sm:h-72 md:h-80 rounded-2xl overflow-hidden relative bg-bg-1 shrink-0 mb-6 block border border-bg-2/50 shadow-md group/img"
+              >
+                <img
+                  src={theme.imageSrc}
+                  alt={post.data.title}
+                  class="w-full h-full object-cover object-center group-hover/img:scale-105 transition-transform duration-500"
+                  loading="eager"
+                />
+              </a>
+            )}
+
+            {/* Categoria e Data */}
+            <div class="flex items-center gap-3 mb-3.5 flex-wrap">
+              <span class={`text-[11px] font-mono uppercase tracking-wider px-3 py-1 rounded-full shadow-sm ${theme.categoryColorClass}`}>
+                {theme.category}
+              </span>
+              <time class="text-xs font-mono text-text-2/60">
+                {post.data.date}
+              </time>
+            </div>
+
+            {/* Título */}
+            <h2 class="text-2xl sm:text-3xl font-bold text-text-1 mb-3.5 leading-snug">
+              <a
+                href={`/posts/${post.slug}`}
+                class="hover:text-blue-accent transition-colors duration-200 no-underline text-inherit"
+              >
+                {post.data.title}
+              </a>
+            </h2>
+
+            {/* Descrição */}
+            <p class="text-text-2 text-sm sm:text-base leading-relaxed line-clamp-3 mb-6">
+              {post.data.description}
+            </p>
+
+            {/* Rodapé: Tags à esquerda e Botão 'Ler post' à direita */}
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
+              <div class="flex items-center gap-2 flex-wrap">
+                {post.data.tags &&
+                  post.data.tags.map((tag) => (
+                    <span class="text-[11px] font-mono uppercase px-2.5 py-1 rounded-md bg-[#0a0f18] text-text-2/80 border border-bg-2">
+                      #{tag}
+                    </span>
+                  ))}
+              </div>
+
+              <a
+                href={`/posts/${post.slug}`}
+                class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-blue-accent text-bg-1 font-mono font-bold text-xs uppercase tracking-wider hover:opacity-90 hover:scale-105 transition-all shadow-md shrink-0 group/btn self-start sm:self-auto no-underline"
+              >
+                <span>Ler post</span>
+                <svg
+                  class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
+          </article>
+        );
+      }
+
+      // Demais posts: Linha horizontal conforme Print 2 (thumbnail na esquerda, categoria e título na direita)
       return (
         <a
           href={`/posts/${post.slug}`}
-          class={`group relative overflow-hidden rounded-2xl p-8 flex flex-col justify-between min-h-[320px] shadow-lg transition-transform duration-500 hover:-translate-y-1 no-underline ${spanClass} ${theme.cardBgClass}`}
+          class="post-card group relative flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-6 py-5 sm:py-6 border-b border-bg-2/50 hover:bg-bg-2/15 rounded-xl transition-all duration-200 no-underline w-full cursor-pointer"
+          data-post-card
+          data-post-index={index}
+          data-category={categorySlug}
+          data-tags={tagsSlugs}
+          data-raw-category={theme.category.toLowerCase()}
+          data-raw-tags={rawTags}
         >
-          {/* Marca d'água (Imagem) */}
-          {theme.imageSrc && (
-            <div class="absolute inset-0 w-full h-full transition-transform duration-500 pointer-events-none z-0">
+          {/* Thumbnail à esquerda */}
+          {theme.imageSrc ? (
+            <div class="w-full sm:w-44 md:w-52 h-32 sm:h-28 md:h-32 rounded-xl overflow-hidden shrink-0 relative bg-bg-1 border border-bg-2/50 shadow-sm">
               <img
                 src={theme.imageSrc}
-                alt=""
-                class="w-full h-full object-cover object-center"
+                alt={post.data.title}
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
                 loading="lazy"
               />
-              <div class="absolute inset-0 bg-gradient-to-r from-bg-1/90 via-bg-1/70 to-transparent" />
+            </div>
+          ) : (
+            <div class="w-full sm:w-44 md:w-52 h-32 sm:h-28 md:h-32 rounded-xl bg-bg-2/50 border border-bg-2 shrink-0 flex items-center justify-center text-text-2/40">
+              <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
             </div>
           )}
 
-          {/* Categoria */}
-          <div class="flex items-start z-10">
-            <span
-              class={`text-[11px] uppercase tracking-wider px-3 py-1 rounded-full shadow-sm ${theme.categoryColorClass}`}
-            >
+          {/* Textos à direita */}
+          <div class="flex-1 flex flex-col justify-center min-w-0">
+            {/* Categoria em caixa alta */}
+            <span class="text-xs font-mono uppercase font-bold tracking-wider text-blue-accent/90 mb-1.5 block">
               {theme.category}
             </span>
-          </div>
 
-          {/* Título e Descrição */}
-          <div class="z-10 mt-8 flex-1 flex flex-col justify-center">
-            <h2 class="text-[1.5rem] md:text-[1.75rem] font-bold text-text-1 mb-4 leading-tight group-hover:text-blue-accent transition-colors duration-300">
+            {/* Título em destaque */}
+            <h3 class="text-lg sm:text-xl font-bold text-text-1 group-hover:text-blue-accent transition-colors duration-200 leading-snug line-clamp-2 mb-2">
               {post.data.title}
-            </h2>
-            <p class="text-text-2 text-[0.95rem] leading-relaxed line-clamp-3">
-              {post.data.description}
-            </p>
-          </div>
+            </h3>
 
-          {/* Footer do Card */}
-          <div class="z-10 mt-8 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <div class="w-2.5 h-2.5 rounded-full bg-blue-accent" />
-              <span class="text-xs font-mono text-text-2 uppercase">
-                {post.data.tags[0] || "Geral"}
-              </span>
+            {/* Informações adicionais (Data e Tag primária) */}
+            <div class="flex items-center gap-3 text-xs font-mono text-text-2/60">
+              <time>{post.data.date}</time>
+              {post.data.tags && post.data.tags[0] && (
+                <span class="text-text-2/50">• #{post.data.tags[0]}</span>
+              )}
             </div>
-            <time class="text-xs font-mono text-text-2/60">
-              {post.data.date}
-            </time>
           </div>
         </a>
       );
     })
   }
-</>
+</div>

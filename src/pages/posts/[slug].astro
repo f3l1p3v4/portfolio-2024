@@ -3,22 +3,41 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import PostPagination from '../../components/PostPagination.astro';
 import { getPostTheme } from '../../utils/postStyles';
 import type { CollectionEntry } from 'astro:content';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
-  return posts.map(post => ({
-    params: { slug: post.slug },
-    props: { post },
-  }));
+  const sortedPosts = posts.sort(
+    (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()
+  );
+
+  return sortedPosts.map((post, index) => {
+    // Ordenado do mais recente para o mais antigo:
+    // Post Anterior (cronologicamente anterior / mais antigo): index + 1
+    // Próximo Post (cronologicamente posterior / mais recente): index - 1
+    const prevPost = index < sortedPosts.length - 1 ? sortedPosts[index + 1] : null;
+    const nextPost = index > 0 ? sortedPosts[index - 1] : null;
+
+    return {
+      params: { slug: post.slug },
+      props: {
+        post,
+        prevPost,
+        nextPost,
+      },
+    };
+  });
 }
 
 type Props = {
   post: CollectionEntry<'posts'>;
+  prevPost: CollectionEntry<'posts'> | null;
+  nextPost: CollectionEntry<'posts'> | null;
 };
 
-const { post } = Astro.props as Props;
+const { post, prevPost, nextPost } = Astro.props as Props;
 const { Content } = await post.render();
 const theme = getPostTheme(post.data.tags, post.slug);
 ---
@@ -65,6 +84,8 @@ const theme = getPostTheme(post.data.tags, post.slug);
       <Content />
     </div>
 
+    {/* Navegação / Paginação entre posts */}
+    <PostPagination prevPost={prevPost} nextPost={nextPost} />
   </main>
   <Footer />
 </Layout>

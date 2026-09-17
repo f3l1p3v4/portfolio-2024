@@ -3,8 +3,7 @@ const pathname = new URL(Astro.request.url).pathname;
 import {
   FaHouse,
   FaPenToSquare,
-  FaFlask,
-  FaGraduationCap,
+  FaRegAddressCard,
   FaBars,
   FaXmark,
 } from "react-icons/fa6";
@@ -12,7 +11,7 @@ import {
 const navLinks = [
   { name: "Home", url: "/", icon: FaHouse },
   { name: "Blog", url: "/posts", icon: FaPenToSquare },
-  { name: "Lab", url: "/lab", icon: FaFlask },
+  { name: "Sobre Mim", url: "/#about", icon: FaRegAddressCard },
 ];
 ---
 
@@ -37,35 +36,38 @@ const navLinks = [
       </h1>
     </a>
 
-    <!-- Navegação Desktop -->
-    <nav class="hidden md:flex items-center gap-8 md:absolute md:left-1/2 md:-translate-x-1/2">
-      {
-        navLinks.map((link) => {
-          const isActive =
-            pathname === link.url ||
-            (link.url !== "/" && pathname.startsWith(link.url));
-          const Icon = link.icon;
-          return (
-            <a
-              href={link.url}
-              class={`text-sm font-medium transition-colors hover:text-blue-accent flex items-center gap-2 ${
-                isActive ? "text-blue-accent" : "text-text-2"
-              }`}
-            >
-              <Icon /> {link.name}
-            </a>
-          );
-        })
-      }
-    </nav>
+    <!-- Navegação e Botão Contato Desktop (à direita) -->
+    <div class="hidden md:flex items-center gap-8">
+      <nav class="flex items-center gap-8">
+        {
+          navLinks.map((link) => {
+            const isActive =
+              pathname === link.url ||
+              (link.url !== "/" && link.url !== "/#about" && pathname.startsWith(link.url));
+            const Icon = link.icon;
+            return (
+              <a
+                href={link.url}
+                onclick={link.url === "/#about" ? "if (window.location.pathname === '/') { event.preventDefault(); const el = document.getElementById('about'); if (el) { el.scrollIntoView({behavior:'smooth'}); history.pushState(null, '', '#about'); } } else { window.location.href = '/#about'; }" : undefined}
+                class={`text-sm font-medium transition-colors hover:text-blue-accent flex items-center gap-2 cursor-pointer ${
+                  isActive ? "text-blue-accent" : "text-text-2"
+                }`}
+              >
+                <Icon /> {link.name}
+              </a>
+            );
+          })
+        }
+      </nav>
 
-    <!-- Botão Contato (Let's Talk) -->
-    <a
-      onclick="const el = document.getElementById('contact'); if (el) { el.scrollIntoView({behavior:'smooth'}); } else { window.location.href = '/#contact'; }"
-      class="hidden md:flex bg-blue-accent text-bg-1 font-bold text-sm px-5 py-2 rounded-full hover:opacity-80 transition-opacity no-underline cursor-pointer"
-    >
-      Entrar em Contato
-    </a>
+      <!-- Botão Contato (Let's Talk) -->
+      <a
+        onclick="const el = document.getElementById('contact'); if (el) { el.scrollIntoView({behavior:'smooth'}); } else { window.location.href = '/#contact'; }"
+        class="bg-blue-accent text-bg-1 font-bold text-sm px-5 py-2 rounded-full hover:opacity-80 transition-opacity no-underline cursor-pointer"
+      >
+        Entrar em Contato
+      </a>
+    </div>
 
     <!-- Menu Mobile Toggle -->
     <div class="md:hidden flex items-center z-50">
@@ -100,12 +102,13 @@ const navLinks = [
       navLinks.map((link) => {
         const isActive =
           pathname === link.url ||
-          (link.url !== "/" && pathname.startsWith(link.url));
+          (link.url !== "/" && link.url !== "/#about" && pathname.startsWith(link.url));
         const Icon = link.icon;
         return (
           <a
             href={link.url}
-            class={`font-medium transition-colors hover:text-blue-accent flex items-center gap-4 py-3 border-b border-bg-2/50 ${
+            onclick={link.url === "/#about" ? "document.getElementById('mobile-menu').classList.add('translate-x-full'); if (window.location.pathname === '/') { event.preventDefault(); const el = document.getElementById('about'); if (el) { el.scrollIntoView({behavior:'smooth'}); history.pushState(null, '', '#about'); } } else { window.location.href = '/#about'; }" : "document.getElementById('mobile-menu').classList.add('translate-x-full');"}
+            class={`font-medium transition-colors hover:text-blue-accent flex items-center gap-4 py-3 border-b border-bg-2/50 cursor-pointer ${
               isActive ? "text-blue-accent" : "text-text-2"
             }`}
           >

@@ -91,52 +91,48 @@ const socialLinks = [
         <h2 class="grid text-[2.5rem] md:text-[3.5rem] font-bold text-text-1 mb-8 leading-tight">
           Olá, eu sou <span class="text-blue-accent">Felipe Valdez</span>
         </h2>
-        <p class="text-text-2 text-lg leading-relaxed opacity-90 mb-4">
+        <p class="text-text-2 text-lg leading-relaxed opacity-90 mb-6">
           Desenvolvedor Full-stack desde 2016, foco em criar sistemas eficientes e de alto desempenho. Especialista em arquitetura de software e otimização de performance, priorizo a construção de interfaces intuitivas. Combinando expertise em Frontend e Backend, crio aplicações de excelência onde performance e usabilidade andam de mãos dadas.
+          <a
+            onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"
+            class="text-blue-accent font-semibold inline-flex items-center gap-1.5 hover:underline cursor-pointer transition-all ml-1 group whitespace-nowrap"
+          >
+            <span>Vamos conversar</span>
+            <svg
+              class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1 inline-block"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2.5"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              />
+            </svg>
+          </a>
         </p>
-        
-        <div class="py-8 border-y border-bg-2/50">
-          <h3 class="text-xs font-bold uppercase tracking-wider mb-6">Meus <span class="text-blue-accent">Apps</span></h3>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+        <div class="py-6 border-t border-bg-2/50">
+          <h3 class="text-xs font-bold uppercase tracking-wider mb-4">Meus <span class="text-blue-accent">Apps</span></h3>
+          <div class="flex flex-wrap items-start gap-6 sm:gap-8">
             <a 
               href="https://focus.felipevaldez.site" 
               target="_blank"
               rel="noopener noreferrer"
-              class="group block bg-bg-2/40 border border-bg-2 hover:border-blue-accent/30 rounded-2xl overflow-hidden transition-all duration-300 no-underline shadow-sm hover:shadow-md"
+              class="group flex flex-col items-center gap-2.5 no-underline transition-transform"
             >
-              {/* Área da Imagem/Ícone */}
-              <div class="h-[70px] bg-white flex items-center justify-center p-2 relative overflow-hidden text-4xl ">
+              {/* Ícone Quadrado do App */}
+              <div class="w-16 h-16 sm:w-[72px] sm:h-[72px] aspect-square bg-[#FAF7F2] border border-[#E5DFD5]/80 group-hover:border-blue-accent/60 rounded-2xl flex items-center justify-center text-3xl sm:text-4xl shadow-sm transition-all duration-300 group-hover:scale-105 group-hover:shadow-md">
                 🎯
               </div>
               
-              {/* Conteúdo */}
-              <div class="p-3">
-                <h4 class="text-[1rem] font-bold text-text-1 mb-1 group-hover:text-blue-accent transition-colors duration-300">Focus</h4>
-                <p class="text-text-2 text-[0.8rem] leading-relaxed line-clamp-2">
-                  Um to-do list integrado com timer Pomodoro para otimizar sua produtividade.
-                </p>
-              </div>
+              {/* Nome do App */}
+              <span class="font-mono text-xs sm:text-sm text-text-2 group-hover:text-blue-accent transition-colors text-center tracking-wide">
+                Focus
+              </span>
             </a>
-          </div>
-        </div>
-        
-        <div class="gap-4 py-8">
-          <h3 class="text-sx font-bold uppercase tracking-wider mb-4">Contato e <span class="text-blue-accent">Links</span></h3>
-          <div class="flex gap-4">
-            {socialLinks.map((social) => {
-              const Icon = social.icon;
-              return (
-                <a
-                  href={social.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  class="w-10 h-10 rounded-xl bg-bg-2 border border-bg-2 hover:border-blue-accent hover:bg-blue-accent/10 flex items-center justify-center text-text-2 hover:text-blue-accent transition-all no-underline text-lg"
-                  aria-label={social.name}
-                >
-                  <Icon />
-                </a>
-              );
-            })}
           </div>
         </div>
       </div>
@@ -464,31 +460,217 @@ const socialLinks = [
         <Typewriter text="contato" className="text-bg-1 font-mono text-sm mb-4 font-bold" dotClass="bg-bg-1" />
         <h2 class="text-bg-1 text-[4rem] md:text-[5rem] font-bold mb-8 leading-[1.1] tracking-tight">Pronto para <br/>construir?</h2>
         <p class="text-bg-1 text-xl font-medium max-w-lg opacity-90 mb-4 leading-relaxed">Vamos transformar sua ideia em uma aplicação incrível. Preencha os dados e vamos conversar.</p>
+
+        <!-- Contato e Links -->
+        <div class="pt-6 mt-8 border-t border-bg-1/20 flex flex-col gap-4 max-w-lg">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-bg-1">
+            Contato e Links
+          </h3>
+          <div class="flex gap-4">
+            {socialLinks.map((social) => {
+              const Icon = social.icon;
+              return (
+                <a
+                  href={social.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="w-12 h-12 rounded-2xl bg-bg-1 text-text-1 hover:text-blue-accent flex items-center justify-center transition-all no-underline text-xl shadow-lg hover:scale-105"
+                  aria-label={social.name}
+                >
+                  <Icon />
+                </a>
+              );
+            })}
+          </div>
+        </div>
       </div>
 
       <div class="animate-on-scroll w-full md:w-1/2 delay-200">
         <form class="bg-bg-1 px-5 py-8 rounded-[1.6rem] text-text-1 flex flex-col gap-5 shadow-2xl relative z-20 border border-bg-2/50">
-          <input type="text" id="w-nome" placeholder="Seu nome" class="w-full bg-bg-2 border border-bg-2 rounded-xl px-5 py-4 focus:outline-none focus:border-blue-accent transition-colors font-medium">
-          
-          <input type="tel" id="w-telefone" placeholder="Seu WhatsApp" class="w-full bg-bg-2 border border-bg-2 rounded-xl px-5 py-4 focus:outline-none focus:border-blue-accent transition-colors font-medium">
-          
-          <div class="relative">
-            <select id="w-servico" class="w-full bg-bg-2 border border-bg-2 rounded-xl px-5 py-4 focus:outline-none focus:border-blue-accent transition-colors text-text-1 font-medium appearance-none">
-              <option value="" disabled selected class="text-text-2">Qual serviço você precisa?</option>
-              <option value="Criação de Site Institucional">Site Institucional</option>
-              <option value="E-commerce / Loja Virtual">E-commerce / Loja Virtual</option>
-              <option value="Landing Page de Alta Conversão">Landing Page de Alta Conversão</option>
-              <option value="Sistema Web Personalizado">Sistema Web Personalizado</option>
-              <option value="Outro">Outro serviço</option>
-            </select>
-            <div class="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
-              <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Campo: Nome -->
+          <div class="w-full bg-bg-2 border border-bg-2 hover:border-blue-accent/40 focus-within:border-blue-accent rounded-xl px-4 py-3 flex items-center gap-3 transition-all duration-200 group">
+            <div class="w-9 h-9 rounded-lg bg-bg-1/70 border border-bg-2/60 flex items-center justify-center text-text-2 shrink-0 transition-colors group-focus-within:text-blue-accent group-hover:text-blue-accent">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
               </svg>
+            </div>
+            <input
+              type="text"
+              id="w-nome"
+              placeholder="Seu nome"
+              class="w-full bg-transparent border-0 p-0 focus:outline-none text-text-1 font-medium placeholder:text-text-2 text-[0.95rem]"
+            />
+          </div>
+          
+          <!-- Campo: WhatsApp -->
+          <div class="w-full bg-bg-2 border border-bg-2 hover:border-blue-accent/40 focus-within:border-blue-accent rounded-xl px-4 py-3 flex items-center gap-3 transition-all duration-200 group">
+            <div class="w-9 h-9 rounded-lg bg-bg-1/70 border border-bg-2/60 flex items-center justify-center text-text-2 shrink-0 transition-colors group-focus-within:text-blue-accent group-hover:text-blue-accent">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+              </svg>
+            </div>
+            <input
+              type="tel"
+              id="w-telefone"
+              placeholder="Seu WhatsApp"
+              class="w-full bg-transparent border-0 p-0 focus:outline-none text-text-1 font-medium placeholder:text-text-2 text-[0.95rem]"
+            />
+          </div>
+          
+          <!-- Custom Select de Serviços com Ícones e Padding Aprimorado -->
+          <div class="relative" id="custom-select-wrapper">
+            <input type="hidden" id="w-servico" name="servico" value="" />
+            
+            <button
+              type="button"
+              id="custom-select-trigger"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+              class="w-full bg-bg-2 border border-bg-2 hover:border-blue-accent/40 focus:border-blue-accent rounded-xl px-4 py-3 flex items-center justify-between text-left transition-all duration-200 cursor-pointer group"
+            >
+              <div class="flex items-center gap-3 min-w-0">
+                <div
+                  id="custom-select-icon-container"
+                  class="w-9 h-9 rounded-lg bg-bg-1/70 border border-bg-2/60 flex items-center justify-center text-text-2 shrink-0 transition-colors group-hover:text-blue-accent"
+                >
+                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2m14 0V9a2 2 0 0 0-2-2M5 11V9a2 2 0 0 1 2-2m0 0V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2M7 7h10" />
+                  </svg>
+                </div>
+                <span id="custom-select-label" class="text-text-2 font-medium truncate text-[0.95rem]">
+                  Qual serviço você precisa?
+                </span>
+              </div>
+              <div class="pl-2 shrink-0">
+                <svg
+                  id="custom-select-chevron"
+                  class="w-4 h-4 text-text-2/70 transition-transform duration-300 group-hover:text-text-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </button>
+
+            <!-- Dropdown Menu -->
+            <div
+              id="custom-select-dropdown"
+              role="listbox"
+              class="hidden absolute left-0 right-0 top-[calc(100%+8px)] z-50 bg-[#0d121c] border border-bg-2 rounded-2xl p-2 shadow-[0_12px_40px_rgba(0,0,0,0.7)] backdrop-blur-xl flex flex-col gap-1 max-h-[360px] overflow-y-auto"
+            >
+              <!-- Opção 1: Site Institucional -->
+              <div
+                role="option"
+                data-value="Criação de Site Institucional"
+                data-label="Site Institucional"
+                class="custom-select-option w-full p-2.5 rounded-xl flex items-center justify-between gap-3 text-left transition-all duration-200 hover:bg-bg-2/70 cursor-pointer group"
+              >
+                <div class="flex items-center gap-3">
+                  <div class="option-icon w-9 h-9 rounded-lg bg-bg-2 group-hover:bg-blue-accent/15 text-text-2 group-hover:text-blue-accent flex items-center justify-center transition-colors shrink-0">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                      <circle cx="12" cy="12" r="10" />
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                    </svg>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-sm font-semibold text-text-1 group-hover:text-blue-accent transition-colors">Site Institucional</span>
+                    <span class="text-[0.75rem] text-text-2/70 leading-tight">Presença online profissional para sua marca</span>
+                  </div>
+                </div>
+                <svg class="check-mark hidden w-4 h-4 text-blue-accent shrink-0 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+
+              <!-- Opção 2: E-commerce / Loja Virtual -->
+              <div
+                role="option"
+                data-value="E-commerce / Loja Virtual"
+                data-label="E-commerce / Loja Virtual"
+                class="custom-select-option w-full p-2.5 rounded-xl flex items-center justify-between gap-3 text-left transition-all duration-200 hover:bg-bg-2/70 cursor-pointer group"
+              >
+                <div class="flex items-center gap-3">
+                  <div class="option-icon w-9 h-9 rounded-lg bg-bg-2 group-hover:bg-blue-accent/15 text-text-2 group-hover:text-blue-accent flex items-center justify-center transition-colors shrink-0">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 0 0-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-sm font-semibold text-text-1 group-hover:text-blue-accent transition-colors">E-commerce / Loja Virtual</span>
+                    <span class="text-[0.75rem] text-text-2/70 leading-tight">Vendas na internet com catálogo e checkout</span>
+                  </div>
+                </div>
+                <svg class="check-mark hidden w-4 h-4 text-blue-accent shrink-0 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+
+
+              <!-- Opção 4: Sistema Web Personalizado -->
+              <div
+                role="option"
+                data-value="Sistema Web Personalizado"
+                data-label="Sistema Web Personalizado"
+                class="custom-select-option w-full p-2.5 rounded-xl flex items-center justify-between gap-3 text-left transition-all duration-200 hover:bg-bg-2/70 cursor-pointer group"
+              >
+                <div class="flex items-center gap-3">
+                  <div class="option-icon w-9 h-9 rounded-lg bg-bg-2 group-hover:bg-blue-accent/15 text-text-2 group-hover:text-blue-accent flex items-center justify-center transition-colors shrink-0">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z" />
+                    </svg>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-sm font-semibold text-text-1 group-hover:text-blue-accent transition-colors">Sistema Web Personalizado</span>
+                    <span class="text-[0.75rem] text-text-2/70 leading-tight">Dashboards, SaaS e automações sob demanda</span>
+                  </div>
+                </div>
+                <svg class="check-mark hidden w-4 h-4 text-blue-accent shrink-0 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+
+              <!-- Opção 5: Outro serviço -->
+              <div
+                role="option"
+                data-value="Outro"
+                data-label="Outro serviço"
+                class="custom-select-option w-full p-2.5 rounded-xl flex items-center justify-between gap-3 text-left transition-all duration-200 hover:bg-bg-2/70 cursor-pointer group"
+              >
+                <div class="flex items-center gap-3">
+                  <div class="option-icon w-9 h-9 rounded-lg bg-bg-2 group-hover:bg-blue-accent/15 text-text-2 group-hover:text-blue-accent flex items-center justify-center transition-colors shrink-0">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.286L13 21l-2.286-6.857L5 12l5.714-2.286L13 3z" />
+                    </svg>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-sm font-semibold text-text-1 group-hover:text-blue-accent transition-colors">Outro serviço</span>
+                    <span class="text-[0.75rem] text-text-2/70 leading-tight">Consultoria técnica ou projetos específicos</span>
+                  </div>
+                </div>
+                <svg class="check-mark hidden w-4 h-4 text-blue-accent shrink-0 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
             </div>
           </div>
 
-          <textarea id="w-mensagem" placeholder="Fale um pouco sobre o seu projeto..." rows="4" class="w-full bg-bg-2 border border-bg-2 rounded-xl px-5 py-4 focus:outline-none focus:border-blue-accent transition-colors resize-none font-medium"></textarea>
+          <!-- Campo: Mensagem -->
+          <div class="w-full bg-bg-2 border border-bg-2 hover:border-blue-accent/40 focus-within:border-blue-accent rounded-xl px-4 py-3 flex items-start gap-3 transition-all duration-200 group">
+            <div class="w-9 h-9 rounded-lg bg-bg-1/70 border border-bg-2/60 flex items-center justify-center text-text-2 shrink-0 transition-colors group-focus-within:text-blue-accent group-hover:text-blue-accent mt-0.5">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
+              </svg>
+            </div>
+            <textarea
+              id="w-mensagem"
+              placeholder="Fale um pouco sobre o seu projeto..."
+              rows="4"
+              class="w-full bg-transparent border-0 p-0 focus:outline-none text-text-1 font-medium placeholder:text-text-2 text-[0.95rem] resize-none pt-1.5"
+            ></textarea>
+          </div>
           
           <div id="form-alert" class="hidden bg-red-500/10 border border-red-500/30 rounded-xl px-5 py-4 text-red-400 text-sm font-medium flex items-center gap-3 animate-slide-in">
             <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -544,4 +726,92 @@ const socialLinks = [
     const encodedText = encodeURIComponent(text);
     window.open(`https://wa.me/5567992656801?text=${encodedText}`, '_blank');
   }
+
+  function initCustomSelect() {
+    const trigger = document.getElementById('custom-select-trigger');
+    const dropdown = document.getElementById('custom-select-dropdown');
+    const chevron = document.getElementById('custom-select-chevron');
+    const hiddenInput = document.getElementById('w-servico');
+    const label = document.getElementById('custom-select-label');
+    const iconContainer = document.getElementById('custom-select-icon-container');
+    const options = document.querySelectorAll('.custom-select-option');
+
+    if (!trigger || !dropdown) return;
+
+    function openDropdown() {
+      dropdown.classList.remove('hidden');
+      chevron?.classList.add('rotate-180');
+      trigger.classList.add('border-blue-accent');
+      trigger.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeDropdown() {
+      dropdown.classList.add('hidden');
+      chevron?.classList.remove('rotate-180');
+      trigger.classList.remove('border-blue-accent');
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+
+    trigger.onclick = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (dropdown.classList.contains('hidden')) {
+        openDropdown();
+      } else {
+        closeDropdown();
+      }
+    };
+
+    options.forEach(opt => {
+      opt.onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const value = opt.getAttribute('data-value') || '';
+        const labelText = opt.getAttribute('data-label') || '';
+        const iconElement = opt.querySelector('.option-icon');
+
+        if (hiddenInput) hiddenInput.value = value;
+        if (label) {
+          label.textContent = labelText;
+          label.classList.remove('text-text-2');
+          label.classList.add('text-text-1', 'font-medium');
+        }
+
+        if (iconElement && iconContainer) {
+          iconContainer.innerHTML = iconElement.innerHTML;
+          iconContainer.classList.remove('text-text-2');
+          iconContainer.classList.add('text-blue-accent');
+        }
+
+        options.forEach(o => {
+          const check = o.querySelector('.check-mark');
+          if (o === opt) {
+            check?.classList.remove('hidden');
+            o.classList.add('bg-bg-2/80');
+          } else {
+            check?.classList.add('hidden');
+            o.classList.remove('bg-bg-2/80');
+          }
+        });
+
+        hideFormAlert();
+        closeDropdown();
+      };
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!dropdown.contains(e.target) && !trigger.contains(e.target)) {
+        closeDropdown();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeDropdown();
+      }
+    });
+  }
+
+  initCustomSelect();
+  document.addEventListener('astro:page-load', initCustomSelect);
 </script>

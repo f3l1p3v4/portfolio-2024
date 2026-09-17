@@ -5,19 +5,59 @@ import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import PostItem from "../../components/PostItem.astro";
 import Typewriter from "../../components/Typewriter.astro";
+import CategorySidebar from "../../components/CategorySidebar.astro";
+import { getPostTheme } from "../../utils/postStyles";
 
 // Obter todos os posts e ordenar pela data mais recente
 const allPosts = await getCollection("posts");
 const sortedPosts = allPosts.sort(
   (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf(),
 );
+
+// Função para normalizar id do filtro
+const toFilterSlug = (text: string) =>
+  text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^\w\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-");
+
+// Agrupar categorias dinâmicas
+const categoriesMap = new Map<string, { id: string; name: string; count: number; type: "category" }>();
+// Agrupar tags dinâmicas
+const tagsMap = new Map<string, { id: string; name: string; count: number; type: "tag" }>();
+
+sortedPosts.forEach((post) => {
+  const theme = getPostTheme(post.data.tags, post.slug);
+  const catSlug = toFilterSlug(theme.category);
+  if (!categoriesMap.has(catSlug)) {
+    categoriesMap.set(catSlug, { id: catSlug, name: theme.category, count: 1, type: "category" });
+  } else {
+    categoriesMap.get(catSlug)!.count++;
+  }
+
+  (post.data.tags || []).forEach((tag) => {
+    const tagSlug = toFilterSlug(tag);
+    if (!tagsMap.has(tagSlug)) {
+      tagsMap.set(tagSlug, { id: tagSlug, name: tag, count: 1, type: "tag" });
+    } else {
+      tagsMap.get(tagSlug)!.count++;
+    }
+  });
+});
+
+const categoriesList = Array.from(categoriesMap.values()).sort((a, b) => b.count - a.count);
+const tagsList = Array.from(tagsMap.values()).sort((a, b) => b.count - a.count);
 ---
 
 <Layout title="Posts | Felipe Valdez">
   <Header />
-  <main class="w-full max-w-[1200px] mx-auto mt-24 mb-20 px-4 md:px-6">
+  <main class="w-full max-w-[1200px] mx-auto mt-24 mb-20 px-6">
+    {/* Cabeçalho da página de posts */}
     <div
-      class="text-center md:text-left pt-20 mb-16 flex flex-col items-center md:items-start"
+      class="text-center md:text-left pt-20 mb-12 flex flex-col items-center md:items-start"
     >
       <Typewriter
         text="blog"
@@ -34,9 +74,207 @@ const sortedPosts = allPosts.sort(
       </p>
     </div>
 
-    <section class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-fr">
-      <PostItem posts={sortedPosts} />
-    </section>
+    {/* Barra de Status do Filtro Ativo */}
+    <div class="flex items-center justify-between py-4 mb-8 border-b border-bg-2/60">
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-mono uppercase tracking-wider text-text-2/70">
+          Exibindo:
+        </span>
+        <span
+          id="active-filter-name"
+          class="text-xs font-mono font-bold uppercase tracking-wider text-blue-accent bg-blue-accent/10 px-2.5 py-0.5 rounded-full border border-blue-accent/30"
+        >
+          Todos os artigos
+        </span>
+      </div>
+
+      <span id="posts-count-display" class="text-xs font-mono text-text-2/70">
+        {sortedPosts.length} artigos
+      </span>
+    </div>
+
+    {/* Grid com Posts à esquerda (~78%) e Categorias/Tags à direita (~22%) */}
+    <div class="flex flex-col lg:flex-row items-start gap-8 lg:gap-10">
+      {/* Coluna da Esquerda: Posts um abaixo do outro */}
+      <section class="w-full lg:w-[78%] flex flex-col order-2 lg:order-1" id="posts-list-container">
+        <PostItem posts={sortedPosts} />
+
+        {/* Botão Carregar Mais com cores e padrão do site */}
+        <div class="flex justify-center mt-10 mb-6 w-full" id="load-more-container">
+          <button
+            type="button"
+            id="load-more-btn"
+            class="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full border-2 border-blue-accent bg-transparent text-text-1 hover:bg-blue-accent hover:text-bg-1 shadow-[0_0_15px_rgba(163,234,42,0.15)] hover:shadow-[0_0_25px_rgba(163,234,42,0.35)] active:scale-95 transition-all duration-300 cursor-pointer font-bold tracking-wider font-mono text-xs sm:text-sm"
+          >
+            <span class="text-lg leading-none font-bold text-blue-accent group-hover:text-bg-1 transition-colors">+</span>
+            <span class="tracking-widest uppercase">CARREGAR MAIS</span>
+          </button>
+        </div>
+
+        {/* Estado vazio caso o filtro não retorne posts */}
+        <div
+          id="no-posts-found"
+          class="hidden text-center py-16 px-6 rounded-2xl bg-bg-2/20 border border-bg-2 text-text-2 w-full"
+        >
+          <div class="w-12 h-12 rounded-full bg-bg-2/60 flex items-center justify-center mx-auto mb-4 text-text-2">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <p class="text-lg font-bold text-text-1 mb-2">Nenhum artigo encontrado</p>
+          <p class="text-sm mb-6 text-text-2/70">Nenhum post corresponde à categoria selecionada no momento.</p>
+          <button
+            type="button"
+            id="reset-filter-btn"
+            class="px-5 py-2 rounded-full bg-blue-accent text-bg-1 font-mono font-bold text-xs uppercase tracking-wider hover:opacity-90 transition-opacity cursor-pointer"
+          >
+            Ver todos os artigos
+          </button>
+        </div>
+      </section>
+
+      {/* Coluna da Direita: Explore Categorias & Tags (~22%) */}
+      <div class="w-full lg:w-[22%] lg:sticky lg:top-28 shrink-0 order-1 lg:order-2">
+        <CategorySidebar
+          categories={categoriesList}
+          tags={tagsList}
+          totalPosts={sortedPosts.length}
+        />
+      </div>
+    </div>
   </main>
   <Footer />
 </Layout>
+
+<script>
+  function setupCategoryFiltering() {
+    const pills = document.querySelectorAll<HTMLElement>('.category-pill');
+    const cards = document.querySelectorAll<HTMLElement>('[data-post-card]');
+    const emptyState = document.getElementById('no-posts-found');
+    const filterNameDisplay = document.getElementById('active-filter-name');
+    const countDisplay = document.getElementById('posts-count-display');
+    const resetBtn = document.getElementById('reset-filter-btn');
+    const loadMoreContainer = document.getElementById('load-more-container');
+    const loadMoreBtn = document.getElementById('load-more-btn');
+
+    if (!pills.length || !cards.length) return;
+
+    const PAGE_SIZE = 10;
+    let currentLimit = PAGE_SIZE;
+    let currentFilter = 'all';
+    let currentFilterName = 'Todos os artigos';
+
+    function applyFilter(filterSlug: string, filterName?: string, resetLimit: boolean = true) {
+      currentFilter = (filterSlug || 'all').toLowerCase().trim();
+      if (filterName) {
+        currentFilterName = filterName;
+      } else if (currentFilter === 'all') {
+        currentFilterName = 'Todos os artigos';
+      }
+
+      if (resetLimit) {
+        currentLimit = PAGE_SIZE;
+      }
+
+      // Atualizar classes das pills
+      pills.forEach((pill) => {
+        const pFilter = pill.getAttribute('data-filter')?.toLowerCase().trim();
+        if (pFilter === currentFilter) {
+          pill.classList.add('active-pill');
+        } else {
+          pill.classList.remove('active-pill');
+        }
+      });
+
+      // Filtrar cards
+      const matchingCards: HTMLElement[] = [];
+      cards.forEach((card) => {
+        const cat = card.getAttribute('data-category')?.toLowerCase().trim() || '';
+        const tags = (card.getAttribute('data-tags')?.toLowerCase().trim() || '').split(' ');
+        const rawCat = card.getAttribute('data-raw-category')?.toLowerCase().trim() || '';
+        const rawTags = (card.getAttribute('data-raw-tags')?.toLowerCase().trim() || '').split(',');
+
+        const isMatch =
+          currentFilter === 'all' ||
+          cat === currentFilter ||
+          tags.includes(currentFilter) ||
+          rawCat === currentFilter ||
+          rawTags.includes(currentFilter);
+
+        if (isMatch) {
+          matchingCards.push(card);
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Exibir os cards que deram match respeitando o limite da página
+      matchingCards.forEach((card, idx) => {
+        if (idx < currentLimit) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Exibir empty state se nenhum post bater
+      if (emptyState) {
+        emptyState.style.display = matchingCards.length === 0 ? 'block' : 'none';
+      }
+
+      // Atualizar visibilidade do botão "+ CARREGAR MAIS"
+      if (loadMoreContainer) {
+        if (matchingCards.length > currentLimit) {
+          loadMoreContainer.style.display = 'flex';
+        } else {
+          loadMoreContainer.style.display = 'none';
+        }
+      }
+
+      // Atualizar contadores e legendas
+      if (countDisplay) {
+        countDisplay.textContent = `${matchingCards.length} ${matchingCards.length === 1 ? 'artigo' : 'artigos'}`;
+      }
+
+      if (filterNameDisplay) {
+        filterNameDisplay.textContent = currentFilterName || currentFilter.toUpperCase();
+      }
+    }
+
+    // Clique nas pills de categorias e tags
+    pills.forEach((pill) => {
+      pill.addEventListener('click', () => {
+        const filterSlug = pill.getAttribute('data-filter') || 'all';
+        const pillText = pill.querySelector('span:not(.pill-count)')?.textContent?.trim() || filterSlug;
+        applyFilter(filterSlug, pillText, true);
+      });
+    });
+
+    // Clique no botão de reset
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        applyFilter('all', 'Todos os artigos', true);
+      });
+    }
+
+    // Clique no botão "+ CARREGAR MAIS"
+    if (loadMoreBtn) {
+      loadMoreBtn.addEventListener('click', () => {
+        currentLimit += PAGE_SIZE;
+        applyFilter(currentFilter, currentFilterName, false);
+      });
+    }
+
+    // Inicializar estado padrão
+    applyFilter('all', 'Todos os artigos', true);
+
+    // Suporte a filtro por hash na URL (ex: /posts#reactjs)
+    const hash = window.location.hash.replace('#', '').toLowerCase().trim();
+    if (hash) {
+      applyFilter(hash, undefined, true);
+    }
+  }
+
+  // Configurar filtro na primeira carga e após ViewTransitions
+  document.addEventListener('astro:page-load', setupCategoryFiltering);
+</script>

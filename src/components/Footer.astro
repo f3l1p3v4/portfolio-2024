@@ -1,13 +1,10 @@
 ---
-import { FaGithub, FaLinkedin, FaHouse, FaPenToSquare, FaFlask, FaRegAddressCard, FaEnvelope } from "react-icons/fa6";
-import { CgWebsite } from "react-icons/cg";
+import { FaGithub, FaLinkedin, FaHouse, FaPenToSquare, FaRegAddressCard, FaEnvelope } from "react-icons/fa6";
 
 const navLinks = [
   { name: "Home", url: "/", icon: FaHouse },
   { name: "Blog", url: "/posts", icon: FaPenToSquare },
-  { name: "Projetos", url: "/projects", icon: CgWebsite },
-  { name: "Lab", url: "/lab", icon: FaFlask },
-  { name: "Sobre Mim", url: "/about", icon: FaRegAddressCard },
+  { name: "Sobre Mim", url: "/#about", icon: FaRegAddressCard },
 ];
 
 const socialLinks = [
@@ -54,7 +51,8 @@ const socialLinks = [
             return (
               <a
                 href={link.url}
-                class="text-text-2 text-sm hover:text-blue-accent transition-colors no-underline flex items-center gap-2 w-fit"
+                onclick={link.url === "/#about" ? "if (window.location.pathname === '/') { event.preventDefault(); const el = document.getElementById('about'); if (el) { el.scrollIntoView({behavior:'smooth'}); history.pushState(null, '', '#about'); } } else { window.location.href = '/#about'; }" : undefined}
+                class="text-text-2 text-sm hover:text-blue-accent transition-colors no-underline flex items-center gap-2 w-fit cursor-pointer"
               >
                 <Icon class="text-xs opacity-60" />
                 {link.name}

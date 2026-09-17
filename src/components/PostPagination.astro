@@ -1,0 +1,120 @@
+﻿---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  prevPost?: CollectionEntry<"posts"> | null;
+  nextPost?: CollectionEntry<"posts"> | null;
+}
+
+const { prevPost, nextPost } = Astro.props;
+---
+
+<nav aria-label="Navegação entre posts" class="mt-16 pt-12 border-t border-bg-2">
+  <div class="flex items-center justify-between mb-8">
+    <a
+      href="/posts"
+      class="inline-flex items-center gap-2 text-sm font-mono text-text-2 hover:text-blue-accent transition-colors duration-200 group"
+    >
+      <svg
+        class="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M10 19l-7-7m0 0l7-7m-7 7h18"
+        />
+      </svg>
+      <span>Todos os artigos</span>
+    </a>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {prevPost ? (
+      <a
+        href={`/posts/${prevPost.slug}`}
+        class="group relative flex flex-col justify-between p-6 rounded-2xl bg-bg-2/30 border border-bg-2 hover:border-blue-accent/50 hover:bg-bg-2/50 transition-all duration-300 text-left no-underline"
+      >
+        <div>
+          <span class="inline-flex items-center gap-1 text-xs font-mono uppercase tracking-wider text-text-2/70 mb-3 group-hover:text-blue-accent transition-colors">
+            <svg
+              class="w-3.5 h-3.5 transition-transform duration-200 group-hover:-translate-x-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+            Post Anterior
+          </span>
+          <h3 class="text-base md:text-lg font-bold text-text-1 group-hover:text-blue-accent transition-colors duration-200 line-clamp-2">
+            {prevPost.data.title}
+          </h3>
+        </div>
+
+        <div class="mt-6 flex items-center gap-3">
+          {prevPost.data.tags && prevPost.data.tags.length > 0 && (
+            <span class="text-xs font-mono uppercase px-2 py-0.5 rounded bg-bg-2/60 text-text-2">
+              {prevPost.data.tags[0]}
+            </span>
+          )}
+          <span class="text-xs font-mono text-text-2/60">
+            {prevPost.data.date}
+          </span>
+        </div>
+      </a>
+    ) : (
+      <div class="hidden md:block" />
+    )}
+
+    {nextPost ? (
+      <a
+        href={`/posts/${nextPost.slug}`}
+        class="group relative flex flex-col justify-between p-6 rounded-2xl bg-bg-2/30 border border-bg-2 hover:border-blue-accent/50 hover:bg-bg-2/50 transition-all duration-300 text-right md:ml-auto w-full no-underline"
+      >
+        <div>
+          <span class="inline-flex items-center justify-end gap-1 text-xs font-mono uppercase tracking-wider text-text-2/70 mb-3 group-hover:text-blue-accent transition-colors w-full">
+            Próximo Post
+            <svg
+              class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </span>
+          <h3 class="text-base md:text-lg font-bold text-text-1 group-hover:text-blue-accent transition-colors duration-200 line-clamp-2">
+            {nextPost.data.title}
+          </h3>
+        </div>
+
+        <div class="mt-6 flex items-center justify-end gap-3">
+          <span class="text-xs font-mono text-text-2/60">
+            {nextPost.data.date}
+          </span>
+          {nextPost.data.tags && nextPost.data.tags.length > 0 && (
+            <span class="text-xs font-mono uppercase px-2 py-0.5 rounded bg-bg-2/60 text-text-2">
+              {nextPost.data.tags[0]}
+            </span>
+          )}
+        </div>
+      </a>
+    ) : (
+      <div class="hidden md:block" />
+    )}
+  </div>
+</nav>
